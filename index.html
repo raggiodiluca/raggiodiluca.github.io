@@ -1,0 +1,100 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link href="media/favicon.ico" rel="icon" type="image/x-icon" />
+    <title>Luca Bessi Aristei</title>
+    <meta name="description" content="LBA Portfolio">
+    <meta name="author" content="Luca Bessi Aristei">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" media="all and (min-width: 960px)" href="css/style.css" />
+    <!-- Load the Paper.js library -->
+    <script type="text/javascript" src="js/paper.js"></script>
+    <script type="text/javascript" src="js/closet.js"></script>
+    <script type="text/paperscript" canvas="drawing-canvas">
+        var myPath = new Path();
+        myPath.strokeColor = '#FF00FF';
+        myPath.strokeWidth = .8;
+    
+    
+        function onMouseMove(event) {
+            myPath.add(event.point);
+            myPath.smooth();
+        }
+        
+        /* click
+        $("body").mousedown(function () {
+            paper.project.activeLayer.removeChildren();
+        });
+    
+        $("body").mouseup(function () {
+            myPath = new Path();
+            myPath.strokeColor = '#FF00FF';
+            myPath.strokeWidth = .8;
+        });
+        */
+    </script>
+</head>
+
+<body>
+    <canvas id="drawing-canvas"></canvas>
+    <div id="main">
+        <div id="buttons-pocket">
+            <div class="button web">
+                <h2>web</h2>
+            </div>
+            <div class="button graphic">
+                <h2>graphic</h2>
+            </div>
+            <div class="button illustration">
+                <h2>illustration</h2>
+            </div>
+        </div>
+
+        <div class="closet web hide">
+            <div>
+                <div class="closet-title">
+                    <h2>web</h2>
+                    <h2>:</h2>
+                </div>
+                <h1 class="closer">close</h1>
+            </div>
+        </div>
+        <div class="closet graphic hide">
+            <div>
+                <div class="closet-title">
+                    <h2>graphic</h2>
+                    <h2>:</h2>
+                </div>
+                <h1 class="closer">close</h1>
+            </div>
+        </div>
+        <div class="closet illustration hide">
+            <div>
+                <div class="closet-title">
+                    <h2>illustration</h2>
+                    <h2>:</h2>
+                </div>
+                <h1 class="closer">close</h1>
+            </div>
+        </div>
+    </div>
+    <div id="bottom-bar">
+        <div id="column-left">
+            <h1></h1>
+            <h1>:</h1>
+            <h1></h1>
+        </div>
+        <div id="column-right">
+            <a href="">
+                <h1>about+skills</h1>
+            </a>
+            <a href="">
+                <h1>contact</h1>
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+img {
+    border: 0px;
+    color: #000;
+}
+
+@font-face {
+    font-family: "Ortica";
+    src: url("../media/font/Ortica-Light.woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+h1 {
+    font-family: "Ortica";
+    font-weight: 400;
+    font-size: 21pt;
+    line-height: auto;
+    text-transform: uppercase;
+    letter-spacing: auto;
+    color: #000;
+}
+
+h2 {
+    font-family: "Ortica";
+    font-weight: 400;
+    font-size: 21pt;
+    line-height: auto;
+    text-transform: lowercase;
+    letter-spacing: auto;
+}
+
+p {
+    font-family: "Ortica";
+    font-weight: 400;
+    font-size: 18pt;
+    line-height: auto;
+    letter-spacing: auto;
+}
+
+a {
+    text-decoration: none;
+    color: fuchsia;
+}
+
+body {
+    height: 100vh;
+}
+
+#main {
+    height: calc(100% - 32pt);
+    position: relative;
+}
+
+#drawing-canvas{
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1
+;
+    position: absolute;
+    width: 100vw;
+}
+
+#buttons-pocket {
+    position: absolute;
+    left: 15%;
+    top: 30%;
+}
+
+.button{
+    border: 1px solid #000;
+    border-top-left-radius: 16pt;
+    height: 32pt;
+    width: 180px;
+    align-items: center;
+    padding-left: 10pt;
+    margin-bottom: 14pt;
+    border-left: 1px solid #000;
+    display: flex;
+    cursor: pointer;
+    -webkit-transition: border 100ms ease, color 100ms ease;
+    -moz-transition: border 100ms ease, color 100ms ease;
+    -ms-transition: border 100ms ease, color 100ms ease;
+    -o-transition: border 100ms ease, color 100ms ease;
+    transition: border 100ms ease, color 100ms ease;
+}
+
+.button:hover{
+    color: fuchsia;
+    border-color: fuchsia;
+}
+
+
+
+.closet {
+    height: 100%;
+    width: 40%;
+    min-width: 480px;
+    border: 1px solid #000;
+    border-width: 1px 0px 0px 1px;
+    border-top-left-radius: 16pt;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4pt 14pt 14pt 14pt;
+    background-color: white;
+}
+
+
+
+.closet-title {
+    display: flex;
+    width: 52%;
+    justify-content: space-between;
+}
+
+.closer {
+    cursor: pointer;
+    position: absolute;
+    text-transform: lowercase;
+    top: 4pt;
+    right: 14pt;
+    -webkit-transition: color 100ms ease;
+    -moz-transition: color 100ms ease;
+    -ms-transition: color 100ms ease;
+    -o-transition: color 100ms ease;
+    transition: color 100ms ease;
+}
+
+.closer:hover {
+    color: fuchsia;
+}
+
+
+
+
+
+
+
+#bottom-bar {
+    height: 32pt;
+    border-top: 1px solid #000;
+    display: flex;
+    background-color: #fff;
+}
+
+
+#column-left {
+    width: 60%;
+    align-items: center;
+    padding: 0 14pt 0 14pt;
+    display: flex;
+    justify-content: space-between;
+}
+
+#column-left h1:nth-of-type(1):before{
+    content: "luca bessi aristei";
+}
+
+#column-left h1:nth-of-type(3):before{
+    content: "visual communicator";
+}
+
+@media only screen and (max-width:1180px) {
+
+   #column-left h1:nth-of-type(3):before{
+        content: "v. communicator";
+    }
+
+}
+
+@media only screen and (max-width:1090px) {
+
+    #column-left h1:nth-of-type(1):before{
+         content: "luca b a";
+     }
+ 
+ }
+
+ @media only screen and (max-width:960px) {
+
+    #column-left h1:not(:first-of-type){
+         display: none;
+     }
+ 
+ }
+
+#column-right {
+    width: 40%;
+    min-width: 480px;
+    align-items: center;
+    padding: 0 14pt 0 14pt;
+    border-left: 1px solid #000;
+    display: flex;
+    justify-content: space-between;
+}
+
+#column-right h1 {
+    padding-bottom: 1px;
+    -webkit-transition: color 100ms ease;
+    -moz-transition: color 100ms ease;
+    -ms-transition: color 100ms ease;
+    -o-transition: color 100ms ease;
+    transition: color 100ms ease;
+}
+
+#column-right h1:hover {
+    color: fuchsia;
+
+}
+
+.hide {
+    display: none;
+}
