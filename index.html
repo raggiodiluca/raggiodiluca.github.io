@@ -11,44 +11,22 @@
     <!-- Load the Paper.js library -->
     <script type="text/javascript" src="js/paper.js"></script>
     <script type="text/javascript" src="js/closet.js"></script>
-    <script type="text/paperscript" canvas="drawing-canvas">
-        var myPath = new Path();
-        myPath.strokeColor = '#FF00FF';
-        myPath.strokeWidth = .8;
-    
-    
-        function onMouseMove(event) {
-            myPath.add(event.point);
-            myPath.smooth();
-        }
-        
-        /* click
-        $("body").mousedown(function () {
-            paper.project.activeLayer.removeChildren();
-        });
-    
-        $("body").mouseup(function () {
-            myPath = new Path();
-            myPath.strokeColor = '#FF00FF';
-            myPath.strokeWidth = .8;
-        });
-        */
-    </script>
+
 </head>
 
 <body>
     <canvas id="drawing-canvas"></canvas>
     <div id="main">
-        <div id="buttons-pocket">
-            <div class="button web">
-                <h2>web</h2>
-            </div>
-            <div class="button graphic">
-                <h2>graphic</h2>
-            </div>
-            <div class="button illustration">
-                <h2>illustration</h2>
-            </div>
+        <p id="tipp">*tipp: reload the page to change accent color</p>
+
+        <div class="button web">
+            <h2>web</h2>
+        </div>
+        <div class="button graphic">
+            <h2>graphic</h2>
+        </div>
+        <div class="button illustration">
+            <h2>illustration</h2>
         </div>
 
         <div class="closet web hide">
@@ -58,6 +36,14 @@
                     <h2>:</h2>
                 </div>
                 <h1 class="closer">close</h1>
+                <div class="showcase">
+                    <p class="desc">
+                        Lorem ipsum dolor sit amet,
+                        consectetuer adipiscing elit,
+                        sed diam nonummy nibh
+                        euismod <a href="">tincidunt</a> ut laoreet dolore magna.
+                    </p>
+                </div>
             </div>
         </div>
         <div class="closet graphic hide">
@@ -67,6 +53,14 @@
                     <h2>:</h2>
                 </div>
                 <h1 class="closer">close</h1>
+                <div class="showcase">
+                    <p class="desc">
+                        Lorem ipsum dolor sit amet,
+                        consectetuer adipiscing elit,
+                        sed diam nonummy nibh
+                        euismod <a href="">tincidunt</a> ut laoreet dolore magna.
+                    </p>
+                </div>
             </div>
         </div>
         <div class="closet illustration hide">
@@ -76,6 +70,27 @@
                     <h2>:</h2>
                 </div>
                 <h1 class="closer">close</h1>
+                <div class="showcase">
+                    <p class="desc">
+                        Lorem ipsum dolor sit amet,
+                        consectetuer adipiscing elit,
+                        sed diam nonummy nibh
+                        euismod <a href="">tincidunt</a> ut laoreet dolore magna.
+                    </p>
+                    <div class="cover">
+                        <div class="image" style="background-image: url('media/illustration/educazion/cover.svg');">
+                        </div>
+                        <div class="label">
+                            <h2>éducation sexuelle</h2>
+                        </div>
+                    </div>
+                    <div class="cover">
+                        <div class="image" style="background-image: url('media/illustration/laura/cover.svg');"></div>
+                        <div class="label">
+                            <h2>laura</h2>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@
     overflow: hidden;
 }
 
+
 img {
     border: 0px;
     color: #000;
@@ -40,23 +41,33 @@ h2 {
 p {
     font-family: "Ortica";
     font-weight: 400;
-    font-size: 18pt;
+    font-size: 14pt;
+    text-align: justify;
     line-height: auto;
     letter-spacing: auto;
 }
 
 a {
     text-decoration: none;
-    color: fuchsia;
+    color: var(--accent);
 }
 
 body {
+    --accent: fuchsia;
     height: 100vh;
 }
 
 #main {
-    height: calc(100% - 32pt);
+    height: calc(100% - 36pt);
     position: relative;
+}
+
+#tipp{
+    position: absolute;
+    z-index: -10;
+    right: -132pt;
+    top: 50%;
+    transform: rotate(-90deg);
 }
 
 #drawing-canvas{
@@ -72,18 +83,20 @@ body {
 
 #buttons-pocket {
     position: absolute;
-    left: 15%;
+    left: 20%;
     top: 30%;
 }
 
 .button{
+    position: absolute;
     border: 1px solid #000;
-    border-top-left-radius: 16pt;
-    height: 32pt;
+    border-top-left-radius: 18pt;
+    height: 36pt;
     width: 180px;
     align-items: center;
+    padding-bottom: 1pt;
     padding-left: 10pt;
-    margin-bottom: 14pt;
+    margin-bottom: 16pt;
     border-left: 1px solid #000;
     display: flex;
     cursor: pointer;
@@ -95,9 +108,25 @@ body {
 }
 
 .button:hover{
-    color: fuchsia;
-    border-color: fuchsia;
+    color: var(--accent);
+    border-color: var(--accent);
 }
+
+.button:nth-of-type(1){
+    top: 30%;
+    left: 18%;
+}
+
+.button:nth-of-type(2){
+    top: calc(30% + 36pt - 1px);
+    left: 23%;
+}
+
+.button:nth-of-type(3){
+    top: calc(30% + (36pt - 1px) * 2);
+    left: 28%;
+}
+
 
 
 
@@ -107,19 +136,19 @@ body {
     min-width: 480px;
     border: 1px solid #000;
     border-width: 1px 0px 0px 1px;
-    border-top-left-radius: 16pt;
+    border-top-left-radius: 18pt;
     position: absolute;
     top: 0;
     right: 0;
-    padding: 4pt 14pt 14pt 14pt;
     background-color: white;
 }
-
-
 
 .closet-title {
     display: flex;
     width: 52%;
+    height: 36pt;
+    padding: 6pt 0pt 6pt 14pt;
+    margin-top:
     justify-content: space-between;
 }
 
@@ -127,7 +156,7 @@ body {
     cursor: pointer;
     position: absolute;
     text-transform: lowercase;
-    top: 4pt;
+    top: 6pt;
     right: 14pt;
     -webkit-transition: color 100ms ease;
     -moz-transition: color 100ms ease;
@@ -137,7 +166,89 @@ body {
 }
 
 .closer:hover {
-    color: fuchsia;
+    color: var(--accent);
+}
+
+
+.showcase {
+    position: absolute;
+    bottom: 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    height: calc(100% - 60pt);
+    width: 60%;
+    padding: 28pt 0% 21pt 0%;
+    margin: 0 20% 0 20%;
+    border-top: 1px solid black;
+}
+
+.showcase .desc {
+    margin-bottom: 48pt;
+}
+
+.desc a {
+    -webkit-transition: border 100ms ease;
+    -moz-transition: border 100ms ease;
+    -ms-transition: border 100ms ease;
+    -o-transition: border 100ms ease;
+    transition: border 100ms ease;
+}
+
+.desc a:hover {
+    border-bottom: 1px solid var(--accent);
+}
+
+
+.cover {
+    border: 1px solid #000;
+    margin-bottom: 36pt;
+}
+
+.cover .image{
+    height: 350px;
+    width: 100%px;
+    background-size: cover;
+    background-position: center;
+}
+
+.label{
+    border-top: 1px solid #000;
+    height: 36pt;
+    width: 100%px;
+    padding: 5pt 10pt 0 10pt;
+    cursor: pointer;
+    -webkit-transition: color 100ms ease;
+    -moz-transition: color 100ms ease;
+    -ms-transition: color 100ms ease;
+    -o-transition: color 100ms ease;
+    transition: color 100ms ease;
+    text-align: justify;
+}
+
+.label h2:after{
+    content: "";
+    display: inline-block;
+    width: 100%;
+ }
+
+
+
+
+.label:hover{
+    color: var(--accent);
+}
+
+
+
+
+#navigation:after { /* Justify last line */
+    content: '';
+    display: inline-block;
+    width: 100%;
+}
+#navigation { /* Fix added space */
+    height: 1.15em;
+    line-height: 1.15;
 }
 
 
@@ -146,11 +257,18 @@ body {
 
 
 
+
+
+
+
+
+
 #bottom-bar {
-    height: 32pt;
+    height: 36pt;
     border-top: 1px solid #000;
     display: flex;
     background-color: #fff;
+    padding-bottom: 1pt;
 }
 
 
@@ -214,7 +332,7 @@ body {
 }
 
 #column-right h1:hover {
-    color: fuchsia;
+    color: var(--accent);
 
 }
 
