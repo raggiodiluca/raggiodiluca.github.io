@@ -49,7 +49,7 @@ p {
 
 a {
     text-decoration: none;
-    color: var(--accent);
+    color: #000;
 }
 
 body {
@@ -187,15 +187,17 @@ body {
 }
 
 .desc a {
-    -webkit-transition: border 100ms ease;
-    -moz-transition: border 100ms ease;
-    -ms-transition: border 100ms ease;
-    -o-transition: border 100ms ease;
-    transition: border 100ms ease;
+    -webkit-transition: border-color 100ms ease, color 100ms ease;
+    -moz-transition: border-color 100ms ease, color 100ms ease;
+    -ms-transition: border-color 100ms ease, color 100ms ease;
+    -o-transition: border-color 100ms ease, color 100ms ease;
+    transition: border-color 100ms ease, color 100ms ease;
+    border-bottom: 1px solid #000;
 }
 
 .desc a:hover {
-    border-bottom: 1px solid var(--accent);
+    color: var(--accent);
+    border-color: var(--accent);
 }
 
 
