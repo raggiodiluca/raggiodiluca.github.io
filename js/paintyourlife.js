@@ -1,3 +1,5 @@
+var $y = jQuery.noConflict();
+
 function hslToHex(h, s, l) {
     l /= 100;
     const a = s * Math.min(l, 1 - l) / 100;
@@ -13,32 +15,39 @@ function hslToHex(h, s, l) {
 
 paper.install(window);
 
+var downloadAsSVG = function (fileName) {
+
+    if (!fileName) {
+        fileName = "vector-art.svg"
+    }
+
+    var url = "data:image/svg+xml;utf8," + encodeURIComponent(paper.project.exportSVG({
+        asString: true
+    }));
+
+    var link = document.createElement("a");
+    link.download = fileName;
+    link.href = url;
+    link.click();
+}
+
 window.onload = function () {
     paper.setup("drawing-canvas");
     var tool = new Tool();
     var myPath = new Path();
     myPath.strokeWidth = .8;
 
-    var hue = 0;
     var light = false;
-    var randomOne = Math.floor(Math.random() * (45 - 0 + 1)) + 0;
-    var randomTwo = Math.floor(Math.random() * (199 - 46 + 1)) + 46;
-    var randomThree = Math.floor(Math.random() * (360 - 200 + 1)) + 200;
-    var toggleRandom = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    var randomHue = Math.floor(Math.random() * (360 - 0 + 1)) + 0;
 
-    if (toggleRandom == 1) {
-        hue = randomOne;
-    } else if (toggleRandom == 2) {
-        hue = randomTwo;
+    if (randomHue > "45" && randomHue < "200" ) {
         light = true;
-    } else {
-        hue = randomThree;
     };
 
     if (light == false) {
-        var randomHex = hslToHex(hue, 100, 50);
+        var randomHex = hslToHex(randomHue, 100, 50);
     } else {
-        var randomHex = hslToHex(hue, 100, 40);
+        var randomHex = hslToHex(randomHue, 100, 40);
     };
 
 
@@ -50,36 +59,24 @@ window.onload = function () {
     tool.onMouseMove = function (event) {
         myPath.add(event.point);
         myPath.smooth();
-
     };
+
+    $y('.save').click(function () {
+        downloadAsSVG();
+    });
 
 
 
 
     /* click
-    $("body").mousedown(function () {
+    $y("body").mousedown(function () {
         paper.project.activeLayer.removeChildren();
     });
 
-    $("body").mouseup(function () {
+    $y("body").mouseup(function () {
         myPath = new Path();
         myPath.strokeColor = '#FF00FF';
         myPath.strokeWidth = .8;
     });
     */
 }
-
-
-
-var svg = paper.project.exportSVG({
-    asString: true
-});
-var blob = new Blob([svg], {
-    type: "image/svg+xml;charset=utf-8"
-});
-
-$('.save').click(function () {
-
-    saveAs(blob, 'cazzillo.svg');
-
-});

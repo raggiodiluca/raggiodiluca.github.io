@@ -45,12 +45,29 @@ p {
     text-align: justify;
     line-height: auto;
     letter-spacing: auto;
+    min-height: 18pt;
 }
 
 a {
     text-decoration: none;
     color: #000;
+    cursor: pointer;
 }
+
+p a {
+    -webkit-transition: border 100ms ease, color 100ms ease;
+    -moz-transition: border 100ms ease, color 100ms ease;
+    -ms-transition: border 100ms ease, color 100ms ease;
+    -o-transition: border 100ms ease, color 100ms ease;
+    transition: border 100ms ease, color 100ms ease;
+    color: var(--accent);
+}
+
+p a:hover {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+}
+
 
 body {
     --accent: fuchsia;
@@ -62,21 +79,21 @@ body {
     position: relative;
 }
 
-#tipp{
+#tipp {
     position: absolute;
-    z-index: -10;
+    z-index: 1;
     right: -132pt;
     top: 50%;
     transform: rotate(-90deg);
 }
 
-#drawing-canvas{
+
+#drawing-canvas {
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    z-index: -1
-;
+    z-index: -1;
     position: absolute;
     width: 100vw;
 }
@@ -87,7 +104,7 @@ body {
     top: 30%;
 }
 
-.button{
+.button {
     position: absolute;
     border: 1px solid #000;
     border-top-left-radius: 18pt;
@@ -107,22 +124,22 @@ body {
     transition: border 100ms ease, color 100ms ease;
 }
 
-.button:hover{
+.button:hover {
     color: var(--accent);
     border-color: var(--accent);
 }
 
-.button:nth-of-type(1){
+.button:nth-of-type(1) {
     top: 30%;
     left: 18%;
 }
 
-.button:nth-of-type(2){
+.button:nth-of-type(2) {
     top: calc(30% + 36pt - 1px);
     left: 23%;
 }
 
-.button:nth-of-type(3){
+.button:nth-of-type(3) {
     top: calc(30% + (36pt - 1px) * 2);
     left: 28%;
 }
@@ -140,6 +157,7 @@ body {
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 2;
     background-color: white;
 }
 
@@ -147,14 +165,12 @@ body {
     display: flex;
     width: 52%;
     padding: 6pt 0pt 6pt 14pt;
-    margin-top:;
     justify-content: space-between;
 }
 
 .closer {
     cursor: pointer;
     position: absolute;
-    text-transform: lowercase;
     top: 6pt;
     right: 14pt;
     -webkit-transition: color 100ms ease;
@@ -185,34 +201,19 @@ body {
     margin-bottom: 48pt;
 }
 
-.desc a {
-    -webkit-transition: border 100ms ease, color 100ms ease;
-    -moz-transition: border 100ms ease, color 100ms ease;
-    -ms-transition: border 100ms ease, color 100ms ease;
-    -o-transition: border 100ms ease, color 100ms ease;
-    transition: border 100ms ease, color 100ms ease;
-    color: var(--accent);
-}
-
-.desc a:hover {
-    color: var(--accent);
-    border-bottom: 1px solid var(--accent);
-}
-
-
 .cover {
     border: 1px solid #000;
     margin-bottom: 36pt;
 }
 
-.cover .image{
+.cover .image {
     height: 350px;
     width: 100%px;
     background-size: cover;
     background-position: center;
 }
 
-.label{
+.label {
     border-top: 1px solid #000;
     height: 36pt;
     width: 100%px;
@@ -226,31 +227,132 @@ body {
     text-align: justify;
 }
 
-.label h2:after{
+.label h2:after {
     content: "";
     display: inline-block;
     width: 100%;
- }
+}
 
 
 
 
-.label:hover{
+.label:hover {
     color: var(--accent);
 }
 
 
+.closet.contact .showcase{
+    padding-top: 24pt;
+}
 
+.closet.contact .showcase h2{
+    margin-bottom: 6pt;
+}
 
-#navigation:after { /* Justify last line */
-    content: '';
-    display: inline-block;
+.closet.contact .showcase h2:not(:first-of-type){
+    margin-top: 14pt;
+}
+
+.closet.contact .showcase h2:last-of-type{
+    margin-top: 48pt;
+    margin-bottom: 14pt;
+}
+
+.form-label.form-label-auto {
+
+    display: block;
+    float: none;
+    text-align: left;
     width: 100%;
+    font-family: "Ortica";
+    font-weight: 400;
+    font-size: 14pt;
+    margin-bottom: 4pt;
 }
-#navigation { /* Fix added space */
-    height: 1.15em;
-    line-height: 1.15;
+
+.form-required{
+    color: var(--accent) !important;
 }
+
+.closet input{
+    font-family: "Ortica";
+    height: 36pt;
+    font-weight: 400;
+    font-size: 21pt;
+    align-items: center;
+    padding: 0 10pt 1pt 10pt;
+    display: flex;
+}
+
+.closet textarea{
+    resize: none;
+    font-family: "Ortica";
+    font-weight: 400;
+    font-size: 14pt;
+    padding: 4pt 4pt 4pt 4pt;
+}
+
+.closet input,
+.closet textarea{
+    width: 100% !important;
+    border: 1px solid #000 !important;
+    margin-bottom: 14pt;
+
+}
+
+.closet input:focus,
+.closet textarea:focus{
+    border-color: var(--accent) !important;
+    border-width: 1px !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.form-error-message{
+    font-family: "Ortica";
+    font-weight: 400;
+    font-size: 14pt;
+    margin-bottom: 14pt;
+    color: var(--accent) !important;
+}
+
+.form-error-message img{
+    display: none;
+}
+
+.closet button{
+    font-family: "Ortica";
+    font-weight: 400;
+    font-size: 21pt;
+    display: inline-block;
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    color: var(--accent) !important;
+    -webkit-transition: border 100ms ease;
+    -moz-transition: border 100ms ease;
+    -ms-transition: border 100ms ease;
+    -o-transition: border 100ms ease;
+    transition: border 100ms ease;
+    margin-bottom: 36pt;
+}
+
+
+.closet button:hover,
+.closet button:focus{
+    border-bottom: 1px solid var(--accent);
+}
+
+
+
+
+
+
+
 
 
 
@@ -277,17 +379,30 @@ body {
     justify-content: space-between;
 }
 
-#column-left h1:nth-of-type(1):before{
+#column-left a:nth-of-type(1) h1 {
+    -webkit-transition: color 100ms ease;
+    -moz-transition: color 100ms ease;
+    -ms-transition: color 100ms ease;
+    -o-transition: color 100ms ease;
+    transition: color 100ms ease;
+}
+
+#column-left a:nth-of-type(1) h1:hover {
+    color: var(--accent);
+}
+
+
+#column-left a:nth-of-type(1) h1:before {
     content: "luca bessi aristei";
 }
 
-#column-left h1:nth-of-type(3):before{
+#column-left a:nth-of-type(3) h1:before {
     content: "visual communicator";
 }
 
 @media only screen and (max-width:1180px) {
 
-   #column-left h1:nth-of-type(3):before{
+    #column-left a:nth-of-type(3) h1:before {
         content: "v. communicator";
     }
 
@@ -295,19 +410,19 @@ body {
 
 @media only screen and (max-width:1090px) {
 
-    #column-left h1:nth-of-type(1):before{
-         content: "luca b a";
-     }
- 
- }
+    #column-left a:nth-of-type(1) h1:before {
+        content: "luca b a";
+    }
 
- @media only screen and (max-width:960px) {
+}
 
-    #column-left h1:not(:first-of-type){
-         display: none;
-     }
- 
- }
+@media only screen and (max-width:960px) {
+
+    #column-left a:not(:first-of-type) h1 {
+        display: none;
+    }
+
+}
 
 #column-right {
     width: 40%;
