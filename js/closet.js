@@ -31,6 +31,17 @@ $y(document).ready(function () {
         $y('.closet').removeClass('hide').addClass('hide');
     });
 
+    $y('#main').click(function (e) {
+        if(e.target == this){ // only if the target itself has been clicked
+            $y('.closet').removeClass('hide').addClass('hide');
+        }
+    });
+
+    $y(document).keyup(function(e) {     
+        if(e.keyCode== 27) {
+            $y('.closet').removeClass('hide').addClass('hide');
+        } 
+    });
 
 
 
