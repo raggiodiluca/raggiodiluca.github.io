@@ -146,9 +146,8 @@ body {
 .closet-title {
     display: flex;
     width: 52%;
-    height: 36pt;
     padding: 6pt 0pt 6pt 14pt;
-    margin-top:
+    margin-top:;
     justify-content: space-between;
 }
 
@@ -187,17 +186,17 @@ body {
 }
 
 .desc a {
-    -webkit-transition: border-color 100ms ease, color 100ms ease;
-    -moz-transition: border-color 100ms ease, color 100ms ease;
-    -ms-transition: border-color 100ms ease, color 100ms ease;
-    -o-transition: border-color 100ms ease, color 100ms ease;
-    transition: border-color 100ms ease, color 100ms ease;
-    border-bottom: 1px solid #000;
+    -webkit-transition: border 100ms ease, color 100ms ease;
+    -moz-transition: border 100ms ease, color 100ms ease;
+    -ms-transition: border 100ms ease, color 100ms ease;
+    -o-transition: border 100ms ease, color 100ms ease;
+    transition: border 100ms ease, color 100ms ease;
+    color: var(--accent);
 }
 
 .desc a:hover {
     color: var(--accent);
-    border-color: var(--accent);
+    border-bottom: 1px solid var(--accent);
 }
 
 
@@ -261,16 +260,12 @@ body {
 
 
 
-
-
-
-
 #bottom-bar {
     height: 36pt;
     border-top: 1px solid #000;
     display: flex;
     background-color: #fff;
-    padding-bottom: 1pt;
+    box-sizing: content-box;
 }
 
 
