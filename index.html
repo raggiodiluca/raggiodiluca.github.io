@@ -2,15 +2,21 @@
 
 <head>
     <meta charset="utf-8">
-    <link href="media/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="media/favicon/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="media/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="media/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <title>Luca Bessi Aristei</title>
     <meta name="description" content="LBA Portfolio">
     <meta name="author" content="Luca Bessi Aristei">
 
     <link rel="stylesheet" media="all and (min-width: 960px)" href="css/style.css" />
+    <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
     <link rel="preload" href="/media/about/profile.jpg">
     <!-- Load the Paper.js library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/paper.js"></script>
     <script type="text/javascript" src="js/filesaver.min.js"></script>
     <script type="text/javascript" src="js/closet.js"></script>
@@ -20,7 +26,7 @@
 </head>
 
 <body>
-    <canvas id="drawing-canvas"></canvas>
+    <canvas id="drawing-canvas" resize="true"></canvas>
     <div id="main">
         <p id="tipp"><a class="save">*Click</a> to download your beautiful vector-art.</p>
 
@@ -106,11 +112,11 @@
                 <div class="showcase">
                     <p class="desc">
                         Born in the spring of 1996, I went from the
-Artistic High School of Siena to the 
-Faculty of Design and Art of the Free University 
-of Bozen (where I currently attend my last year before graduating). 
+                        Artistic High School of Siena to the
+                        Faculty of Design and Art of the Free University
+                        of Bozen (where I currently attend my last year before graduating).
 
-The fields I deal with are Graphic Design, Web Design and Illustration. 
+                        The fields I deal with are Graphic Design, Web Design and Illustration.
                     </p>
                     <div class="cover">
                         <div class="image" style="background-image: url('media/about/profile.jpg');">
@@ -137,68 +143,19 @@ The fields I deal with are Graphic Design, Web Design and Illustration.
                     <p>39100 (BZ),</p>
                     <p>Italy</p>
                     <h2>write me here</h2>
-                    <form class="jotform-form" action="https://submit.jotformeu.com/submit/210765033735049/"
-                        method="post" name="form_210765033735049" id="210765033735049" accept-charset="utf-8"
-                        autocomplete="on"> <input type="hidden" name="formID" value="210765033735049" /> <input
-                            type="hidden" id="JWTContainer" value="" /> <input type="hidden" id="cardinalOrderNumber"
-                            value="" />
-                        <div role="main" class="form-all">
-                            <ul class="form-section page-section">
-                                <li class="form-line jf-required" data-type="control_textbox" id="id_9"> <label
-                                        class="form-label form-label-top form-label-auto" id="label_9" for="input_9">
-                                        Name <span class="form-required"> * </span> </label>
-                                    <div id="cid_9" class="form-input-wide jf-required" data-layout="half"> <input
-                                            type="text" id="input_9" name="q9_name" data-type="input-textbox"
-                                            class="form-textbox validate[required]" style="width:310px" size="310"
-                                            value="" data-component="textbox" aria-labelledby="label_9" required="" />
-                                    </div>
-                                </li>
-                                <li class="form-line" data-type="control_textbox" id="id_10"> <label
-                                        class="form-label form-label-top form-label-auto" id="label_10" for="input_10">
-                                        Company </label>
-                                    <div id="cid_10" class="form-input-wide" data-layout="half"> <input type="text"
-                                            id="input_10" name="q10_company" data-type="input-textbox"
-                                            class="form-textbox" style="width:310px" size="310" value=""
-                                            data-component="textbox" aria-labelledby="label_10" /> </div>
-                                </li>
-                                <li class="form-line jf-required" data-type="control_email" id="id_14"> <label
-                                        class="form-label form-label-top form-label-auto" id="label_14" for="input_14">
-                                        Email <span class="form-required"> * </span> </label>
-                                    <div id="cid_14" class="form-input-wide jf-required" data-layout="half"> <input
-                                            type="email" id="input_14" name="q14_email"
-                                            class="form-textbox validate[required, Email]" style="width:310px"
-                                            size="310" value="" data-component="email" aria-labelledby="label_14"
-                                            required="" /> </div>
-                                </li>
-                                <li class="form-line" data-type="control_textbox" id="id_18"> <label
-                                        class="form-label form-label-top form-label-auto" id="label_18" for="input_18">
-                                        Phone </label>
-                                    <div id="cid_18" class="form-input-wide" data-layout="half"> <input type="text"
-                                            id="input_18" name="q18_phone" data-type="input-textbox"
-                                            class="form-textbox" style="width:310px" size="310" value=""
-                                            data-component="textbox" aria-labelledby="label_18" /> </div>
-                                </li>
-                                <li class="form-line jf-required" data-type="control_textarea" id="id_5"> <label
-                                        class="form-label form-label-top form-label-auto" id="label_5" for="input_5">
-                                        Text <span class="form-required"> * </span> </label>
-                                    <div id="cid_5" class="form-input-wide jf-required" data-layout="full"> <textarea
-                                            id="input_5" class="form-textarea validate[required]" name="q5_text"
-                                            style="width:648px;height:163px" data-component="textarea" required=""
-                                            aria-labelledby="label_5"></textarea> </div>
-                                </li>
-                                <li class="form-line" data-type="control_button" id="id_2">
-                                    <div id="cid_2" class="form-input-wide" data-layout="full">
-                                        <div data-align="auto"
-                                            class="form-buttons-wrapper form-buttons-auto jsTest-button-wrapperField">
-                                            <button id="input_2" type="submit"
-                                                class="form-submit-button submit-button jf-form-buttons jsTest-submitField"
-                                                data-component="button" data-content=""> Submit </button> </div>
-                                    </div>
-                                </li>
-                                <li style="display:none"> Should be Empty: <input type="text" name="website" value="" />
-                                </li>
-                            </ul>
-                        </div>
+                    <form action="https://send.pageclip.co/eO9h2ONpuvgpiEdThIp09pUSZmuIr94Z/Contact"
+                        class="pageclip-form" method="post">
+                        <!-- Replace these inputs with your own. Make sure they have a "name" attribute! -->
+
+                        <!-- It looks like you are creating a contact form. These email and subject fields are special -->
+                        <!-- See https://pageclip.co/docs#special-fields for more info -->
+                        <input type="email" name="email" value="roscoe@example.com" />
+                        <input type="text" name="subject" value="A contact subject" />
+
+                        <!-- This button will have a loading spinner. Keep the inner span for best results. -->
+                        <button type="submit" class="pageclip-form__submit">
+                            <span>Send</span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -227,12 +184,5 @@ The fields I deal with are Graphic Design, Web Design and Illustration.
     </div>
 
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.min.js"></script>
-<script src="https://cdn.jotfor.ms/js/vendor/jquery-1.8.0.min.js?v=3.3.24041" type="text/javascript"></script>
-<script src="https://cdn.jotfor.ms/js/vendor/maskedinput.min.js?v=3.3.24041" type="text/javascript"></script>
-<script src="https://cdn.jotfor.ms/js/vendor/jquery.maskedinput.min.js?v=3.3.24041" type="text/javascript"></script>
-<script src="https://cdn.jotfor.ms/static/prototype.forms.js" type="text/javascript"></script>
-<script src="https://cdn.jotfor.ms/static/jotform.forms.js?3.3.24041" type="text/javascript"></script>
-<script type="text/javascript" src="js/form.js"></script>
 
 </html>

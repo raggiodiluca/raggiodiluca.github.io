@@ -88,7 +88,7 @@ body {
 }
 
 
-#drawing-canvas {
+#drawing-canvas[resize] {
     height: 100%;
     width: 100%;
     top: 0;
@@ -152,13 +152,13 @@ body {
     width: 40%;
     min-width: 480px;
     border: 1px solid #000;
+    background-color: white;
     border-width: 1px 0px 0px 1px;
     border-top-left-radius: 18pt;
     position: absolute;
     top: 0;
     right: 0;
     z-index: 2;
-    background-color: white;
 }
 
 .closet-title {
@@ -297,6 +297,7 @@ body {
     width: 100% !important;
     border: 1px solid #000 !important;
     margin-bottom: 14pt;
+    background: none;
 
 }
 
@@ -316,6 +317,12 @@ body {
     margin-bottom: 14pt;
     color: var(--accent) !important;
 }
+
+.form-line-error {
+
+    background: transparent !important;
+    
+    }
 
 .form-error-message img{
     display: none;
@@ -363,10 +370,10 @@ body {
 
 
 #bottom-bar {
+    background-color: white;
     height: 36pt;
     border-top: 1px solid #000;
     display: flex;
-    background-color: #fff;
     box-sizing: content-box;
 }
 
@@ -377,6 +384,10 @@ body {
     padding: 0 14pt 0 14pt;
     display: flex;
     justify-content: space-between;
+}
+
+#column-left a:not(:first-of-type){
+    cursor: unset;
 }
 
 #column-left a:nth-of-type(1) h1 {

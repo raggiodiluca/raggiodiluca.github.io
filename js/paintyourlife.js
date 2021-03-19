@@ -54,8 +54,6 @@ window.onload = function () {
     myPath.strokeColor = randomHex;
     document.body.style.setProperty('--accent', randomHex);
 
-
-
     tool.onMouseMove = function (event) {
         myPath.add(event.point);
         myPath.smooth();
@@ -65,18 +63,24 @@ window.onload = function () {
         downloadAsSVG();
     });
 
-
-
-
-    /* click
-    $y("body").mousedown(function () {
-        paper.project.activeLayer.removeChildren();
-    });
-
-    $y("body").mouseup(function () {
+    $y(document).mouseenter(function() {
         myPath = new Path();
-        myPath.strokeColor = '#FF00FF';
+        myPath.strokeColor = randomHex;
         myPath.strokeWidth = .8;
+      });
+
+
+/* click erase
+    $y('#main').click(function (e) {
+        if(e.target == this){ // only if the target itself has been clicked
+            
+        paper.project.activeLayer.removeChildren();
+            myPath = new Path();
+        myPath.strokeColor = randomHex;
+        myPath.strokeWidth = .8;
+        }
     });
-    */
+*/
+
+
 }
