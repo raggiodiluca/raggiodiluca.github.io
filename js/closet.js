@@ -37,16 +37,17 @@ $y(document).ready(function () {
         $y('#tipp').removeClass('hide');
     });
 
-
-    $y(document).keyup(function(e) {     
-        if(e.keyCode== 27) {
+    $y(document).keyup(function (e) {
+        if (e.keyCode == 27) {
             $y('.closet').removeClass('hide').addClass('hide');
             $y('#tipp').removeClass('hide');
             $y('.showcase').scrollBottom = 0;
-        } 
+        }
     });
 
-
-
+    $y('.form-input').one('blur keydown', function() {
+        console.log('touched', this);
+        $(this).addClass('touched');
+      });
 
 });
