@@ -241,24 +241,24 @@ body {
 }
 
 
-.closet.contact .showcase{
+.closet.contact .showcase {
     padding-top: 24pt;
 }
 
-.closet.contact .showcase h2{
+.closet.contact .showcase h2 {
     margin-bottom: 6pt;
 }
 
-.closet.contact .showcase h2:not(:first-of-type){
+.closet.contact .showcase h2:not(:first-of-type) {
     margin-top: 14pt;
 }
 
-.closet.contact .showcase h2:last-of-type{
+.closet.contact .showcase h2:last-of-type {
     margin-top: 48pt;
     margin-bottom: 14pt;
 }
 
-.form-label{
+.form-label {
     display: block;
     float: none;
     text-align: left;
@@ -269,11 +269,11 @@ body {
     margin-bottom: 4pt;
 }
 
-.form-required{
+.form-required {
     color: var(--accent) !important;
 }
 
-.closet input{
+.closet input {
     font-family: "Ortica";
     height: 36pt;
     font-weight: 400;
@@ -283,7 +283,7 @@ body {
     display: flex;
 }
 
-.closet textarea{
+.closet textarea {
     resize: none;
     font-family: "Ortica";
     font-weight: 400;
@@ -293,17 +293,22 @@ body {
 }
 
 .closet input,
-.closet textarea{
+.closet textarea {
     width: 100% !important;
     border: 1px solid #000 !important;
     margin-bottom: 14pt;
     background: none;
-    outline: none;
+    outline: none !important;
 
 }
 
+.closet input::placeholder,
+.closet textarea::placeholder {
+    opacity: .3;
+}
+
 .closet input:focus,
-.closet textarea:focus{
+.closet textarea:focus {
     border-color: var(--accent) !important;
     border-width: 1px !important;
     -webkit-box-shadow: none !important;
@@ -311,7 +316,7 @@ body {
     box-shadow: none !important;
 }
 
-.form-error-message{
+.form-error-message {
     font-family: "Ortica";
     font-weight: 400;
     font-size: 14pt;
@@ -322,14 +327,14 @@ body {
 .form-line-error {
 
     background: transparent !important;
-    
-    }
 
-.form-error-message img{
+}
+
+.form-error-message img {
     display: none;
 }
 
-.closet button{
+.closet button {
     font-family: "Ortica";
     font-weight: 400;
     font-size: 21pt;
@@ -351,7 +356,7 @@ body {
 
 
 .closet button:hover,
-.closet button:focus{
+.closet button:focus {
     border-bottom: 1px solid var(--accent);
 }
 
@@ -387,7 +392,7 @@ body {
     justify-content: space-between;
 }
 
-#column-left a:not(:first-of-type){
+#column-left a:not(:first-of-type) {
     cursor: unset;
 }
 
