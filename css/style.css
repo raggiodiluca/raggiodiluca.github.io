@@ -258,8 +258,7 @@ body {
     margin-bottom: 14pt;
 }
 
-.form-label.form-label-auto {
-
+.closet label {
     display: block;
     float: none;
     text-align: left;
@@ -290,6 +289,7 @@ body {
     font-weight: 400;
     font-size: 14pt;
     padding: 4pt 4pt 4pt 4pt;
+    height: 200px;
 }
 
 .closet input,
@@ -298,6 +298,7 @@ body {
     border: 1px solid #000 !important;
     margin-bottom: 14pt;
     background: none;
+    outline: none;
 
 }
 
