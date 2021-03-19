@@ -258,7 +258,7 @@ body {
     margin-bottom: 14pt;
 }
 
-.closet label {
+.form-label{
     display: block;
     float: none;
     text-align: left;
