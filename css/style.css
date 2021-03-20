@@ -3,7 +3,15 @@
     padding: 0;
     box-sizing: border-box;
     overflow: hidden;
+    var(--accent);
 }
+
+::selection {
+    background: var(--accent);
+  }
+  ::-moz-selection {
+    background: var(--accent);
+  }
 
 
 img {
@@ -70,7 +78,6 @@ p a:hover {
 
 
 body {
-    --accent: fuchsia;
     height: 100vh;
 }
 
@@ -117,6 +124,7 @@ body {
     border-left: 1px solid #000;
     display: flex;
     cursor: pointer;
+    background-color: #fff;
     -webkit-transition: border 100ms ease, color 100ms ease;
     -moz-transition: border 100ms ease, color 100ms ease;
     -ms-transition: border 100ms ease, color 100ms ease;

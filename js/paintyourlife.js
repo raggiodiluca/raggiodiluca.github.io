@@ -1,5 +1,3 @@
-var $y = jQuery.noConflict();
-
 function hslToHex(h, s, l) {
     l /= 100;
     const a = s * Math.min(l, 1 - l) / 100;
@@ -59,11 +57,11 @@ window.onload = function () {
         myPath.smooth();
     };
 
-    $y('.save').click(function () {
+    $('.save').click(function () {
         downloadAsSVG();
     });
 
-    $y(document).mouseenter(function() {
+    $(document).mouseenter(function() {
         myPath = new Path();
         myPath.strokeColor = randomHex;
         myPath.strokeWidth = .8;
@@ -71,7 +69,7 @@ window.onload = function () {
 
 
 /* click erase
-    $y('#main').click(function (e) {
+    $('#main').click(function (e) {
         if(e.target == this){ // only if the target itself has been clicked
             
         paper.project.activeLayer.removeChildren();
