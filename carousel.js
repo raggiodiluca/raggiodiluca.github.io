@@ -1,6 +1,5 @@
 var selectedIndex = 0;
 var initialIndex = null;
-var numberOfFaces = $('.box_face').length;
 
 function rotateCarousel() {
   var numberOfFaces = $('.open .box_face').length; // add this line to update the number of faces
@@ -11,7 +10,7 @@ function rotateCarousel() {
 
 
 document.addEventListener('keydown', function (event) {
-  if ($('#container').hasClass('open')) {
+  if ($('.box_container').hasClass('open')) {
     if (event.key === "ArrowLeft") {
       // Left arrow key
       selectedIndex--;
