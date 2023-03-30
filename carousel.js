@@ -5,7 +5,22 @@ function rotateCarousel() {
   var numberOfFaces = $('.open .box_face').length; // add this line to update the number of faces
   var angle = (selectedIndex - initialIndex) / numberOfFaces * -360;
   var box = document.querySelector('.open .box');
-  box.style.transform = 'translateZ(-32vw) rotateY(' + angle + 'deg) ';
+
+  // Check if the box has a relative with the id #web
+  var hasWebAncestor = $(box).parents('#web').length > 0;
+  var hasIlluAncestor = $(box).parents('#illu').length > 0;
+  var hasExtraAncestor = $(box).parents('#extra').length > 0;
+  var hasAboutAncestor = $(box).parents('#about').length > 0;
+
+  if (hasWebAncestor) {
+    box.style.transform = 'translateZ(-30vw) rotateY(' + angle + 'deg) ';
+  } else if (hasIlluAncestor) {
+    box.style.transform = 'translateZ(-38vw) rotateY(' + angle + 'deg) ';
+  } else if (hasExtraAncestor) {
+    box.style.transform = 'translateZ(-40vw) rotateY(' + angle + 'deg) ';
+  } else if (hasAboutAncestor) {
+    box.style.transform = 'translateZ(-25vw) rotateY(' + angle + 'deg) ';
+  }
 }
 
 
@@ -24,7 +39,7 @@ document.addEventListener('keydown', function (event) {
 });
 
 // Click event listener for the box_face elements
-$(document).on('click', '.open .box_face', function(event) {
+$(document).on('click', '.open .box_face', function (event) {
   var currentIndex = $(this).index();
   if (currentIndex > selectedIndex) {
     selectedIndex = currentIndex;

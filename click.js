@@ -32,6 +32,6 @@ $(document).ready(function () {
         $currentBoxContainer.css('z-index', '1')
         $currentBoxContainer.find('.box_header').css('opacity', '0');
         setTimeout(function () {$('.box_container').not($currentBoxContainer).css({'opacity': '1','pointer-events': 'auto'});
-    }, 1200);
+    }, 1000);
     });
 });

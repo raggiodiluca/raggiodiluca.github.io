@@ -1,0 +1,55 @@
+#extra.box_container {
+	width: 3rem;
+	height: 7.5rem;
+}
+
+#extra.box_container.open {
+	perspective: 50vw;
+}
+
+
+#extra .box {
+	transform: translateX(8vw) rotateX(30deg) rotateY(-40deg) rotateZ(-30deg);
+}
+
+#extra.open .box{
+	transform: translateZ(-40vw);
+}
+
+#extra .box_face {
+	width: 3rem;
+	height: 7.5rem;
+}
+
+#extra.open .box_face:nth-child(1) {
+	transform: rotateY(0deg) translateZ(40vw);
+}
+
+#extra.open .box_face:nth-child(2) {
+	transform: rotateY(90deg) translateZ(40vw);
+}
+
+#extra.open .box_face:nth-child(3) {
+	transform: rotateY(180deg) translateZ(40vw);
+}
+
+#extra.open .box_face:nth-child(4) {
+	transform: rotateY(270deg) translateZ(40vw);
+}
+
+#extra .box_face:nth-child(1) {
+	transform: rotateY(0deg) translateZ(1.5rem);
+}
+
+#extra .box_face:nth-child(2) {
+	transform: rotateY(90deg) translateZ(1.5rem);
+}
+
+#extra .box_face:nth-child(3) {
+	transform: rotateY(180deg) translateZ(1.5rem);
+}
+
+#extra .box_face:nth-child(4) {
+	transform: rotateY(270deg) translateZ(1.5rem);
+}
+

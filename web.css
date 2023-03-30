@@ -1,0 +1,58 @@
+#web.box_container {
+	width: 3rem;
+	height: 7rem;
+}
+
+#web .box {
+	transform: translateX(-8vw) rotateX(-20deg) rotateY(40deg) rotateZ(-100deg);
+}
+
+#web.open .box{
+	transform: translateZ(-30vw);
+}
+
+#web .box_face {
+	width: 3rem;
+	height: 7rem;
+}
+
+#web.open .box_face:nth-child(1) {
+	transform: rotateY(0deg) translateZ(30vw);
+}
+
+#web.open .box_face:nth-child(2) {
+	transform: rotateY(72deg) translateZ(30vw);
+}
+
+#web.open .box_face:nth-child(3) {
+	transform: rotateY(144deg) translateZ(30vw);
+}
+
+#web.open .box_face:nth-child(4) {
+	transform: rotateY(216deg) translateZ(30vw);
+}
+
+#web.open .box_face:nth-child(5) {
+	transform: rotateY(288deg) translateZ(30vw);
+}
+
+#web .box_face:nth-child(1) {
+	transform: rotateY(0deg) translateZ(2.03rem);
+}
+
+#web .box_face:nth-child(2) {
+	transform: rotateY(72deg) translateZ(2.03rem);
+}
+
+#web .box_face:nth-child(3) {
+	transform: rotateY(144deg) translateZ(2.03rem);
+}
+
+#web .box_face:nth-child(4) {
+	transform: rotateY(216deg) translateZ(2.03rem);
+}
+
+#web .box_face:nth-child(5) {
+	transform: rotateY(288deg) translateZ(2.03rem);
+}
+

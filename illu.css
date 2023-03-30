@@ -1,0 +1,68 @@
+#illu.box_container {
+	width: 3rem;
+	height: 12.5rem;
+}
+
+#illu.box_container.open {
+	perspective: 100vw;
+}
+
+#illu .box {
+	transform: translateX(3vw) translateY(-10vh) rotateX(30deg) rotateY(20deg) rotateZ(-150deg);
+}
+
+#illu.open .box  {
+	transform: translateZ(-38vw);
+}
+
+#illu .box_face {
+	width: 3rem;
+	height: 12.5rem;
+}
+
+#illu.open .box_face:nth-child(1) {
+	transform: rotateY(0deg) translateZ(38vw);
+}
+#illu.open .box_face:nth-child(2) {
+	transform: rotateY(60deg) translateZ(38vw);
+}
+
+#illu.open .box_face:nth-child(3) {
+	transform: rotateY(120deg) translateZ(38vw);
+}
+
+#illu.open .box_face:nth-child(4) {
+	transform: rotateY(180deg) translateZ(38vw);
+}
+
+#illu.open .box_face:nth-child(5) {
+	transform: rotateY(240deg) translateZ(38vw);
+}
+
+#illu.open .box_face:nth-child(6) {
+	transform: rotateY(300deg) translateZ(38vw);
+}
+
+#illu .box_face:nth-child(1) {
+	transform: rotateY(0deg) translateZ(2.5rem);
+}
+
+#illu .box_face:nth-child(2) {
+	transform: rotateY(60deg) translateZ(2.5rem);
+}
+
+#illu .box_face:nth-child(3) {
+	transform: rotateY(120deg) translateZ(2.5rem);
+}
+
+#illu .box_face:nth-child(4) {
+	transform: rotateY(180deg) translateZ(2.5rem);
+}
+
+#illu .box_face:nth-child(5) {
+	transform: rotateY(240deg) translateZ(2.5rem);
+}
+
+#illu .box_face:nth-child(6) {
+	transform: rotateY(300deg) translateZ(2.5rem);
+}

@@ -1,0 +1,42 @@
+#about.box_container {
+	width: 3rem;
+	height: 8rem;
+}
+
+#about .box {
+	transform: translateY(22vh) rotateX(10deg) rotateY(-30deg) rotateZ(-70deg);
+}
+
+#about.open .box{
+	transform: translateZ(-25vw);
+}
+
+#about .box_face {
+	width: 3rem;
+	height: 8rem;
+}
+
+#about.open .box_face:nth-child(1) {
+	transform: rotateY(0deg) translateZ(25vw);
+}
+
+#about.open .box_face:nth-child(2) {
+	transform: rotateY(120deg) translateZ(25vw);
+}
+
+#about.open .box_face:nth-child(3) {
+	transform: rotateY(240deg) translateZ(25vw);
+}
+
+#about .box_face:nth-child(1) {
+	transform: rotateY(0deg) translateZ(0.83rem);
+}
+
+#about .box_face:nth-child(2) {
+	transform: rotateY(120deg) translateZ(0.83rem);
+}
+
+#about .box_face:nth-child(3) {
+	transform: rotateY(240deg) translateZ(0.83rem);
+}
+
