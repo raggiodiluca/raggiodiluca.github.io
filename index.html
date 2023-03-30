@@ -1,189 +1,73 @@
-<html lang="en">
+<!DOCTYPE html>
 
 <head>
-    <meta charset="utf-8">
-    <link href="media/favicon/favicon.ico" rel="icon" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="media/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="media/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <title>Luca Bessi Aristei</title>
-    <meta name="description" content="LBA Portfolio">
-    <meta name="author" content="Luca Bessi Aristei">
-
-    <link rel="stylesheet" media="all and (min-width: 960px)" href="css/style.css" />
-    <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
-    <link rel="preload" href="/media/about/profile.jpg">
-    <!-- Load the Paper.js library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
-    <script type="text/javascript" src="js/paper.js"></script>
-    <script type="text/javascript" src="js/filesaver.min.js"></script>
-    <script type="text/javascript" src="js/closet.js"></script>
-    <script type="text/javascript" src="js/paintyourlife.js"></script>
+	<title>My Portfolio</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
 
 </head>
 
 <body>
-    <canvas id="drawing-canvas" resize="true"></canvas>
-    <div id="main">
-        <p id="tipp"><a class="save">*Click</a> to download your beautiful vector-art.</p>
+	<div id="container">
 
-        <div class="button web">
-            <h2>web</h2>
-        </div>
-        <div class="button graphic">
-            <h2>graphic</h2>
-        </div>
-        <div class="button illustration">
-            <h2>illustration</h2>
-        </div>
+		<div class="box_container" id="web">
+			<div class="box_header">
+				<div class="box_label">Web</div>
+				<div class="box_close">close</div>
+			</div>
+			<div class="box">
+				<div class="box_face">
+					<div class="project_container">
+						<div class="project_title">Text to teapot</div>
 
-        <div class="closet web hide">
-            <div>
-                <div class="closet-title">
-                    <h2>web</h2>
-                    <h2>:</h2>
-                </div>
-                <h2 class="closer">close</h2>
-                <div class="showcase">
-                    <p class="desc">
-                        Lorem ipsum dolor sit amet,
-                        consectetuer adipiscing elit,
-                        sed diam nonummy nibh
-                        euismod <a href="">tincidunt</a> ut laoreet dolore magna.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="closet graphic hide">
-            <div class="closet-title">
-                <h2>graphic</h2>
-                <h2>:</h2>
-            </div>
-            <h2 class="closer">close</h2>
-            <div class="showcase">
-                <p class="desc">
-                    Lorem ipsum dolor sit amet,
-                    consectetuer adipiscing elit,
-                    sed diam nonummy nibh
-                    euismod <a href="">tincidunt</a> ut laoreet dolore magna.
-                </p>
-            </div>
-        </div>
-        <div class="closet illustration hide">
-            <div>
-                <div class="closet-title">
-                    <h2>illustration</h2>
-                    <h2>:</h2>
-                </div>
-                <h2 class="closer">close</h2>
-                <div class="showcase">
-                    <p class="desc">
-                        Lorem ipsum dolor sit amet,
-                        consectetuer adipiscing elit,
-                        sed diam nonummy nibh
-                        euismod <a href="">tincidunt</a> ut laoreet dolore magna.
-                    </p>
-                    <div class="cover">
-                        <div class="image" style="background-image: url('media/illustration/education/cover.svg');">
-                        </div>
-                        <div class="label">
-                            <h2>éducation sexuelle</h2>
-                        </div>
-                    </div>
-                    <div class="cover">
-                        <div class="image" style="background-image: url('media/illustration/laura/cover.svg');"></div>
-                        <div class="label">
-                            <h2>laura</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="closet about hide">
-            <div>
-                <div class="closet-title">
-                    <h2>about+skills</h2>
-                    <h2>:</h2>
-                </div>
-                <h2 class="closer">close</h2>
-                <div class="showcase">
-                    <p class="desc">
-                        Born in the spring of 1996, I went from the
-                        Artistic High School of Siena to the
-                        Faculty of Design and Art of the Free University
-                        of Bozen (where I currently attend my last year before graduating).
+						<div class="project_desc">Text to teapot is a web journal about my personal experience in
+							experimenting with GPT-3 and 3D modelling and the relationship I developed with it.
+							<br><br>
+							<a href="https://text-to-teapot.com" target=”_blank”>text-to-teapot.com</a> (currently not
+							mobile optimized)
+						</div>
 
-                        The fields I deal with are Graphic Design, Web Design and Illustration.
-                    </p>
-                    <div class="cover">
-                        <div class="image" style="background-image: url('media/about/profile.jpg');">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="closet contact hide">
-            <div>
-                <div class="closet-title">
-                    <h2>contact</h2>
-                    <h2>:</h2>
-                </div>
-                <h2 class="closer">close</h2>
-                <div class="showcase">
-                    <h2>Email</h2>
-                    <p><a href="mailto:luca.bessi.aristei@gmail.com" target="blank">luca.bessi.aristei@gmail.com</a></p>
-                    <h2>Instagram</h2>
-                    <p><a href="https://www.instagram.com/cazzzilli" target="blank">@cazzzilli</a></p>
-                    <h2>Address</h2>
-                    <p>Luca Bessi Aristei,</p>
-                    <p>Via Zara 2b, Bolzano</p>
-                    <p>39100 (BZ),</p>
-                    <p>Italy</p>
-                    <h2>write me here</h2>
-                    <form action="https://send.pageclip.co/eO9h2ONpuvgpiEdThIp09pUSZmuIr94Z/Contact"
-                        class="pageclip-form" method="post">
-                        <label class="form-label" htmlFor="name">From<p>*</p></label>
-                        <input class="form-input" type="name" name="name" placeholder="Name/Company" required />
-                        <label class="form-label" htmlFor="email">Email<p>*</p></label>
-                        <input class="form-input" type="email" name="email" placeholder="example@email.com" required />
-                        <label class="form-label" htmlFor="email">Phone</label>
-                        <input class="form-input" type="text" name="phone" placeholder="+39 (333)-333-3333" />
-                        <label class="form-label" htmlFor="text">Text<p>*</p></label>
-                        <textarea class="form-input" name="text" placeholder="Write here" required></textarea>
+						<img src="media/web/text-to-teapot/screen1 10x15.png" alt="" class="image-of-list">
+						<img src="media/web/text-to-teapot/screen2 10x15.png" alt="" class="image-of-list">
+						<img src="media/web/text-to-teapot/screen3 10x15.png" alt="" class="image-of-list">
+						<img src="media/web/text-to-teapot/screen4 10x15.png" alt="" class="image-of-list">
+						<img src="media/web/text-to-teapot/screen5 10x15.png" alt="" class="image-of-list">
+						<img src="media/web/text-to-teapot/screen6 10x15.png" alt="" class="image-of-list">
 
-                        <!-- This button will have a loading spinner. Keep the inner span for best results. -->
-                        <button type="submit" class="pageclip-form__submit">
-                            <span style="text-transform: uppercase" >send</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="bottom-bar">
-        <div id="column-left">
-            <a href="">
-                <h1></h1>
-            </a>
-            <a>
-                <h1>:</h1>
-            </a>
-            <a>
-                <h1></h1>
-            </a>
-        </div>
-        <div id="column-right">
-            <a>
-                <h1 class="about-button">about+skills</h1>
-            </a>
-            <a>
-                <h1 class="contact-button">contact</h1>
-            </a>
-        </div>
-    </div>
+					</div>
+
+				</div>
+				<div class="box_face">
+					<div class="project_container">
+						<div class="project_title">Text to teapot</div>
+
+						<div class="project_desc">Text to teapot is a web journal about my personal experience in
+							experimenting with GPT-3 and 3D modelling and the relationship I developed with it.
+							<br><br>
+							<a href="https://text-to-teapot.com" target=”_blank”>text-to-teapot.com</a> (currently not
+							mobile optimized)
+						</div>
+
+						<img src="media/web/text-to-teapot/screen1 10x15.png" alt="" class="image-of-list">
+						<img src="media/web/text-to-teapot/screen2 10x15.png" alt="" class="image-of-list">
+						<img src="media/web/text-to-teapot/screen3 10x15.png" alt="" class="image-of-list">
+						<img src="media/web/text-to-teapot/screen4 10x15.png" alt="" class="image-of-list">
+						<img src="media/web/text-to-teapot/screen5 10x15.png" alt="" class="image-of-list">
+						<img src="media/web/text-to-teapot/screen6 10x15.png" alt="" class="image-of-list">
+
+					</div>
+				</div>
+				<div class="box_face"></div>
+				<div class="box_face"></div>
+				<div class="box_face"></div>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+		integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+	<script src="click.js"></script>
+	<script src="carousel.js"></script>
 
 </body>
 
