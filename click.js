@@ -16,6 +16,8 @@ $(document).ready(function () {
         var $currentBoxContainer = $(this).closest('.box_container');
         if (!$currentBoxContainer.hasClass('open')) {
             $currentBoxContainer.toggleClass('open');
+            $currentBoxContainer.css('z-index', '99')
+            $('.box_container').not($currentBoxContainer).css({'opacity': '0','pointer-events': 'none'});
             setTimeout(function () {
                 $currentBoxContainer.find('.box_header').css('opacity', '1');
             }, 800); // Set the opacity of the related .box_header to 1 after an 800ms delay
@@ -27,8 +29,9 @@ $(document).ready(function () {
         var box = $currentBoxContainer.find('.box')[0];
         box.style.transform = ''; // clear the transform style
         $currentBoxContainer.toggleClass('open');
+        $currentBoxContainer.css('z-index', '1')
         $currentBoxContainer.find('.box_header').css('opacity', '0');
+        setTimeout(function () {$('.box_container').not($currentBoxContainer).css({'opacity': '1','pointer-events': 'auto'});
+    }, 1200);
     });
-
-
 });
