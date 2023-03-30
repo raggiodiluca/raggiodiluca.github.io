@@ -9,7 +9,7 @@
 
 
 #extra .box {
-	transform: translateX(7.2rem) rotateX(30deg) rotateY(-40deg) rotateZ(-30deg);
+	transform: translateX(calc(8rem + 1vw)) rotateX(30deg) rotateY(-40deg) rotateZ(-30deg);
 }
 
 #extra.open .box{

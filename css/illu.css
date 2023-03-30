@@ -8,7 +8,7 @@
 }
 
 #illu .box {
-	transform: translateX(2.5rem) translateY(-5rem) rotateX(30deg) rotateY(20deg) rotateZ(-150deg);
+	transform: translateX(4.5rem) translateY(calc(-4rem - 3vh)) rotateX(30deg) rotateY(20deg) rotateZ(-150deg);
 }
 
 #illu.open .box  {

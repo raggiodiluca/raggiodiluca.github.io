@@ -4,7 +4,7 @@
 }
 
 #web .box {
-	transform: translateX(-8rem) rotateX(-20deg) rotateY(40deg) rotateZ(-100deg);
+	transform: translateX(calc(-7.5rem - 1vw)) rotateX(-20deg) rotateY(40deg) rotateZ(-100deg);
 }
 
 #web.open .box{

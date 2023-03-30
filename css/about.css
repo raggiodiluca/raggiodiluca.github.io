@@ -4,7 +4,7 @@
 }
 
 #about .box {
-	transform: translateY(13rem) rotateX(10deg) rotateY(-30deg) rotateZ(-70deg);
+	transform: translateY(calc(11rem + 5vh)) rotateX(10deg) rotateY(-30deg) rotateZ(-70deg);
 }
 
 #about.open .box{
