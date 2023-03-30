@@ -7,8 +7,17 @@
 :root {
 	--black: #010101;
 	--white: #f5f5f5;
-	--accent: #1e90ff;
 }
+
+::selection {
+    color: #fff;
+    background: var(--accent);
+  }
+  ::-moz-selection {
+    color: #fff;
+    background: var(--accent);
+  }
+
 
 @import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
 
@@ -16,7 +25,7 @@ body {
 	color: var(--black);
 	font-family: 'Archivo', sans-serif;
 	overflow: hidden;
-	
+
 	background-color: var(--black);
 }
 
@@ -64,6 +73,7 @@ body {
 	width: 100%;
 	height: 100%;
 	transform-style: preserve-3d;
+	user-select: text;
 }
 
 .box_face {
@@ -83,7 +93,7 @@ body {
 #about.open .box_face {
 	height: 75vh;
 	width: 40vw;
-	cursor: default;
+	cursor: auto;
 }
 
 .box_header {
@@ -107,9 +117,18 @@ body {
 }
 
 .box_header .box_close {
-	color: var(--accent);
+	/* font-weight: 350;
+	color: var(--accent); */
+	border-bottom: 2px dotted var(--accent); 
 	cursor: pointer;
 }
+
+.box_header .box_close:hover {
+	color: var(--accent); 
+	border-bottom: 2px dotted var(--accent); 
+	cursor: pointer;
+}
+
 
 .box_face .box_label {
 	opacity: 1;
@@ -164,10 +183,17 @@ body {
 
 .open .project_container a {
 	text-decoration: none;
-	color: var(--accent);
-	border-bottom: 0.1rem solid var(--accent);
+	color: var(--black);
+	/* color: #fff;
+	background-color: var(--accent); */
+	border-bottom: 2px dotted var(--accent); 
 
 }
+
+.open .project_container a:hover {
+	color: var(--accent);
+}
+
 
 .open .image-of-list {
 	border: 2px solid var(--black);
