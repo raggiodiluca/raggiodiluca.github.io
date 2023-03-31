@@ -21,6 +21,11 @@ function rotateCarousel() {
   } else if (hasAboutAncestor) {
     box.style.transform = 'translateZ(-25vw) rotateY(' + angle + 'deg) ';
   }
+
+  $('.project_container').animate({
+    scrollTop: 0
+}, 400); // 500 is the duration of the animation in milliseconds
+
 }
 
 

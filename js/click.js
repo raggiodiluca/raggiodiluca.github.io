@@ -51,3 +51,12 @@ $(document).ready(function () {
         }
     });
 });
+
+
+$(document).ready(function () {
+    $('img').each(function () {
+        var imgSrc = $(this).attr('src');
+        var preloadImg = new Image();
+        preloadImg.src = imgSrc;
+    });
+});
