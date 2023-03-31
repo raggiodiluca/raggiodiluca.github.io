@@ -201,7 +201,7 @@ body {
 .open .image-of-list {
 	border: 2px solid var(--black);
 	width: 100%;
-	height: 100%;
+	height: auto;
 	transition: opacity .5s;
 	margin-bottom: 1.8rem;
 }
