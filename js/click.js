@@ -21,6 +21,7 @@ $(document).ready(function () {
             $('.box_container').not($currentBoxContainer).css({'pointer-events': 'none' });
             setTimeout(function () {
                 $currentBoxContainer.find('.box_header').css('opacity', '1');
+                $currentBoxContainer.find('.project_container').css('opacity', '1');
             }, 800); // Set the opacity of the related .box_header to 1 after an 800ms delay
         }
     });
@@ -33,6 +34,7 @@ $(document).ready(function () {
         $currentBoxContainer.toggleClass('open');
         $currentBoxContainer.css('z-index', '0')
         $currentBoxContainer.find('.box_header').css('opacity', '0');
+        $currentBoxContainer.find('.project_container').css('opacity', '0');
         $('.box_container').not($currentBoxContainer).css({'pointer-events': 'auto' });
     });
 
@@ -46,6 +48,7 @@ $(document).ready(function () {
                 $currentBoxContainer.toggleClass('open');
                 $currentBoxContainer.css('z-index', '0')
                 $currentBoxContainer.find('.box_header').css('opacity', '0');
+                $currentBoxContainer.find('.project_container').css('opacity', '0');
                 $('.box_container').not($currentBoxContainer).css({'pointer-events': 'auto' });
             }
         }

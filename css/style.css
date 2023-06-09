@@ -154,6 +154,13 @@ body {
 	display: none;
 }
 
+.project_container {
+	opacity: 0;
+	transition: opacity ease 1s;
+	cursor: default;
+}
+
+
 .open .project_container {
 	width: 100%;
 	height: 100%;
