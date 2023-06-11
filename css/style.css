@@ -130,7 +130,6 @@ body {
 	cursor: pointer;
 }
 
-
 .box_face .box_label {
 	opacity: 1;
 	line-height: normal;
@@ -141,6 +140,14 @@ body {
 	height: auto !important;
 }
 
+.open .box_face {
+	z-index: 0;
+}
+
+.open .box_face.selected {
+	z-index: 1;
+}
+
 .open .box_face .box_label {
 	opacity: 0;
 	width: 0;
@@ -148,13 +155,8 @@ body {
 }
 
 
-
-
 .project_container {
 	display: none;
-}
-
-.project_container {
 	opacity: 0;
 	transition: opacity ease .5s;
 	cursor: default;
@@ -168,7 +170,11 @@ body {
 	flex-flow: column;
 	padding: 1.5rem;
 	line-height: 1.5rem;
-	overflow-y: scroll;
+	overflow-y: hidden;
+}
+
+.selected .project_container{
+	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
 	overscroll-behavior: none;
 }

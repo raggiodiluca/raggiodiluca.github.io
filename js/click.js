@@ -14,9 +14,13 @@ $(document).ready(function () {
 
     $(document).on('click', '.box_container .box_face', function () {
         var $currentBoxContainer = $(this).closest('.box_container');
+        var selectedFace = $($currentBoxContainer).find('.box_face:first');
+        var unselectedFace = $($currentBoxContainer).find('.box_face').not(':first');
         if (!$currentBoxContainer.hasClass('open')) {
             $currentBoxContainer.toggleClass('open');
-            $currentBoxContainer.css('z-index', '99')
+            $currentBoxContainer.css('z-index', '99');
+            selectedFace.addClass('selected');
+            unselectedFace.removeClass('selected');
             // $('.box_container').not($currentBoxContainer).css({ 'opacity': '1', 'pointer-events': 'none' });
             $('.box_container').not($currentBoxContainer).css({'pointer-events': 'none' });
             setTimeout(function () {
@@ -31,6 +35,7 @@ $(document).ready(function () {
         var box = $currentBoxContainer.find('.box')[0];
         box.style.transform = ''; // clear the transform style
         $('.project_container').scrollTop(0);
+        $('.box_face').removeClass('selected');
         $currentBoxContainer.toggleClass('open');
         $currentBoxContainer.css('z-index', '0')
         $currentBoxContainer.find('.box_header').css('opacity', '0');
@@ -45,6 +50,7 @@ $(document).ready(function () {
                 var box = $currentBoxContainer.find('.box')[0];
                 box.style.transform = ''; // clear the transform style
                 $('.project_container').scrollTop(0);
+                $('.box_face').removeClass('selected');
                 $currentBoxContainer.toggleClass('open');
                 $currentBoxContainer.css('z-index', '0')
                 $currentBoxContainer.find('.box_header').css('opacity', '0');

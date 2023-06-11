@@ -4,22 +4,23 @@ var initialIndex = null;
 function rotateCarousel() {
   var numberOfFaces = $('.open .box_face').length; // add this line to update the number of faces
   var angle = (selectedIndex - initialIndex) / numberOfFaces * -360;
-  var box = document.querySelector('.open .box');
+  var selectedBox = document.querySelector('.open .box');
+  var selectedProject = document.querySelector('.open .box_face:first-child .project_container');
 
   // Check if the box has a relative with the id #web
-  var hasWebAncestor = $(box).parents('#web').length > 0;
-  var hasIlluAncestor = $(box).parents('#illu').length > 0;
-  var hasExtraAncestor = $(box).parents('#extra').length > 0;
-  var hasAboutAncestor = $(box).parents('#about').length > 0;
+  var hasWebAncestor = $(selectedBox).parents('#web').length > 0;
+  var hasIlluAncestor = $(selectedBox).parents('#illu').length > 0;
+  var hasExtraAncestor = $(selectedBox).parents('#extra').length > 0;
+  var hasAboutAncestor = $(selectedBox).parents('#about').length > 0;
 
   if (hasWebAncestor) {
-    box.style.transform = 'translateZ(-30vw) rotateY(' + angle + 'deg) ';
+    selectedBox.style.transform = 'translateZ(-30vw) rotateY(' + angle + 'deg) ';
   } else if (hasIlluAncestor) {
-    box.style.transform = 'translateZ(-38vw) rotateY(' + angle + 'deg) ';
+    selectedBox.style.transform = 'translateZ(-38vw) rotateY(' + angle + 'deg) ';
   } else if (hasExtraAncestor) {
-    box.style.transform = 'translateZ(-40vw) rotateY(' + angle + 'deg) ';
+    selectedBox.style.transform = 'translateZ(-40vw) rotateY(' + angle + 'deg) ';
   } else if (hasAboutAncestor) {
-    box.style.transform = 'translateZ(-25vw) rotateY(' + angle + 'deg) ';
+    selectedBox.style.transform = 'translateZ(-25vw) rotateY(' + angle + 'deg) ';
   }
 
   $('.project_container').animate({
