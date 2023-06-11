@@ -24,7 +24,7 @@ function rotateCarousel() {
 
   $('.project_container').animate({
     scrollTop: 0
-}, 400); // 500 is the duration of the animation in milliseconds
+}, 500); // 500 is the duration of the animation in milliseconds
 
 }
 

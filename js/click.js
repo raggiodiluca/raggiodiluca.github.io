@@ -22,7 +22,7 @@ $(document).ready(function () {
             setTimeout(function () {
                 $currentBoxContainer.find('.box_header').css('opacity', '1');
                 $currentBoxContainer.find('.project_container').css('opacity', '1');
-            }, 800); // Set the opacity of the related .box_header to 1 after an 800ms delay
+            }, 1000); // Set the opacity of the related .box_header to 1 after an 800ms delay
         }
     });
 
