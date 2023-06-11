@@ -10,58 +10,133 @@ $(document).ready(function () {
             $(this).prepend(boxLabel.clone());
         });
     });
+});
+
+var indexFace = 0;
+
+function updateSelected() {
+    $('.open .box_face').removeClass('selected');
+    $('.open .box_face').eq(indexFace).addClass('selected');
+}
 
 
-    $(document).on('click', '.box_container .box_face', function () {
-        var $currentBoxContainer = $(this).closest('.box_container');
-        var selectedFace = $($currentBoxContainer).find('.box_face:first');
-        var unselectedFace = $($currentBoxContainer).find('.box_face').not(':first');
-        if (!$currentBoxContainer.hasClass('open')) {
-            $currentBoxContainer.toggleClass('open');
-            $currentBoxContainer.css('z-index', '99');
-            selectedFace.addClass('selected');
-            unselectedFace.removeClass('selected');
-            // $('.box_container').not($currentBoxContainer).css({ 'opacity': '1', 'pointer-events': 'none' });
-            $('.box_container').not($currentBoxContainer).css({'pointer-events': 'none' });
-            setTimeout(function () {
-                $currentBoxContainer.find('.box_header').css('opacity', '1');
-                $currentBoxContainer.find('.project_container').css('opacity', '1');
-            }, 1000); // Set the opacity of the related .box_header to 1 after an 800ms delay
-        }
-    });
-
-    $(document).on('click', '.box_container.open .box_close', function (event) {
-        var $currentBoxContainer = $(this).closest('.box_container');
-        var box = $currentBoxContainer.find('.box')[0];
-        box.style.transform = ''; // clear the transform style
-        $('.project_container').scrollTop(0);
-        $('.box_face').removeClass('selected');
-        $currentBoxContainer.toggleClass('open');
-        $currentBoxContainer.css('z-index', '0')
-        $currentBoxContainer.find('.box_header').css('opacity', '0');
-        $currentBoxContainer.find('.project_container').css('opacity', '0');
-        $('.box_container').not($currentBoxContainer).css({'pointer-events': 'auto' });
-    });
-
-    $(document).on('keydown', function (event) {
-        if (event.key === 'Escape') { // Check if the key is 'Escape'
-            var $currentBoxContainer = $('.box_container.open');
-            if ($currentBoxContainer.length > 0) {
-                var box = $currentBoxContainer.find('.box')[0];
-                box.style.transform = ''; // clear the transform style
-                $('.project_container').scrollTop(0);
-                $('.box_face').removeClass('selected');
-                $currentBoxContainer.toggleClass('open');
-                $currentBoxContainer.css('z-index', '0')
-                $currentBoxContainer.find('.box_header').css('opacity', '0');
-                $currentBoxContainer.find('.project_container').css('opacity', '0');
-                $('.box_container').not($currentBoxContainer).css({'pointer-events': 'auto' });
-            }
-        }
-    });
+var currentBoxContainer;
+// open box
+$(document).on('click', '.box_container .box_face', function () {
+    currentBoxContainer = $(this).closest('.box_container');
+    if (!currentBoxContainer.hasClass('open')) {
+        currentBoxContainer.toggleClass('open');
+        currentBoxContainer.css('z-index', '99');
+        updateSelected();
+        // all other closed box_containers must not react to click (apparently I needed that?)
+        $('.box_container').not(currentBoxContainer).css({ 'pointer-events': 'none' });
+        setTimeout(function () {
+            currentBoxContainer.find('.box_header').css('opacity', '1');
+            currentBoxContainer.find('.project_container').css('opacity', '1');
+        }, 1000); // Set the opacity of the related .box_header to 1 after an 800ms delay
+    }
 });
 
 
+// closing through clicking the closing button 
+$(document).on('click', '.box_container.open .box_close', function (event) {
+    currentBoxContainer = $(this).closest('.box_container');
+    var box = currentBoxContainer.find('.box')[0];
+    box.style.transform = ''; // clear the transform style so that it doesn't bug
+    $('.project_container').scrollTop(0);
+    $('.box_face').removeClass('selected');
+    currentBoxContainer.toggleClass('open');
+    currentBoxContainer.css('z-index', '0')
+    currentBoxContainer.find('.box_header').css('opacity', '0');
+    currentBoxContainer.find('.project_container').css('opacity', '0');
+    $('.box_container').not(currentBoxContainer).css({ 'pointer-events': 'auto' });
+});
+
+// closing through clicking Esc 
+$(document).on('keydown', function (event) {
+    if (event.key === 'Escape') { // Check if the pressed key is 'Escape'
+        var currentBoxContainer = $('.box_container.open');
+        if (currentBoxContainer.length > 0) {
+            var box = currentBoxContainer.find('.box')[0];
+            box.style.transform = ''; // clear the transform style so that it doesn't bug
+            $('.project_container').scrollTop(0);
+            $('.box_face').removeClass('selected');
+            currentBoxContainer.toggleClass('open');
+            currentBoxContainer.css('z-index', '0')
+            currentBoxContainer.find('.box_header').css('opacity', '0');
+            currentBoxContainer.find('.project_container').css('opacity', '0');
+            $('.box_container').not(currentBoxContainer).css({ 'pointer-events': 'auto' });
+        }
+    }
+});
+
+
+var currentAngle = 0;
+
+function rotateCarousel() {
+    var selectedBox = document.querySelector('.open .box');
+
+    // Check in which section the opened box is contained, if found the statement is true (has lenght = has parent) 
+    var hasWebAncestor = $(selectedBox).parents('#web').length > 0;
+    var hasIlluAncestor = $(selectedBox).parents('#illu').length > 0;
+    var hasExtraAncestor = $(selectedBox).parents('#extra').length > 0;
+    var hasAboutAncestor = $(selectedBox).parents('#about').length > 0;
+
+    if (hasWebAncestor) {
+        selectedBox.style.transform = 'translateZ(-30vw) rotateY(' + currentAngle + 'deg) ';
+    } else if (hasIlluAncestor) {
+        selectedBox.style.transform = 'translateZ(-38vw) rotateY(' + currentAngle + 'deg) ';
+    } else if (hasExtraAncestor) {
+        selectedBox.style.transform = 'translateZ(-40vw) rotateY(' + currentAngle + 'deg) ';
+    } else if (hasAboutAncestor) {
+        selectedBox.style.transform = 'translateZ(-25vw) rotateY(' + currentAngle + 'deg) ';
+    }
+
+    $('.project_container').animate({
+        scrollTop: 0
+    }, 500); // 500 is the duration of the animation in milliseconds
+
+}
+
+
+
+document.addEventListener('keydown', function (event) {
+    if ($('.box_container').hasClass('open')) {
+        var numberOfFaces = $('.open .box_face').length; // add this line to update the number of faces
+        var rotationIndex = 360 / numberOfFaces;
+        if (event.key === "ArrowLeft") {
+            // Left arrow key
+            currentAngle = currentAngle + rotationIndex;
+            rotateCarousel();
+            indexFace = (indexFace - 1 + numberOfFaces) % numberOfFaces;
+            updateSelected();
+        } else if (event.key === "ArrowRight") {
+            // Right arrow key
+            currentAngle = currentAngle - rotationIndex;
+            rotateCarousel();
+            indexFace = (indexFace + 1) % numberOfFaces;
+            updateSelected();
+        }
+    }
+});
+
+// Click event listener for the box_face elements
+// $(document).on('click', '.open .box_face', function (event) {
+//   var currentIndex = $(this).index();
+//   if (currentIndex > selectedIndex) {
+//     selectedIndex = currentIndex;
+//     rotateCarousel();
+//   } else if (currentIndex < selectedIndex) {
+//     selectedIndex = currentIndex;
+//     rotateCarousel();
+//   }
+// });
+
+
+
+
+
+//preload images so that they not take time when opening boxes
 $(document).ready(function () {
     $('img').each(function () {
         var imgSrc = $(this).attr('src');
