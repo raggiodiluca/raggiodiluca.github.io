@@ -57,6 +57,7 @@ body {
 	perspective: 300vw;
 	perspective-origin: 50% 50%;
 	transform: translateY(3.5vh);
+	transition: .7s;
 }
 
 .box {
