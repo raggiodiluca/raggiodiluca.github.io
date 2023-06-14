@@ -21,6 +21,8 @@ function updateSelected() {
 
 
 var currentBoxContainer;
+var currentAngle = 0;
+
 // open box
 $(document).on('click', '.box_container .box_face', function () {
     currentBoxContainer = $(this).closest('.box_container');
@@ -49,6 +51,8 @@ $(document).on('click', '.box_container.open .box_close', function (event) {
     currentBoxContainer.css('z-index', '0')
     currentBoxContainer.find('.box_header').css('opacity', '0');
     currentBoxContainer.find('.project_container').css('opacity', '0');
+    currentAngle = 0;
+    indexFace = 0;
     $('.box_container').not(currentBoxContainer).css({ 'pointer-events': 'auto' });
 });
 
@@ -65,13 +69,13 @@ $(document).on('keydown', function (event) {
             currentBoxContainer.css('z-index', '0')
             currentBoxContainer.find('.box_header').css('opacity', '0');
             currentBoxContainer.find('.project_container').css('opacity', '0');
+            currentAngle = 0;
+            indexFace = 0;
             $('.box_container').not(currentBoxContainer).css({ 'pointer-events': 'auto' });
         }
     }
 });
 
-
-var currentAngle = 0;
 
 function rotateCarousel() {
     var selectedBox = document.querySelector('.open .box');
