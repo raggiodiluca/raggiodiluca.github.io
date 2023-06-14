@@ -84,7 +84,7 @@ body {
 	align-items: center;
 	justify-content: space-around;
 	background-color: var(--white);
-	border: 2px solid var(--black);
+	/* border: 2px solid var(--black); */
 	cursor: pointer;
 	transition: 1s;
 }
@@ -212,7 +212,7 @@ body {
 
 
 .open .image-of-list {
-	border: 2px solid var(--black);
+	/* border: 2px solid var(--black); */
 	width: 100%;
 	height: auto;
 	transition: opacity .5s;

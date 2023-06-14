@@ -35,10 +35,14 @@ $(document).on('click', '.box_container .box_face', function () {
         setTimeout(function () {
             currentBoxContainer.find('.box_header').css('opacity', '1');
             currentBoxContainer.find('.project_container').css({
-                'display': 'flex',
                 'opacity': '1'
             });
-        }, 1000); // Set the opacity of the related .box_header to 1 after an 800ms delay
+        }, 1050);
+        setTimeout(function () {
+            currentBoxContainer.find('.project_container').css({
+                'display': 'flex',
+            });
+        }, 1000); // Set the opacity 
     }
 });
 
