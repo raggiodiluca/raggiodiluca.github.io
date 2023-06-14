@@ -13,15 +13,13 @@ $(document).ready(function () {
 });
 
 var indexFace = 0;
+var currentBoxContainer;
+var currentAngle = 0;
 
 function updateSelected() {
     $('.open .box_face').removeClass('selected');
     $('.open .box_face').eq(indexFace).addClass('selected');
 }
-
-
-var currentBoxContainer;
-var currentAngle = 0;
 
 // open box
 $(document).on('click', '.box_container .box_face', function () {
@@ -47,9 +45,8 @@ $(document).on('click', '.box_container .box_face', function () {
 });
 
 
-// closing through clicking the closing button 
-$(document).on('click', '.box_container.open .box_close', function (event) {
-    currentBoxContainer = $(this).closest('.box_container');
+function closeTheBox() {
+    currentBoxContainer = $('.box_container.open');
     var box = currentBoxContainer.find('.box')[0];
     box.style.transform = ''; // clear the transform style so that it doesn't bug
     $('.project_container').scrollTop(0);
@@ -64,25 +61,17 @@ $(document).on('click', '.box_container.open .box_close', function (event) {
     currentAngle = 0;
     indexFace = 0;
     $('.box_container').not(currentBoxContainer).css({ 'pointer-events': 'auto' });
+}
+
+// closing through clicking the closing button 
+$(document).on('click', '.box_container.open .box_close', function (event) {
+    closeTheBox();
 });
 
 // closing through clicking Esc 
 $(document).on('keydown', function (event) {
     if (event.key === 'Escape') { // Check if the pressed key is 'Escape'
-        var currentBoxContainer = $('.box_container.open');
-        if (currentBoxContainer.length > 0) {
-            var box = currentBoxContainer.find('.box')[0];
-            box.style.transform = ''; // clear the transform style so that it doesn't bug
-            $('.project_container').scrollTop(0);
-            $('.box_face').removeClass('selected');
-            currentBoxContainer.toggleClass('open');
-            currentBoxContainer.css('z-index', '0')
-            currentBoxContainer.find('.box_header').css('opacity', '0');
-            currentBoxContainer.find('.project_container').css('opacity', '0');
-            currentAngle = 0;
-            indexFace = 0;
-            $('.box_container').not(currentBoxContainer).css({ 'pointer-events': 'auto' });
-        }
+        closeTheBox();
     }
 });
 
@@ -133,20 +122,6 @@ document.addEventListener('keydown', function (event) {
         }
     }
 });
-
-// Click event listener for the box_face elements
-// $(document).on('click', '.open .box_face', function (event) {
-//   var currentIndex = $(this).index();
-//   if (currentIndex > selectedIndex) {
-//     selectedIndex = currentIndex;
-//     rotateCarousel();
-//   } else if (currentIndex < selectedIndex) {
-//     selectedIndex = currentIndex;
-//     rotateCarousel();
-//   }
-// });
-
-
 
 
 
