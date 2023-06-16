@@ -146,7 +146,11 @@ body {
 }
 
 .open .box_face.selected {
-	z-index: 1;
+	z-index: 5;
+}
+
+.open .box_face.selected_two {
+	z-index: 4;
 }
 
 .open .box_face .box_label {

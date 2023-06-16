@@ -12,17 +12,27 @@ $(document).ready(function () {
     });
 });
 
+var numFaces = 0;
 var indexFace = 0;
+var prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
+var nextIndexFace = (indexFace + 1) % numFaces;
 var currentBoxContainer;
 var currentAngle = 0;
 
 function updateSelected() {
     $('.open .box_face').removeClass('selected');
     $('.open .box_face').eq(indexFace).addClass('selected');
+    prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
+    nextIndexFace = (indexFace + 1) % numFaces;
+    $('.open .box_face').eq(prevIndexFace).addClass('selected_two');
+    $('.open .box_face').eq(nextIndexFace).addClass('selected_two');
 }
 
 // open box
 $(document).on('click', '.box_container .box_face', function () {
+    numFaces = $('.open .box_face').length;
+    prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
+    nextIndexFace = (indexFace + 1) % numFaces;
     currentBoxContainer = $(this).closest('.box_container');
     if (!currentBoxContainer.hasClass('open')) {
         currentBoxContainer.toggleClass('open');
@@ -101,29 +111,78 @@ function rotateCarousel() {
 
 }
 
+function rotateLeft() {
+    numFaces = $('.open .box_face').length; // add this line to update the number of faces
+    var rotationIndex = 360 / numFaces;
+    currentAngle = currentAngle + rotationIndex;
+    rotateCarousel();
+    indexFace = (indexFace - 1 + numFaces) % numFaces;
+    updateSelected();
+}
 
+function rotateRight() {
+    numFaces = $('.open .box_face').length; // add this line to update the number of faces
+    var rotationIndex = 360 / numFaces;
+    currentAngle = currentAngle - rotationIndex;
+    rotateCarousel();
+    indexFace = (indexFace + 1) % numFaces;
+    updateSelected();
+}
 
-document.addEventListener('keydown', function (event) {
-    if ($('.box_container').hasClass('open')) {
-        var numberOfFaces = $('.open .box_face').length; // add this line to update the number of faces
-        var rotationIndex = 360 / numberOfFaces;
-        if (event.key === "ArrowLeft") {
-            // Left arrow key
-            currentAngle = currentAngle + rotationIndex;
-            rotateCarousel();
-            indexFace = (indexFace - 1 + numberOfFaces) % numberOfFaces;
-            updateSelected();
-        } else if (event.key === "ArrowRight") {
-            // Right arrow key
-            currentAngle = currentAngle - rotationIndex;
-            rotateCarousel();
-            indexFace = (indexFace + 1) % numberOfFaces;
-            updateSelected();
-        }
+//throttling function to avoid crazy spin of the box carousel
+var throttle = false;
+function throttling() {
+    if (throttle) {
+        setTimeout(() => {
+            throttle = false;
+        }, 300);
+    }
+}
+
+//rotating with a click
+$(document).on('click', '.open .box_face', function () {
+    var prevFace = $('.open .box_face').eq(prevIndexFace);
+    var nextFace = $('.open .box_face').eq(nextIndexFace);
+
+    if (this === prevFace[0]) {
+        rotateLeft();
+    } else if (this === nextFace[0]) {
+        rotateRight();
     }
 });
 
 
+
+document.addEventListener('keydown', function (event) {
+    if ($('.box_container').hasClass('open')) {
+        if (!throttle) {
+            if (event.key === 'ArrowLeft') {
+                rotateLeft();
+            } else if (event.key === 'ArrowRight') {
+                rotateRight();
+            }
+            throttle = true;
+            throttling();
+        }
+    }
+});
+
+//scroll box horizontally but only works outside selected scrollable project
+window.addEventListener('wheel', function (event) {
+    if (!document.querySelector('.open .box_face.selected').contains(event.target)) {
+        if ($('.box_container').hasClass('open')) {
+            if (!throttle) {
+                if (Math.sign(event.deltaY) === -1) {
+                    rotateLeft();
+                } else if (Math.sign(event.deltaY) === 1) {
+                    rotateRight();
+                }
+                throttle = true;
+                throttling();
+            }
+        }
+    }
+});
 
 //preload images so that they not take time when opening boxes
 $(document).ready(function () {
