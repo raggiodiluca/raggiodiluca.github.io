@@ -33,6 +33,8 @@ function updateSelected() {
 $(document).on('click', '.box_container .box_face', function () {
     numFaces = $('.open .box_face').length;
     currentBoxContainer = $(this).closest('.box_container');
+    prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
+    nextIndexFace = (indexFace + 1) % numFaces;
     if (!currentBoxContainer.hasClass('open')) {
         currentBoxContainer.toggleClass('open');
         currentBoxContainer.css('z-index', '99');
@@ -51,8 +53,6 @@ $(document).on('click', '.box_container .box_face', function () {
             });
         }, 1000); // Set the opacity 
     }
-    prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
-    nextIndexFace = (indexFace + 1) % numFaces;
 });
 
 
