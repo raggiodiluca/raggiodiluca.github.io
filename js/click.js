@@ -21,6 +21,7 @@ var currentAngle = 0;
 
 function updateSelected() {
     $('.open .box_face').removeClass('selected');
+    $('.open .box_face').removeClass('selected_two');
     $('.open .box_face').eq(indexFace).addClass('selected');
     prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
     nextIndexFace = (indexFace + 1) % numFaces;
@@ -31,8 +32,6 @@ function updateSelected() {
 // open box
 $(document).on('click', '.box_container .box_face', function () {
     numFaces = $('.open .box_face').length;
-    prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
-    nextIndexFace = (indexFace + 1) % numFaces;
     currentBoxContainer = $(this).closest('.box_container');
     if (!currentBoxContainer.hasClass('open')) {
         currentBoxContainer.toggleClass('open');
@@ -52,6 +51,8 @@ $(document).on('click', '.box_container .box_face', function () {
             });
         }, 1000); // Set the opacity 
     }
+    prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
+    nextIndexFace = (indexFace + 1) % numFaces;
 });
 
 
@@ -143,7 +144,6 @@ function throttling() {
 $(document).on('click', '.open .box_face', function () {
     var prevFace = $('.open .box_face').eq(prevIndexFace);
     var nextFace = $('.open .box_face').eq(nextIndexFace);
-
     if (this === prevFace[0]) {
         rotateLeft();
     } else if (this === nextFace[0]) {
@@ -169,8 +169,8 @@ document.addEventListener('keydown', function (event) {
 
 //scroll box horizontally but only works outside selected scrollable project
 window.addEventListener('wheel', function (event) {
-    if (!document.querySelector('.open .box_face.selected').contains(event.target)) {
-        if ($('.box_container').hasClass('open')) {
+    if ($('.box_container').hasClass('open')) {
+        if (!document.querySelector('.open .box_face.selected').contains(event.target)) {
             if (!throttle) {
                 if (Math.sign(event.deltaY) === -1) {
                     rotateLeft();
