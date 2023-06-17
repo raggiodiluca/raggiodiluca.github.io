@@ -140,7 +140,8 @@ function throttling() {
     }
 }
 
-//rotating with a click
+
+//rotating with a click (slow on tap why?)
 $(document).on('click', '.open .box_face', function () {
     var prevFace = $('.open .box_face').eq(prevIndexFace);
     var nextFace = $('.open .box_face').eq(nextIndexFace);
@@ -150,8 +151,6 @@ $(document).on('click', '.open .box_face', function () {
         rotateRight();
     }
 });
-
-
 
 document.addEventListener('keydown', function (event) {
     if ($('.box_container').hasClass('open')) {
@@ -183,6 +182,58 @@ window.addEventListener('wheel', function (event) {
         }
     }
 });
+
+
+//swipe rotate (found online)
+
+document.addEventListener('touchstart', handleTouchStart, { passive: false });
+document.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+var xDown = null;
+var yDown = null;
+
+function getTouches(evt) {
+    return evt.touches || evt.originalEvent.touches; // jQuery
+}
+
+function handleTouchStart(evt) {
+    if (!$('.box_container').hasClass('open')) {
+        return;
+    }
+
+    const firstTouch = getTouches(evt)[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+
+    evt.target.setPointerCapture(firstTouch.pointerId);
+}
+
+function handleTouchMove(evt) {
+    if (!$('.box_container').hasClass('open') || !xDown || !yDown) {
+        return;
+    }
+
+    var xUp = evt.touches[0].clientX;
+    var yUp = evt.touches[0].clientY;
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        if (xDiff > 0) {
+            rotateRight();
+        } else {
+            rotateLeft();
+        }
+    }
+
+    // Reset touch start coordinates
+    xDown = null;
+    yDown = null;
+}
+
+
+
+
 
 //preload images so that they not take time when opening boxes
 $(document).ready(function () {
