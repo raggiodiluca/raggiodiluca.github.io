@@ -3,7 +3,7 @@
 	height: 12.5rem;
 }
 
-#illu.box_container.open {
+#illu.box_container.is_open {
 	perspective: 100vw;
 }
 
@@ -11,7 +11,7 @@
 	transform: translateX(4.5rem) translateY(calc(-4rem - 3vh)) rotateX(30deg) rotateY(20deg) rotateZ(-150deg);
 }
 
-#illu.open .box  {
+#illu.is_open .box  {
 	transform: translateZ(-38vw);
 }
 
@@ -27,23 +27,23 @@
 #illu.open .box_face:nth-child(1) {
 	transform: rotateY(0deg) translateZ(38vw);
 }
-#illu.open .box_face:nth-child(2) {
+#illu.is_open .box_face:nth-child(2) {
 	transform: rotateY(60deg) translateZ(38vw);
 }
 
-#illu.open .box_face:nth-child(3) {
+#illu.is_open .box_face:nth-child(3) {
 	transform: rotateY(120deg) translateZ(38vw);
 }
 
-#illu.open .box_face:nth-child(4) {
+#illu.is_open .box_face:nth-child(4) {
 	transform: rotateY(180deg) translateZ(38vw);
 }
 
-#illu.open .box_face:nth-child(5) {
+#illu.is_open .box_face:nth-child(5) {
 	transform: rotateY(240deg) translateZ(38vw);
 }
 
-#illu.open .box_face:nth-child(6) {
+#illu.is_open .box_face:nth-child(6) {
 	transform: rotateY(300deg) translateZ(38vw);
 }
 

@@ -7,7 +7,7 @@
 	transform: translateY(calc(11rem + 5vh)) rotateX(10deg) rotateY(-30deg) rotateZ(-70deg);
 }
 
-#about.open .box{
+#about.is_open .box{
 	transform: translateZ(-25vw);
 }
 
@@ -24,11 +24,11 @@
 	transform: rotateY(0deg) translateZ(25vw);
 }
 
-#about.open .box_face:nth-child(2) {
+#about.is_open .box_face:nth-child(2) {
 	transform: rotateY(120deg) translateZ(25vw);
 }
 
-#about.open .box_face:nth-child(3) {
+#about.is_open .box_face:nth-child(3) {
 	transform: rotateY(240deg) translateZ(25vw);
 }
 
