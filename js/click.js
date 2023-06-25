@@ -1,4 +1,13 @@
 $(document).ready(function () {
+
+    //preload images so that they not take time when opening boxes
+    $('img').each(function () {
+        var imgSrc = $(this).attr('src');
+        var preloadImg = new Image();
+        preloadImg.src = imgSrc;
+    });
+
+
     // Loop through each box_container element
     $('.box_container').each(function () {
         // Find the box_label within the current box_container element
@@ -18,51 +27,41 @@ var prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
 var nextIndexFace = (indexFace + 1) % numFaces;
 var currentBoxContainer;
 var currentAngle = 0;
+var invisibleCls = "is_invisible";
+var hiddenCls = "is_hidden";
+var openCls = "is_open";
 
 function updateSelected() {
-    $('.open .box_face').removeClass('selected');
-    $('.open .box_face').removeClass('selected_two');
-    $('.open .box_face').eq(indexFace).addClass('selected');
     prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
     nextIndexFace = (indexFace + 1) % numFaces;
-    $('.open .box_face').eq(prevIndexFace).addClass('selected_two');
-    $('.open .box_face').eq(nextIndexFace).addClass('selected_two');
+    $('.is_open .box_face').removeClass(['selected','selectable']);
+    $('.is_open .box_face').eq(indexFace).addClass('selected');
+    $('.is_open .box_face').eq(prevIndexFace).addClass('selectable');
+    $('.is_open .box_face').eq(nextIndexFace).addClass('selectable');
 }
 
 // open box
 $(document).on('click', '.box_container .box_face', function () {
-    numFaces = $('.open .box_face').length;
     currentBoxContainer = $(this).closest('.box_container');
-    prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
-    nextIndexFace = (indexFace + 1) % numFaces;
-    if (!currentBoxContainer.hasClass('open')) {
-        currentBoxContainer.toggleClass('open');
+    if (!currentBoxContainer.hasClass(openCls)) {
+        numFaces = $('.is_open .box_face').length;
+        currentBoxContainer.addClass(openCls)
         currentBoxContainer.css('z-index', '99');
         updateSelected();
         // all other closed box_containers must not react to click (apparently I needed that?)
         $('.box_container').not(currentBoxContainer).css({ 'pointer-events': 'none' });
-        setTimeout(function () {
-            currentBoxContainer.find('.box_header').css('opacity', '1');
-            currentBoxContainer.find('.project_container').css({
-                'opacity': '1'
-            });
-        }, 1050);
-        setTimeout(function () {
-            currentBoxContainer.find('.project_container').css({
-                'display': 'flex',
-            });
-        }, 1000); // Set the opacity 
+        currentBoxContainer.find('.box_header').removeClass(hiddenCls);
+        currentBoxContainer.find('.project_container').removeClass(hiddenCls);
     }
 });
 
-
 function closeTheBox() {
-    currentBoxContainer = $('.box_container.open');
+    currentBoxContainer = $('.box_container.is_open');
     var box = currentBoxContainer.find('.box')[0];
     box.style.transform = ''; // clear the transform style so that it doesn't bug
     $('.project_container').scrollTop(0);
     $('.box_face').removeClass('selected');
-    currentBoxContainer.toggleClass('open');
+    currentBoxContainer.removeClass(openCls)
     currentBoxContainer.css('z-index', '0')
     currentBoxContainer.find('.box_header').css('opacity', '0');
     currentBoxContainer.find('.project_container').css({
@@ -75,7 +74,7 @@ function closeTheBox() {
 }
 
 // closing through clicking the closing button 
-$(document).on('click', '.box_container.open .box_close', function (event) {
+$('.box_close').on('click', function () {
     closeTheBox();
 });
 
@@ -88,7 +87,7 @@ $(document).on('keydown', function (event) {
 
 
 function rotateCarousel() {
-    var selectedBox = document.querySelector('.open .box');
+    var selectedBox = document.querySelector('.is_open .box');
 
     // Check in which section the opened box is contained, if found the statement is true (has lenght = has parent) 
     var hasWebAncestor = $(selectedBox).parents('#web').length > 0;
@@ -112,21 +111,22 @@ function rotateCarousel() {
 
 }
 
-function rotateLeft() {
-    numFaces = $('.open .box_face').length; // add this line to update the number of faces
+// left = -1
+// right = 1
+function rotateBox(direction) {
+    numFaces = $('.is_open .box_face').length; // add this line to update the number of faces
     var rotationIndex = 360 / numFaces;
-    currentAngle = currentAngle + rotationIndex;
-    rotateCarousel();
-    indexFace = (indexFace - 1 + numFaces) % numFaces;
-    updateSelected();
-}
+    
+    if (direction < 0) {
+        currentAngle -= rotationIndex;
+        rotateCarousel();
+        indexFace = (indexFace - 1 + numFaces) % numFaces;
+    } else {
+        currentAngle += rotationIndex;
+        rotateCarousel();
+        indexFace = (indexFace + 1) % numFaces;
+    }
 
-function rotateRight() {
-    numFaces = $('.open .box_face').length; // add this line to update the number of faces
-    var rotationIndex = 360 / numFaces;
-    currentAngle = currentAngle - rotationIndex;
-    rotateCarousel();
-    indexFace = (indexFace + 1) % numFaces;
     updateSelected();
 }
 
@@ -142,23 +142,20 @@ function throttling() {
 
 
 //rotating with a click (slow on tap why?)
-$(document).on('click', '.open .box_face', function () {
-    var prevFace = $('.open .box_face').eq(prevIndexFace);
-    var nextFace = $('.open .box_face').eq(nextIndexFace);
-    if (this === prevFace[0]) {
-        rotateLeft();
-    } else if (this === nextFace[0]) {
-        rotateRight();
-    }
+$(document).on('click', '.is_open .box_face', function () {
+    var prevFace = $('.is_open .box_face').eq(prevIndexFace);
+    var nextFace = $('.is_open .box_face').eq(nextIndexFace);
+    var direction = this === prevFace[0] ? -1 : 1;
+    rotateBox(direction);
 });
 
 document.addEventListener('keydown', function (event) {
-    if ($('.box_container').hasClass('open')) {
+    if ($('.box_container').hasClass(openCls)) {
         if (!throttle) {
             if (event.key === 'ArrowLeft') {
-                rotateLeft();
+                rotateBox(-1);
             } else if (event.key === 'ArrowRight') {
-                rotateRight();
+                rotateBox(1);
             }
             throttle = true;
             throttling();
@@ -168,13 +165,13 @@ document.addEventListener('keydown', function (event) {
 
 //scroll box horizontally but only works outside selected scrollable project
 window.addEventListener('wheel', function (event) {
-    if ($('.box_container').hasClass('open')) {
-        if (!document.querySelector('.open .box_face.selected').contains(event.target)) {
+    if ($('.box_container').hasClass(openCls)) {
+        if (!document.querySelector('.is_open .box_face.selected').contains(event.target)) {
             if (!throttle) {
                 if (Math.sign(event.deltaY) === -1) {
-                    rotateLeft();
+                    rotateBox(-1);
                 } else if (Math.sign(event.deltaY) === 1) {
-                    rotateRight();
+                    rotateBox(1);
                 }
                 throttle = true;
                 throttling();
@@ -197,7 +194,7 @@ function getTouches(evt) {
 }
 
 function handleTouchStart(evt) {
-    if (!$('.box_container').hasClass('open')) {
+    if (!$('.box_container').hasClass(openCls)) {
         return;
     }
 
@@ -209,7 +206,7 @@ function handleTouchStart(evt) {
 }
 
 function handleTouchMove(evt) {
-    if (!$('.box_container').hasClass('open') || !xDown || !yDown) {
+    if (!$('.box_container').hasClass(openCls) || !xDown || !yDown) {
         return;
     }
 
@@ -220,9 +217,9 @@ function handleTouchMove(evt) {
 
     if (Math.abs(xDiff) > Math.abs(yDiff)) {
         if (xDiff > 0) {
-            rotateRight();
+            rotateBox(1);
         } else {
-            rotateLeft();
+            rotateBox(-1);
         }
     }
 
@@ -230,16 +227,3 @@ function handleTouchMove(evt) {
     xDown = null;
     yDown = null;
 }
-
-
-
-
-
-//preload images so that they not take time when opening boxes
-$(document).ready(function () {
-    $('img').each(function () {
-        var imgSrc = $(this).attr('src');
-        var preloadImg = new Image();
-        preloadImg.src = imgSrc;
-    });
-});
