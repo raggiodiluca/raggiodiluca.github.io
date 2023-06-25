@@ -197,7 +197,7 @@ body {
 	padding: 1.5rem;
 	line-height: 1.5rem;
 	overflow-y: hidden;
-	transition: opacity ease .5s 1s;
+	transition: opacity ease .5s 1s, width 0s 1s, height 0s 1s;
 }
 
 .selected .project_container{

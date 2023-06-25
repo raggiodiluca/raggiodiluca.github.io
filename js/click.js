@@ -130,28 +130,28 @@ $(document).on('click', '.is_open .box_face', function () {
     
 });
 
-document.addEventListener('keydown', function (event) {
+$(window).on('keydown', function(event) {
     if ($('.box_container').hasClass(openCls)) {
-        if (!throttle) {
-            if (event.key === 'ArrowLeft') {
-                rotateBox(-1);
-            } else if (event.key === 'ArrowRight') {
-                rotateBox(1);
-            }
-            throttle = true;
-            throttling();
+      if (!throttle) {
+        if (event.key === 'ArrowLeft') {
+          rotateBox(-1);
+        } else if (event.key === 'ArrowRight') {
+          rotateBox(1);
         }
+        throttle = true;
+        throttling();
+      }
     }
-});
+  });  
 
 //scroll box horizontally but only works outside selected scrollable project
-window.addEventListener('wheel', function (event) {
+$(window).on('wheel', function(event){
     if ($('.box_container').hasClass(openCls)) {
-        if (!document.querySelector('.is_open .box_face.selected').contains(event.target)) {
+        if (!$('.is_open .box_face.selected').has(event.target).length) {
             if (!throttle) {
-                if (Math.sign(event.deltaY) === -1) {
+                if (Math.sign(event.originalEvent.deltaY) === -1) {
                     rotateBox(-1);
-                } else if (Math.sign(event.deltaY) === 1) {
+                } else if (Math.sign(event.originalEvent.deltaY) === 1) {
                     rotateBox(1);
                 }
                 throttle = true;
