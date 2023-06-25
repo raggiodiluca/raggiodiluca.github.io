@@ -44,14 +44,14 @@ function updateSelected() {
 $(document).on('click', '.box_container .box_face', function () {
     currentBoxContainer = $(this).closest('.box_container');
     if (!currentBoxContainer.hasClass(openCls)) {
-        numFaces = $('.is_open .box_face').length;
         currentBoxContainer.addClass(openCls)
+        numFaces = $('.is_open .box_face').length;
         currentBoxContainer.css('z-index', '99');
-        updateSelected();
         // all other closed box_containers must not react to click (apparently I needed that?)
         $('.box_container').not(currentBoxContainer).css({ 'pointer-events': 'none' });
-        currentBoxContainer.find('.box_header').removeClass(hiddenCls);
-        currentBoxContainer.find('.project_container').removeClass(hiddenCls);
+        currentBoxContainer.find('.box_header').removeClass([hiddenCls]);
+        currentBoxContainer.find('.project_container').removeClass([hiddenCls]);
+        updateSelected();
     }
 });
 
@@ -63,11 +63,8 @@ function closeTheBox() {
     $('.box_face').removeClass('selected');
     currentBoxContainer.removeClass(openCls)
     currentBoxContainer.css('z-index', '0')
-    currentBoxContainer.find('.box_header').css('opacity', '0');
-    currentBoxContainer.find('.project_container').css({
-        'display': 'none',
-        'opacity': '0'
-    });
+    currentBoxContainer.find('.box_header').addClass(hiddenCls);
+    currentBoxContainer.find('.project_container').addClass(hiddenCls);
     currentAngle = 0;
     indexFace = 0;
     $('.box_container').not(currentBoxContainer).css({ 'pointer-events': 'auto' });
@@ -116,17 +113,15 @@ function rotateCarousel() {
 function rotateBox(direction) {
     numFaces = $('.is_open .box_face').length; // add this line to update the number of faces
     var rotationIndex = 360 / numFaces;
-    
     if (direction < 0) {
-        currentAngle -= rotationIndex;
+        currentAngle += rotationIndex;
         rotateCarousel();
         indexFace = (indexFace - 1 + numFaces) % numFaces;
     } else {
-        currentAngle += rotationIndex;
+        currentAngle -= rotationIndex;
         rotateCarousel();
         indexFace = (indexFace + 1) % numFaces;
     }
-
     updateSelected();
 }
 
@@ -145,8 +140,12 @@ function throttling() {
 $(document).on('click', '.is_open .box_face', function () {
     var prevFace = $('.is_open .box_face').eq(prevIndexFace);
     var nextFace = $('.is_open .box_face').eq(nextIndexFace);
-    var direction = this === prevFace[0] ? -1 : 1;
-    rotateBox(direction);
+    if (this === prevFace[0]) {
+        rotateBox(-1);
+    } else if (this === nextFace[0]) {
+        rotateBox(1);
+    }
+    
 });
 
 document.addEventListener('keydown', function (event) {

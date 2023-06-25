@@ -98,12 +98,10 @@ body {
 	cursor: auto;
 }
 
-.is_hidden {
-	display: none;
-	opacity: 0;
-}
 
-.is_invisible {
+.is_hidden {
+	height: 0;
+	width: 0;
 	opacity: 0;
 }
 
@@ -171,7 +169,7 @@ body {
 
 
 .project_container {
-	transition: opacity ease .5s;
+	transition: opacity 0s;
 	cursor: default;
 }
 
@@ -183,6 +181,7 @@ body {
 	padding: 1.5rem;
 	line-height: 1.5rem;
 	overflow-y: hidden;
+	transition: opacity ease .5s 1s;
 }
 
 .selected .project_container{
