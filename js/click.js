@@ -1,15 +1,6 @@
 $(document).ready(function () {
-    // Loop through each box_container element
-    $('.box_container').each(function () {
-        // Find the box_label within the current box_container element
-        var boxLabel = $(this).find('.box_label');
-
-        // Loop through each box_face element within the current box_container
-        $(this).find('.box_face').each(function () {
-            // Clone the box_label and prepend it to the current box_face element
-            $(this).prepend(boxLabel.clone());
-        });
-    });
+    
+    
 });
 
 var numFaces = 0;

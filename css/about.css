@@ -20,7 +20,7 @@
 	content: "About";
 }
 
-#about.open .box_face:nth-child(1) {
+#about.is_open .box_face:nth-child(1) {
 	transform: rotateY(0deg) translateZ(25vw);
 }
 

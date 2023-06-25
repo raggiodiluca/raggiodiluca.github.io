@@ -25,7 +25,7 @@
 	content: "Extra";
 }
 
-#extra.open .box_face:nth-child(1) {
+#extra.is_open .box_face:nth-child(1) {
 	transform: rotateY(0deg) translateZ(40vw);
 }
 

@@ -84,7 +84,6 @@ body {
 	align-items: center;
 	justify-content: space-around;
 	background-color: var(--white);
-	/* border: 2px solid var(--black); */
 	cursor: pointer;
 	transition: 1s;
 }
@@ -98,12 +97,23 @@ body {
 	color: var(--black);
 	transform: rotateZ(90deg);
 	height: auto !important;
+	transition: opacity ease .5s 1s,
+	width 0s 1s,
+	height 0s 1s;
 }
 
-#web.open .box_face,
-#illu.open .box_face,
-#extra.open .box_face,
-#about.open .box_face {
+.is_open .box_face::before {
+	height: 0;
+	width: 0;
+	opacity: 0;
+	transition: opacity 0s;
+
+}
+
+#web.is_open .box_face,
+#illu.is_open .box_face,
+#extra.is_open .box_face,
+#about.is_open .box_face {
 	height: 75vh;
 	width: 40vw;
 	cursor: auto;
@@ -133,13 +143,10 @@ body {
 	font-size: 2rem;
 	font-weight: 300;
 	color: var(--white);
+	transition: opacity ease .5s 1s;
 }
 
-
-
 .box_header .box_close {
-	/* font-weight: 350;
-	color: var(--accent); */
 	border-bottom: 2px dotted var(--accent); 
 	cursor: pointer;
 }
@@ -178,12 +185,10 @@ body {
 	height: 0;
 }
 
-
 .project_container {
 	transition: opacity 0s;
 	cursor: default;
 }
-
 
 .is_open .project_container {
 	width: 100%;
@@ -231,7 +236,6 @@ body {
 .is_open .project_container a:hover {
 	color: var(--accent);
 }
-
 
 .is_open .image-of-list {
 	/* border: 2px solid var(--black); */
