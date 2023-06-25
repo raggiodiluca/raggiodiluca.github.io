@@ -20,6 +20,10 @@
 	height: 12.5rem;
 }
 
+#illu .box_face::before {
+	content: "Illustration";
+}
+
 #illu.open .box_face:nth-child(1) {
 	transform: rotateY(0deg) translateZ(38vw);
 }

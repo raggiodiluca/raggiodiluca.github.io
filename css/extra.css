@@ -21,6 +21,10 @@
 	height: 7.5rem;
 }
 
+#extra .box_face::before {
+	content: "Extra";
+}
+
 #extra.open .box_face:nth-child(1) {
 	transform: rotateY(0deg) translateZ(40vw);
 }

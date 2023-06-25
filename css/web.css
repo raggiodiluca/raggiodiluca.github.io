@@ -16,6 +16,10 @@
 	height: 7rem;
 }
 
+#web .box_face::before {
+	content: "Web";
+}
+
 #web.open .box_face:nth-child(1) {
 	transform: rotateY(0deg) translateZ(30vw);
 }

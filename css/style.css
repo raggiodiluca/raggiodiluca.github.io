@@ -89,6 +89,17 @@ body {
 	transition: 1s;
 }
 
+.box_face::before {
+	content: "";
+	opacity: 1;
+	line-height: normal;
+	font-size: 2rem;
+	font-weight: 400;
+	color: var(--black);
+	transform: rotateZ(90deg);
+	height: auto !important;
+}
+
 #web.open .box_face,
 #illu.open .box_face,
 #extra.open .box_face,

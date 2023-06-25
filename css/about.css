@@ -16,6 +16,10 @@
 	height: 8rem;
 }
 
+#about .box_face::before {
+	content: "About";
+}
+
 #about.open .box_face:nth-child(1) {
 	transform: rotateY(0deg) translateZ(25vw);
 }
