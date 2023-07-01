@@ -123,6 +123,7 @@ body {
 .is_hidden {
 	height: 0;
 	width: 0;
+	overflow: hidden;
 }
 
 .box_header {
