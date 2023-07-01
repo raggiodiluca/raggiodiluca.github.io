@@ -118,7 +118,7 @@ function throttling() {
 }
 
 
-//rotating with a click (slow on tap why?)
+//rotating with a click (slow on touch tap to fix)
 $(document).on('click', '.is_open .box_face', function () {
     var prevFace = $('.is_open .box_face').eq(prevIndexFace);
     var nextFace = $('.is_open .box_face').eq(nextIndexFace);
