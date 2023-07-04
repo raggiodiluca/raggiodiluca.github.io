@@ -19,8 +19,15 @@
     background: var(--accent);
   }
 
-
 @import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+
+.is_hidden {
+	height: 0;
+	width: 0;
+	overflow: hidden;
+	opacity: 0;
+	user-select: none;
+}
 
 body {
 	color: var(--black);
@@ -40,55 +47,55 @@ body {
 	overflow: hidden;
 }
 
-.box_container {
+.origami_container {
 	position: absolute;
 	perspective: 40rem;
 	perspective-origin: 30% 30%;
 	transform: translateY(0);
-	transition: .5s;
+	transition: .8s;
 }
 
-#web.box_container.is_open,
-#illu.box_container.is_open,
-#extra.box_container.is_open,
-#about.box_container.is_open {
+#web.origami_container.is_open,
+#illu.origami_container.is_open,
+#extra.origami_container.is_open,
+#about.origami_container.is_open {
 	height: 75vh;
 	width: 40vw;
 	perspective: 300vw;
 	perspective-origin: 50% 50%;
-	transform: translateY(3.5vh);
-	transition: .7s;
+	transform: translateY(-1.5rem);
+	transition: .8s;
 }
 
-.box {
+.origami {
 	width: 100%;
 	height: 100%;
 	transform-style: preserve-3d;
-	transition: 1s;
+	transition: .8s;
 	user-select: none;
 }
 
-#web.is_open .box,
-#illu.is_open .box,
-#extra.is_open .box,
-#about.is_open .box {
+#web.is_open .origami,
+#illu.is_open .origami,
+#extra.is_open .origami,
+#about.is_open .origami {
 	width: 100%;
 	height: 100%;
 	transform-style: preserve-3d;
 	user-select: text;
 }
 
-.box_face {
+.origami_face {
 	position: absolute;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 	background-color: var(--white);
 	cursor: pointer;
-	transition: 1s;
+	transition: .8s;
 }
 
-.box_face::before {
+.origami_face::before {
 	content: "";
 	opacity: 1;
 	line-height: normal;
@@ -97,67 +104,58 @@ body {
 	color: var(--black);
 	transform: rotateZ(90deg);
 	height: auto !important;
-	transition: opacity ease .5s 1s,
-	width 0s 1s,
-	height 0s 1s;
+	transition: opacity ease .5s .8s,
+	width 0s .8s,
+	height 0s .8s;
 }
 
-.is_open .box_face::before {
+.is_open .origami_face::before {
 	height: 0;
 	width: 0;
 	opacity: 0;
 	transition: opacity 0s;
-
 }
 
-#web.is_open .box_face,
-#illu.is_open .box_face,
-#extra.is_open .box_face,
-#about.is_open .box_face {
+#web.is_open .origami_face,
+#illu.is_open .origami_face,
+#extra.is_open .origami_face,
+#about.is_open .origami_face {
 	height: 75vh;
 	width: 40vw;
 	cursor: auto;
 }
 
-
-.is_hidden {
-	height: 0;
-	width: 0;
-	overflow: hidden;
+.origami_header {
+	transition: height .8s;
 }
 
-.box_header {
-	position: absolute;
-	width: 0;
-	transition: opacity ease .5s;
-	user-select: none;
-}
-
-.is_open .box_header {
-	width: 40vw;
+.is_open .origami_header {
+	width: 100%;
+	height: 3.5rem;
 	display: flex;
 	justify-content: space-between;
-	top: -7.5vh;
-	left: 0;
 	line-height: 2rem;
 	font-size: 2rem;
 	font-weight: 300;
 	color: var(--white);
-	transition: opacity ease .5s 1s;
+	transition: opacity ease .5s .8s, height .8s;
 }
 
-.box_header .box_close {
+
+.origami_header .origami_close {
+	height: fit-content;
 	border-bottom: 2px dotted var(--accent); 
 	cursor: pointer;
 }
 
-.box_header .box_close:hover {
+.origami_header .origami_close:hover {
 	color: var(--accent); 
 	border-bottom: 2px dotted var(--accent); 
 	cursor: pointer;
 }
 
-.box_face .box_label {
+.origami_face .origami_label {
+	height: fit-content;
 	opacity: 1;
 	line-height: normal;
 	font-size: 2rem;
@@ -167,19 +165,19 @@ body {
 	height: auto !important;
 }
 
-.is_open .box_face {
+.is_open .origami_face {
 	z-index: 0;
 }
 
-.is_open .box_face.selected {
+.is_open .origami_face.selected {
 	z-index: 20;
 }
 
-.is_open .box_face.selectable {
+.is_open .origami_face.selectable {
 	z-index: 10;
 }
 
-.is_open .box_face .box_label {
+.is_open .origami_face .origami_label {
 	opacity: 0;
 	width: 0;
 	height: 0;
@@ -193,11 +191,10 @@ body {
 .is_open .project_container {
 	width: 100%;
 	height: 100%;
-	flex-flow: column;
 	padding: 1.5rem;
 	line-height: 1.5rem;
 	overflow-y: hidden;
-	transition: opacity ease .5s 1s, width 0s 1s, height 0s 1s;
+	transition: opacity ease .5s .8s, width 0s .8s, height 0s .8s;
 }
 
 .selected .project_container{
@@ -241,7 +238,6 @@ body {
 	/* border: 2px solid var(--black); */
 	width: 100%;
 	height: auto;
-	transition: opacity .5s;
 	margin-bottom: 1.8rem;
 }
 

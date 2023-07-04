@@ -16,44 +16,44 @@ var openCls = "is_open";
 function updateSelected() {
     prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
     nextIndexFace = (indexFace + 1) % numFaces;
-    $('.is_open .box_face').removeClass(['selected','selectable']);
-    $('.is_open .box_face').eq(indexFace).addClass('selected');
-    $('.is_open .box_face').eq(prevIndexFace).addClass('selectable');
-    $('.is_open .box_face').eq(nextIndexFace).addClass('selectable');
+    $('.is_open .origami_face').removeClass(['selected','selectable']);
+    $('.is_open .origami_face').eq(indexFace).addClass('selected');
+    $('.is_open .origami_face').eq(prevIndexFace).addClass('selectable');
+    $('.is_open .origami_face').eq(nextIndexFace).addClass('selectable');
 }
 
-// open box
-$(document).on('click', '.box_container .box_face', function () {
-    currentBoxContainer = $(this).closest('.box_container');
+// open origami
+$(document).on('click', '.origami_container .origami_face', function () {
+    currentBoxContainer = $(this).closest('.origami_container');
     if (!currentBoxContainer.hasClass(openCls)) {
         currentBoxContainer.addClass(openCls)
-        numFaces = $('.is_open .box_face').length;
+        numFaces = $('.is_open .origami_face').length;
         currentBoxContainer.css('z-index', '99');
-        // all other closed box_containers must not react to click (apparently I needed that?)
-        $('.box_container').not(currentBoxContainer).css({ 'pointer-events': 'none' });
-        currentBoxContainer.find('.box_header').removeClass([hiddenCls]);
+        // all other closed origami_containers must not react to click (apparently I needed that?)
+        $('.origami_container').not(currentBoxContainer).css({ 'pointer-events': 'none' });
+        currentBoxContainer.find('.origami_header').removeClass([hiddenCls]);
         currentBoxContainer.find('.project_container').removeClass([hiddenCls]);
         updateSelected();
     }
 });
 
 function closeTheBox() {
-    currentBoxContainer = $('.box_container.is_open');
-    var box = currentBoxContainer.find('.box')[0];
-    box.style.transform = ''; // clear the transform style so that it doesn't bug
+    currentBoxContainer = $('.origami_container.is_open');
+    var origami = currentBoxContainer.find('.origami')[0];
+    origami.style.transform = ''; // clear the transform style so that it doesn't bug
     $('.project_container').scrollTop(0);
-    $('.box_face').removeClass('selected');
+    $('.origami_face').removeClass('selected');
     currentBoxContainer.removeClass(openCls)
     currentBoxContainer.css('z-index', '0')
-    currentBoxContainer.find('.box_header').addClass(hiddenCls);
+    currentBoxContainer.find('.origami_header').addClass(hiddenCls);
     currentBoxContainer.find('.project_container').addClass(hiddenCls);
     currentAngle = 0;
     indexFace = 0;
-    $('.box_container').not(currentBoxContainer).css({ 'pointer-events': 'auto' });
+    $('.origami_container').not(currentBoxContainer).css({ 'pointer-events': 'auto' });
 }
 
 // closing through clicking the closing button 
-$('.box_close').on('click', function () {
+$('.origami_close').on('click', function () {
     closeTheBox();
 });
 
@@ -66,9 +66,9 @@ $(document).on('keydown', function (event) {
 
 
 function rotateCarousel() {
-    var selectedBox = document.querySelector('.is_open .box');
+    var selectedBox = document.querySelector('.is_open .origami');
 
-    // Check in which section the opened box is contained, if found the statement is true (has lenght = has parent) 
+    // Check in which section the opened origami is contained, if found the statement is true (has lenght = has parent) 
     var hasWebAncestor = $(selectedBox).parents('#web').length > 0;
     var hasIlluAncestor = $(selectedBox).parents('#illu').length > 0;
     var hasExtraAncestor = $(selectedBox).parents('#extra').length > 0;
@@ -93,7 +93,7 @@ function rotateCarousel() {
 // left = -1
 // right = 1
 function rotateBox(direction) {
-    numFaces = $('.is_open .box_face').length; // add this line to update the number of faces
+    numFaces = $('.is_open .origami_face').length; // add this line to update the number of faces
     var rotationIndex = 360 / numFaces;
     if (direction < 0) {
         currentAngle += rotationIndex;
@@ -107,7 +107,7 @@ function rotateBox(direction) {
     updateSelected();
 }
 
-//throttling function to avoid crazy spin of the box carousel
+//throttling function to avoid crazy spin of the origami carousel
 var throttle = false;
 function throttling() {
     if (throttle) {
@@ -119,9 +119,9 @@ function throttling() {
 
 
 //rotating with a click (slow on touch tap to fix)
-$(document).on('click', '.is_open .box_face', function () {
-    var prevFace = $('.is_open .box_face').eq(prevIndexFace);
-    var nextFace = $('.is_open .box_face').eq(nextIndexFace);
+$(document).on('click', '.is_open .origami_face', function () {
+    var prevFace = $('.is_open .origami_face').eq(prevIndexFace);
+    var nextFace = $('.is_open .origami_face').eq(nextIndexFace);
     if (this === prevFace[0]) {
         rotateBox(-1);
     } else if (this === nextFace[0]) {
@@ -131,7 +131,7 @@ $(document).on('click', '.is_open .box_face', function () {
 });
 
 $(window).on('keydown', function(event) {
-    if ($('.box_container').hasClass(openCls)) {
+    if ($('.origami_container').hasClass(openCls)) {
       if (!throttle) {
         if (event.key === 'ArrowLeft') {
           rotateBox(-1);
@@ -144,10 +144,10 @@ $(window).on('keydown', function(event) {
     }
   });  
 
-//scroll box horizontally but only works outside selected scrollable project
+//scroll origami horizontally but only works outside selected scrollable project
 $(window).on('wheel', function(event){
-    if ($('.box_container').hasClass(openCls)) {
-        if (!$('.is_open .box_face.selected').has(event.target).length) {
+    if ($('.origami_container').hasClass(openCls)) {
+        if (!$('.is_open .origami_face.selected').has(event.target).length) {
             if (!throttle) {
                 if (Math.sign(event.originalEvent.deltaY) === -1) {
                     rotateBox(-1);
@@ -175,7 +175,7 @@ function getTouches(evt) {
 }
 
 function handleTouchStart(evt) {
-    if (!$('.box_container').hasClass(openCls)) {
+    if (!$('.origami_container').hasClass(openCls)) {
         return;
     }
 
@@ -187,7 +187,7 @@ function handleTouchStart(evt) {
 }
 
 function handleTouchMove(evt) {
-    if (!$('.box_container').hasClass(openCls) || !xDown || !yDown) {
+    if (!$('.origami_container').hasClass(openCls) || !xDown || !yDown) {
         return;
     }
 

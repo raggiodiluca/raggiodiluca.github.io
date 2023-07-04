@@ -1,62 +1,62 @@
-#web.box_container {
+#web.origami_container {
 	width: 3rem;
 	height: 7rem;
 }
 
-#web .box {
+#web .origami {
 	transform: translateX(calc(-7.5rem - 1vw)) rotateX(-20deg) rotateY(40deg) rotateZ(-100deg);
 }
 
-#web.is_open .box{
+#web.is_open .origami{
 	transform: translateZ(-30vw);
 }
 
-#web .box_face {
+#web .origami_face {
 	width: 3rem;
 	height: 7rem;
 }
 
-#web .box_face::before {
+#web .origami_face::before {
 	content: "Web";
 }
 
-#web.is_open .box_face:nth-child(1) {
+#web.is_open .origami_face:nth-child(1) {
 	transform: rotateY(0deg) translateZ(30vw);
 }
 
-#web.is_open .box_face:nth-child(2) {
+#web.is_open .origami_face:nth-child(2) {
 	transform: rotateY(72deg) translateZ(30vw);
 }
 
-#web.is_open .box_face:nth-child(3) {
+#web.is_open .origami_face:nth-child(3) {
 	transform: rotateY(144deg) translateZ(30vw);
 }
 
-#web.is_open .box_face:nth-child(4) {
+#web.is_open .origami_face:nth-child(4) {
 	transform: rotateY(216deg) translateZ(30vw);
 }
 
-#web.is_open .box_face:nth-child(5) {
+#web.is_open .origami_face:nth-child(5) {
 	transform: rotateY(288deg) translateZ(30vw);
 }
 
-#web .box_face:nth-child(1) {
+#web .origami_face:nth-child(1) {
 	transform: rotateY(0deg) translateZ(2.03rem);
 }
 
-#web .box_face:nth-child(2) {
+#web .origami_face:nth-child(2) {
 	transform: rotateY(72deg) translateZ(2.03rem);
 }
 
-#web .box_face:nth-child(3) {
+#web .origami_face:nth-child(3) {
 	transform: rotateY(144deg) translateZ(2.03rem);
 }
 
-#web .box_face:nth-child(4) {
+#web .origami_face:nth-child(4) {
 	transform: rotateY(216deg) translateZ(2.03rem);
 }
 
-#web .box_face:nth-child(5) {
+#web .origami_face:nth-child(5) {
 	transform: rotateY(288deg) translateZ(2.03rem);
 }
 
