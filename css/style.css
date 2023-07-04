@@ -29,7 +29,9 @@
 	user-select: none;
 }
 
-body {
+html, body {
+	height: 100%;
+	width: 100%;
 	color: var(--black);
 	font-family: 'Archivo', sans-serif;
 	overflow: hidden;
@@ -38,7 +40,7 @@ body {
 }
 
 #container {
-	height: 100vh;
+	height: 100%;
 	width: 100vw;
 	display: flex;
 	flex-flow: column;
@@ -59,11 +61,11 @@ body {
 #illu.origami_container.is_open,
 #extra.origami_container.is_open,
 #about.origami_container.is_open {
-	height: 75vh;
+	height: 75%;
 	width: 40vw;
 	perspective: 300vw;
 	perspective-origin: 50% 50%;
-	transform: translateY(-1.5rem);
+	transform: translateY(-2rem);
 	transition: .8s;
 }
 
@@ -239,6 +241,7 @@ body {
 	width: 100%;
 	height: auto;
 	margin-bottom: 1.8rem;
+	user-select: none;
 }
 
 .is_open .project_img:last-child {

@@ -1,8 +1,3 @@
-$(document).ready(function () {
-    
-    
-});
-
 var numFaces = 0;
 var indexFace = 0;
 var prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
@@ -12,30 +7,91 @@ var currentAngle = 0;
 var invisibleCls = "is_invisible";
 var hiddenCls = "is_hidden";
 var openCls = "is_open";
+var throttle = false;
+
+
+$(document).ready(function () {
+
+    // open origami
+    $(document).on('click', '.origami_container .origami_face', function () {
+        currentBoxContainer = $(this).closest('.origami_container');
+        if (!currentBoxContainer.hasClass(openCls)) {
+            currentBoxContainer.addClass(openCls)
+            numFaces = $('.is_open .origami_face').length;
+            currentBoxContainer.css('z-index', '99');
+            // all other closed origami_containers must not react to click (apparently I needed that?)
+            $('.origami_container').not(currentBoxContainer).css({ 'pointer-events': 'none' });
+            currentBoxContainer.find('.origami_header').removeClass([hiddenCls]);
+            currentBoxContainer.find('.project_container').removeClass([hiddenCls]);
+            updateSelected();
+        }
+    });
+
+    // closing through clicking the closing button 
+    $('.origami_close').on('click', function () {
+        closeTheBox();
+    });
+
+    // closing through clicking Esc 
+    $(document).on('keydown', function (event) {
+        if (event.key === 'Escape') { // Check if the pressed key is 'Escape'
+            closeTheBox();
+        }
+    });
+
+    //rotating with a click (slow on touch tap to fix)
+    $(document).on('click', '.is_open .origami_face', function () {
+        var prevFace = $('.is_open .origami_face').eq(prevIndexFace);
+        var nextFace = $('.is_open .origami_face').eq(nextIndexFace);
+        if (this === prevFace[0]) {
+            rotateBox(-1);
+        } else if (this === nextFace[0]) {
+            rotateBox(1);
+        }
+
+    });
+
+    $(window).on('keydown', function (event) {
+        if ($('.origami_container').hasClass(openCls)) {
+            if (!throttle) {
+                if (event.key === 'ArrowLeft') {
+                    rotateBox(-1);
+                } else if (event.key === 'ArrowRight') {
+                    rotateBox(1);
+                }
+                throttle = true;
+                throttling();
+            }
+        }
+    });
+
+    //scroll origami horizontally but only works outside selected scrollable project
+    $(window).on('wheel', function (event) {
+        if ($('.origami_container').hasClass(openCls)) {
+            if (!$('.is_open .origami_face.selected').has(event.target).length) {
+                if (!throttle) {
+                    if (Math.sign(event.originalEvent.deltaY) === -1) {
+                        rotateBox(-1);
+                    } else if (Math.sign(event.originalEvent.deltaY) === 1) {
+                        rotateBox(1);
+                    }
+                    throttle = true;
+                    throttling();
+                }
+            }
+        }
+    });
+
+});
 
 function updateSelected() {
     prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
     nextIndexFace = (indexFace + 1) % numFaces;
-    $('.is_open .origami_face').removeClass(['selected','selectable']);
+    $('.is_open .origami_face').removeClass(['selected', 'selectable']);
     $('.is_open .origami_face').eq(indexFace).addClass('selected');
     $('.is_open .origami_face').eq(prevIndexFace).addClass('selectable');
     $('.is_open .origami_face').eq(nextIndexFace).addClass('selectable');
 }
-
-// open origami
-$(document).on('click', '.origami_container .origami_face', function () {
-    currentBoxContainer = $(this).closest('.origami_container');
-    if (!currentBoxContainer.hasClass(openCls)) {
-        currentBoxContainer.addClass(openCls)
-        numFaces = $('.is_open .origami_face').length;
-        currentBoxContainer.css('z-index', '99');
-        // all other closed origami_containers must not react to click (apparently I needed that?)
-        $('.origami_container').not(currentBoxContainer).css({ 'pointer-events': 'none' });
-        currentBoxContainer.find('.origami_header').removeClass([hiddenCls]);
-        currentBoxContainer.find('.project_container').removeClass([hiddenCls]);
-        updateSelected();
-    }
-});
 
 function closeTheBox() {
     currentBoxContainer = $('.origami_container.is_open');
@@ -51,19 +107,6 @@ function closeTheBox() {
     indexFace = 0;
     $('.origami_container').not(currentBoxContainer).css({ 'pointer-events': 'auto' });
 }
-
-// closing through clicking the closing button 
-$('.origami_close').on('click', function () {
-    closeTheBox();
-});
-
-// closing through clicking Esc 
-$(document).on('keydown', function (event) {
-    if (event.key === 'Escape') { // Check if the pressed key is 'Escape'
-        closeTheBox();
-    }
-});
-
 
 function rotateCarousel() {
     var selectedBox = document.querySelector('.is_open .origami');
@@ -108,7 +151,6 @@ function rotateBox(direction) {
 }
 
 //throttling function to avoid crazy spin of the origami carousel
-var throttle = false;
 function throttling() {
     if (throttle) {
         setTimeout(() => {
@@ -118,51 +160,9 @@ function throttling() {
 }
 
 
-//rotating with a click (slow on touch tap to fix)
-$(document).on('click', '.is_open .origami_face', function () {
-    var prevFace = $('.is_open .origami_face').eq(prevIndexFace);
-    var nextFace = $('.is_open .origami_face').eq(nextIndexFace);
-    if (this === prevFace[0]) {
-        rotateBox(-1);
-    } else if (this === nextFace[0]) {
-        rotateBox(1);
-    }
-    
-});
-
-$(window).on('keydown', function(event) {
-    if ($('.origami_container').hasClass(openCls)) {
-      if (!throttle) {
-        if (event.key === 'ArrowLeft') {
-          rotateBox(-1);
-        } else if (event.key === 'ArrowRight') {
-          rotateBox(1);
-        }
-        throttle = true;
-        throttling();
-      }
-    }
-  });  
-
-//scroll origami horizontally but only works outside selected scrollable project
-$(window).on('wheel', function(event){
-    if ($('.origami_container').hasClass(openCls)) {
-        if (!$('.is_open .origami_face.selected').has(event.target).length) {
-            if (!throttle) {
-                if (Math.sign(event.originalEvent.deltaY) === -1) {
-                    rotateBox(-1);
-                } else if (Math.sign(event.originalEvent.deltaY) === 1) {
-                    rotateBox(1);
-                }
-                throttle = true;
-                throttling();
-            }
-        }
-    }
-});
 
 
-//swipe rotate (found online)
+//swipe rotate (found online) --- to be converted in JQuery
 
 document.addEventListener('touchstart', handleTouchStart, { passive: false });
 document.addEventListener('touchmove', handleTouchMove, { passive: false });
