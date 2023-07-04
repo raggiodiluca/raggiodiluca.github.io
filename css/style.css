@@ -234,13 +234,13 @@ body {
 	color: var(--accent);
 }
 
-.is_open .image-of-list {
+.is_open .project_img {
 	/* border: 2px solid var(--black); */
 	width: 100%;
 	height: auto;
 	margin-bottom: 1.8rem;
 }
 
-.is_open .image-of-list:last-child {
+.is_open .project_img:last-child {
 	margin: 0
 }
