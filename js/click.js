@@ -108,24 +108,23 @@ function closeTheBox() {
     $('.origami_container').not(currentBoxContainer).css({ 'pointer-events': 'auto' });
 }
 
+
+
 function rotateCarousel() {
     var selectedBox = document.querySelector('.is_open .origami');
 
-    // Check in which section the opened origami is contained, if found the statement is true (has lenght = has parent) 
-    var hasWebAncestor = $(selectedBox).parents('#web').length > 0;
-    var hasIlluAncestor = $(selectedBox).parents('#illu').length > 0;
-    var hasExtraAncestor = $(selectedBox).parents('#extra').length > 0;
-    var hasAboutAncestor = $(selectedBox).parents('#about').length > 0;
-
-    if (hasWebAncestor) {
-        selectedBox.style.transform = 'translateZ(-30vw) rotateY(' + currentAngle + 'deg) ';
-    } else if (hasIlluAncestor) {
-        selectedBox.style.transform = 'translateZ(-38vw) rotateY(' + currentAngle + 'deg) ';
-    } else if (hasExtraAncestor) {
-        selectedBox.style.transform = 'translateZ(-40vw) rotateY(' + currentAngle + 'deg) ';
-    } else if (hasAboutAncestor) {
-        selectedBox.style.transform = 'translateZ(-25vw) rotateY(' + currentAngle + 'deg) ';
-    }
+    var obj = $('.is_open .origami');
+    var transformMatrix = obj.css("-webkit-transform") ||
+        obj.css("-moz-transform") ||
+        obj.css("-ms-transform") ||
+        obj.css("-o-transform") ||
+        obj.css("transform");
+    var matrix = transformMatrix.replace(/[^0-9\-.,]/g, '').split(',');
+    var Z = matrix[14];
+    var viewportWidth = $(window).width();
+    var convertedZ = Math.round((Z * 100) / viewportWidth);
+    
+    selectedBox.style.transform = 'translateZ('+ convertedZ + 'vw) rotateY(' + currentAngle + 'deg) ';
 
     $('.project_container').animate({
         scrollTop: 0

@@ -11,7 +11,7 @@
 	transform: translateX(4.5rem) translateY(calc(-4rem - 3vh)) rotateX(30deg) rotateY(20deg) rotateZ(-150deg);
 }
 
-#illu.is_open .origami  {
+#illu.is_open .origami {
 	transform: translateZ(-38vw);
 }
 
@@ -27,6 +27,7 @@
 #illu.is_open .origami_face:nth-child(1) {
 	transform: rotateY(0deg) translateZ(38vw);
 }
+
 #illu.is_open .origami_face:nth-child(2) {
 	transform: rotateY(60deg) translateZ(38vw);
 }
@@ -45,6 +46,36 @@
 
 #illu.is_open .origami_face:nth-child(6) {
 	transform: rotateY(300deg) translateZ(38vw);
+}
+
+@media (hover : none) {
+	#illu.is_open .origami {
+		transform: translateZ(-86.6vw);
+	}
+
+	#illu.is_open .origami_face:nth-child(1) {
+		transform: rotateY(0deg) translateZ(86.6vw);
+	}
+
+	#illu.is_open .origami_face:nth-child(2) {
+		transform: rotateY(60deg) translateZ(86.6vw);
+	}
+
+	#illu.is_open .origami_face:nth-child(3) {
+		transform: rotateY(120deg) translateZ(86.6vw);
+	}
+
+	#illu.is_open .origami_face:nth-child(4) {
+		transform: rotateY(180deg) translateZ(86.6vw);
+	}
+
+	#illu.is_open .origami_face:nth-child(5) {
+		transform: rotateY(240deg) translateZ(86.6vw);
+	}
+
+	#illu.is_open .origami_face:nth-child(6) {
+		transform: rotateY(300deg) translateZ(86.6vw);
+	}
 }
 
 #illu .origami_face:nth-child(1) {
