@@ -7,12 +7,17 @@
 	perspective: 100vw;
 }
 
+
 #illu .origami {
 	transform: translateX(4.5rem) translateY(calc(-4rem - 3vh)) rotateX(30deg) rotateY(20deg) rotateZ(-150deg);
 }
 
-#illu.is_open .origami {
+#illu.is_open .origami_zoom{
 	transform: translateZ(-38vw);
+}
+
+#illu.is_open .origami{
+	transform: none;
 }
 
 #illu .origami_face {
@@ -49,28 +54,32 @@
 }
 
 @media (hover : none) {
-	#illu.is_open .origami {
-		transform: translateZ(-100vw);
+	#illu.is_open .origami_zoom{
+		transform: translateZ(-85vw);
+	}
+	
+	#illu.is_open .origami{
+		transform: none;
 	}
 
 	#illu.is_open .origami_face:nth-child(1) {
-		transform: rotateY(0deg) translateZ(100vw);
+		transform: rotateY(0deg) translateZ(85vw);
 	}
 
 	#illu.is_open .origami_face:nth-child(2) {
-		transform: rotateY(60deg) translateZ(100vw);
+		transform: rotateY(60deg) translateZ(85vw);
 	}
 
 	#illu.is_open .origami_face:nth-child(3) {
-		transform: rotateY(120deg) translateZ(100vw);
+		transform: rotateY(120deg) translateZ(85vw);
 	}
 
 	#illu.is_open .origami_face:nth-child(4) {
-		transform: rotateY(180deg) translateZ(100vw);
+		transform: rotateY(180deg) translateZ(85vw);
 	}
 
 	#illu.is_open .origami_face:nth-child(5) {
-		transform: rotateY(240deg) translateZ(100vw);
+		transform: rotateY(240deg) translateZ(85vw);
 	}
 
 	#illu.is_open .origami_face:nth-child(6) {

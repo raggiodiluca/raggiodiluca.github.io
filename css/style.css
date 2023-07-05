@@ -79,11 +79,19 @@ html, body {
 	#about.origami_container.is_open {
 		height: 100%;
 		width: 100vw;
-		perspective: 300vw;
+		perspective: 100vh;
 		perspective-origin: 50% 8%;
 		transform: translateY(0);
 		transition: .8s;
+		padding: 1.5rem;
 	}
+}
+
+.origami_zoom {
+	height: 100%;
+	width: 100%;
+	transform-style: preserve-3d;
+	transition: .8s;
 }
 
 .origami {
@@ -150,7 +158,7 @@ html, body {
 	#extra.is_open .origami_face,
 	#about.is_open .origami_face {
 		height: 100%;
-		width: 100vw;
+		width: 100%;
 	}
 }
 

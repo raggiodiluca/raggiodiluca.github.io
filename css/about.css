@@ -7,8 +7,12 @@
 	transform: translateY(calc(11rem + 5vh)) rotateX(10deg) rotateY(-30deg) rotateZ(-70deg);
 }
 
-#about.is_open .origami{
+#about.is_open .origami_zoom{
 	transform: translateZ(-25vw);
+}
+
+#about.is_open .origami{
+	transform: none;
 }
 
 #about .origami_face {
@@ -30,6 +34,28 @@
 
 #about.is_open .origami_face:nth-child(3) {
 	transform: rotateY(240deg) translateZ(25vw);
+}
+
+@media (hover : none) {
+	#about.is_open .origami_zoom{
+		transform: translateZ(-85vw);
+	}
+	
+	#about.is_open .origami{
+		transform: none;
+	}
+
+	#about.is_open .origami_face:nth-child(1) {
+		transform: rotateY(0deg) translateZ(85vw);
+	}
+	
+	#about.is_open .origami_face:nth-child(2) {
+		transform: rotateY(120deg) translateZ(85vw);
+	}
+	
+	#about.is_open .origami_face:nth-child(3) {
+		transform: rotateY(240deg) translateZ(85vw);
+	}
 }
 
 #about .origami_face:nth-child(1) {
