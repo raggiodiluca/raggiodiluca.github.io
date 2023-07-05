@@ -206,10 +206,6 @@ html, body {
 	z-index: 20;
 }
 
-.is_open .origami_face.selectable {
-	z-index: 10;
-}
-
 .is_open .origami_face .origami_label {
 	opacity: 0;
 	width: 0;
