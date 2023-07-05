@@ -1,7 +1,5 @@
 var numFaces = 0;
 var indexFace = 0;
-var prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
-var nextIndexFace = (indexFace + 1) % numFaces;
 var currentOrigamiContainer;
 var currentAngle = 0;
 var invisibleCls = "is_invisible";
@@ -51,18 +49,6 @@ $(document).ready(function () {
         }
     });
 
-    //rotating with a click (slow on touch tap to fix)
-    $(document).on('click', '.is_open .origami_face', function () {
-        var prevFace = $('.is_open .origami_face').eq(prevIndexFace);
-        var nextFace = $('.is_open .origami_face').eq(nextIndexFace);
-        if (this === prevFace[0]) {
-            rotateOrigami(-1);
-        } else if (this === nextFace[0]) {
-            rotateOrigami(1);
-        }
-
-    });
-
     $(window).on('keydown', function (event) {
         if ($('.origami_container').hasClass(openCls)) {
             if (!throttle) {
@@ -97,12 +83,9 @@ $(document).ready(function () {
 });
 
 function updateSelected() {
-    prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
-    nextIndexFace = (indexFace + 1) % numFaces;
-    $('.is_open .origami_face').removeClass(['selected', 'selectable']);
+    $('.is_open .origami_face').removeClass('selected');
     $('.is_open .origami_face').eq(indexFace).addClass('selected');
-    $('.is_open .origami_face').eq(prevIndexFace).addClass('selectable');
-    $('.is_open .origami_face').eq(nextIndexFace).addClass('selectable');
+    document.getElementsByClassName("selected")[0].addEventListener('webkitTransitionEnd', fixSafariScrolling);
 }
 
 function closeTheOrigami() {
@@ -130,8 +113,6 @@ function rotation() {
     $('.project_container').animate({
         scrollTop: 0
     }, 500); // 500 is the duration of the animation in milliseconds
-
-    document.getElementsByClassName("selected")[0].addEventListener('webkitTransitionEnd', fixSafariScrolling);
 }
 
 function fixSafariScrolling(event) {
