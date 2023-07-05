@@ -131,7 +131,16 @@ function rotation() {
         scrollTop: 0
     }, 500); // 500 is the duration of the animation in milliseconds
 
+    document.getElementsByClassName("selected")[0].addEventListener('webkitTransitionEnd', fixSafariScrolling);
 }
+
+function fixSafariScrolling(event) {
+    event.target.style.overflowY = 'hidden';
+    setTimeout(function () {
+        event.target.style.overflowY = 'auto';
+    });
+}
+
 
 // left = -1
 // right = 1
@@ -162,53 +171,46 @@ function throttling() {
 
 
 
-//swipe rotate (found online) --- to be converted in JQuery
+// swipe rotate(found online) -- - to be converted in JQuery
+document.addEventListener('touchstart', handleTouchStart, {
+    passive: false
+});
+document.addEventListener('touchmove', handleTouchMove, {
+    passive: false
+});
+var xDown = null;
+var yDown = null;
 
-// document.addEventListener('touchstart', handleTouchStart, {
-//     passive: false
-// });
-// document.addEventListener('touchmove', handleTouchMove, {
-//     passive: false
-// });
+function getTouches(evt) {
+    return evt.touches || evt.originalEvent.touches; // jQuery 
+}
 
-// var xDown = null;
-// var yDown = null;
+function handleTouchStart(evt) {
+    if (!$('.origami_container').hasClass(openCls)) {
+        return;
+    }
+    const firstTouch = getTouches(evt)[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+    evt.target.setPointerCapture(firstTouch.pointerId);
+}
 
-// function getTouches(evt) {
-//     return evt.touches || evt.originalEvent.touches; // jQuery
-// }
-
-// function handleTouchStart(evt) {
-//     if (!$('.origami_container').hasClass(openCls)) {
-//         return;
-//     }
-
-//     const firstTouch = getTouches(evt)[0];
-//     xDown = firstTouch.clientX;
-//     yDown = firstTouch.clientY;
-
-//     evt.target.setPointerCapture(firstTouch.pointerId);
-// }
-
-// function handleTouchMove(evt) {
-//     if (!$('.origami_container').hasClass(openCls) || !xDown || !yDown) {
-//         return;
-//     }
-
-//     var xUp = evt.touches[0].clientX;
-//     var yUp = evt.touches[0].clientY;
-//     var xDiff = xDown - xUp;
-//     var yDiff = yDown - yUp;
-
-//     if (Math.abs(xDiff) > Math.abs(yDiff)) {
-//         if (xDiff > 0) {
-//             rotateOrigami(1);
-//         } else {
-//             rotateOrigami(-1);
-//         }
-//     }
-
-//     // Reset touch start coordinates
-//     xDown = null;
-//     yDown = null;
-// }
+function handleTouchMove(evt) {
+    if (!$('.origami_container').hasClass(openCls) || !xDown || !yDown) {
+        return;
+    }
+    var xUp = evt.touches[0].clientX;
+    var yUp = evt.touches[0].clientY;
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        if (xDiff > 0) {
+            rotateOrigami(1);
+        } else {
+            rotateOrigami(-1);
+        }
+    }
+    // Reset touch start coordinates     
+    xDown = null;
+    yDown = null;
+}
