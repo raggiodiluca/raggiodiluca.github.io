@@ -234,7 +234,10 @@ html, body {
 }
 
 .is_open .project_title {
+	width: 100%;
+	overflow: hidden;
 	font-size: 1.8rem;
+	line-height: 1.8rem;
 	text-transform: uppercase;
 	font-family: 'Archivo Narrow', sans-serif;
 	color: var(--black);
