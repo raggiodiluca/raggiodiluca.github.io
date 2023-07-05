@@ -32,12 +32,13 @@
 
 html, body {
 	height: 100%;
-	width: 100%;
+	width: 100vw;
 	color: var(--black);
 	font-family: 'Archivo', sans-serif;
 	overflow: hidden;
 	overscroll-behavior: none;
 	background-color: var(--black);
+	position: relative;
 }
 
 #container {
