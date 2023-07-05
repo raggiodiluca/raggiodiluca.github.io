@@ -22,16 +22,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
 
+.is_invisible {
+	opacity: 0 !important;
+	transition: opacity .7s;
+}
+
 .is_hidden {
-	height: 0;
-	width: 0;
-	overflow: hidden;
-	opacity: 0;
-	user-select: none;
+	display: none !important;
 }
 
 html, body {
-	height: 100%;
+	height: 100vh;
 	width: 100vw;
 	color: var(--black);
 	font-family: 'Archivo', sans-serif;
@@ -55,8 +56,8 @@ html, body {
 	position: absolute;
 	perspective: 40rem;
 	perspective-origin: 30% 30%;
-	transform: translateY(0);
-	transition: .8s;
+	transform: translateY(-2rem);
+	transition: ease .7s;
 }
 
 #web.origami_container.is_open,
@@ -68,7 +69,6 @@ html, body {
 	perspective: 300vw;
 	perspective-origin: 50% 50%;
 	transform: translateY(-2rem);
-	transition: .8s;
 }
 
 @media (hover : none) {
@@ -82,7 +82,7 @@ html, body {
 		perspective: 100vh;
 		perspective-origin: 50% 8%;
 		transform: translateY(0);
-		transition: .8s;
+		transition: ease .7s;
 		padding: 1.5rem;
 	}
 }
@@ -91,14 +91,14 @@ html, body {
 	height: 100%;
 	width: 100%;
 	transform-style: preserve-3d;
-	transition: .8s;
+	transition: ease .7s;
 }
 
 .origami {
 	width: 100%;
 	height: 100%;
 	transform-style: preserve-3d;
-	transition: .8s;
+	transition: ease .7s;
 	user-select: none;
 }
 
@@ -119,7 +119,7 @@ html, body {
 	justify-content: space-around;
 	background-color: var(--white);
 	cursor: pointer;
-	transition: .8s;
+	transition: ease .7s;
 }
 
 .origami_face::before {
@@ -130,17 +130,11 @@ html, body {
 	font-weight: 400;
 	color: var(--black);
 	transform: rotateZ(90deg);
-	height: auto !important;
-	transition: opacity ease .5s .8s,
-		width 0s .8s,
-		height 0s .8s;
+	transition: opacity ease .5s;
 }
 
 .is_open .origami_face::before {
-	height: 0;
-	width: 0;
-	opacity: 0;
-	transition: opacity 0s;
+	display: none;
 }
 
 #web.is_open .origami_face,
@@ -162,10 +156,6 @@ html, body {
 	}
 }
 
-.origami_header {
-	transition: height .8s;
-}
-
 .is_open .origami_header {
 	width: 100%;
 	height: 3.5rem;
@@ -175,20 +165,13 @@ html, body {
 	font-size: 2rem;
 	font-weight: 300;
 	color: var(--white);
-	transition: opacity ease .5s .8s, height .8s;
+	transition: opacity ease .7s;
 }
 
 @media (hover : none) {
 	.is_open .origami_header {
 		width: 100%;
 		height: 20%;
-		display: flex;
-		justify-content: space-between;
-		line-height: 2rem;
-		font-size: 2rem;
-		font-weight: 300;
-		color: var(--white);
-		transition: opacity ease .5s .8s, height .8s;
 	}
 }
 
@@ -234,22 +217,16 @@ html, body {
 }
 
 .project_container {
-	transition: opacity 0s;
-	cursor: default;
-}
-
-.is_open .project_container {
 	width: 100%;
 	height: 100%;
 	padding: 1.5rem;
 	line-height: 1.5rem;
 	overflow-y: hidden;
-	transition: opacity ease .5s .8s, width 0s .8s, height 0s .8s;
+	transition: opacity ease .7s;
 }
 
 .selected .project_container {
 	overflow-y: auto;
-	-webkit-overflow-scrolling: touch;
 	overscroll-behavior: none;
 }
 

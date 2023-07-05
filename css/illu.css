@@ -83,7 +83,7 @@
 	}
 
 	#illu.is_open .origami_face:nth-child(6) {
-		transform: rotateY(300deg) translateZ(100vw);
+		transform: rotateY(300deg) translateZ(85vw);
 	}
 }
 
