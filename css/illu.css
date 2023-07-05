@@ -50,31 +50,31 @@
 
 @media (hover : none) {
 	#illu.is_open .origami {
-		transform: translateZ(-86.6vw);
+		transform: translateZ(-100vw);
 	}
 
 	#illu.is_open .origami_face:nth-child(1) {
-		transform: rotateY(0deg) translateZ(86.6vw);
+		transform: rotateY(0deg) translateZ(100vw);
 	}
 
 	#illu.is_open .origami_face:nth-child(2) {
-		transform: rotateY(60deg) translateZ(86.6vw);
+		transform: rotateY(60deg) translateZ(100vw);
 	}
 
 	#illu.is_open .origami_face:nth-child(3) {
-		transform: rotateY(120deg) translateZ(86.6vw);
+		transform: rotateY(120deg) translateZ(100vw);
 	}
 
 	#illu.is_open .origami_face:nth-child(4) {
-		transform: rotateY(180deg) translateZ(86.6vw);
+		transform: rotateY(180deg) translateZ(100vw);
 	}
 
 	#illu.is_open .origami_face:nth-child(5) {
-		transform: rotateY(240deg) translateZ(86.6vw);
+		transform: rotateY(240deg) translateZ(100vw);
 	}
 
 	#illu.is_open .origami_face:nth-child(6) {
-		transform: rotateY(300deg) translateZ(86.6vw);
+		transform: rotateY(300deg) translateZ(100vw);
 	}
 }
 

@@ -42,27 +42,27 @@
 
 @media (hover : none) {
 	#web.is_open .origami {
-		transform: translateZ(-100vw);
+		transform: translateZ(-79vw);
 	}
 
 	#web.is_open .origami_face:nth-child(1) {
-		transform: rotateY(0deg) translateZ(100vw);
+		transform: rotateY(0deg) translateZ(79vw);
 	}
 	
 	#web.is_open .origami_face:nth-child(2) {
-		transform: rotateY(72deg) translateZ(100vw);
+		transform: rotateY(72deg) translateZ(79vw);
 	}
 	
 	#web.is_open .origami_face:nth-child(3) {
-		transform: rotateY(144deg) translateZ(100vw);
+		transform: rotateY(144deg) translateZ(79vw);
 	}
 	
 	#web.is_open .origami_face:nth-child(4) {
-		transform: rotateY(216deg) translateZ(100vw);
+		transform: rotateY(216deg) translateZ(79vw);
 	}
 	
 	#web.is_open .origami_face:nth-child(5) {
-		transform: rotateY(288deg) translateZ(100vw);
+		transform: rotateY(288deg) translateZ(79vw);
 	}
 }
 
