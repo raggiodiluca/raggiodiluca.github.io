@@ -36,7 +36,6 @@ html, body {
 	width: 100vw;
 	color: var(--black);
 	font-family: 'Archivo', sans-serif;
-	overflow: hidden;
 	overscroll-behavior: none;
 	background-color: var(--black);
 	position: relative;
@@ -49,7 +48,6 @@ html, body {
 	flex-flow: column;
 	align-items: center;
 	justify-content: center;
-	overflow: hidden;
 }
 
 .origami_container {
