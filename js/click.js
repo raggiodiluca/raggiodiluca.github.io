@@ -29,6 +29,7 @@ $(document).ready(function () {
             $('.origami_container').not(currentOrigamiContainer).addClass(invisibleCls);
             setTimeout(function () {
                 currentOrigamiContainer.find('.project_container').removeClass(hiddenCls);
+                $('.origami_container').not(currentOrigamiContainer).addClass(hiddenCls);
             }, 700);
             setTimeout(function () {
                 currentOrigamiContainer.find('.origami_header').removeClass(invisibleCls);
@@ -121,7 +122,10 @@ function closeTheOrigami() {
     $('.origami_container').not(currentOrigamiContainer).css({
         'pointer-events': 'auto'
     });
+    $('.origami_container').not(currentOrigamiContainer).removeClass(hiddenCls);
+    setTimeout(function () {
     $('.origami_container').not(currentOrigamiContainer).removeClass(invisibleCls);
+    }, 20);
 }
 
 function rotation() {
