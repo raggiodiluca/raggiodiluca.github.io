@@ -225,12 +225,7 @@ html, body {
 }
 
 .selected .project_container {
-	overflow-y: auto;
-	overscroll-behavior: none;
-}
-
-.is_open .project_container::-webkit-scrollbar {
-	display: none;
+	overflow-y: scroll !important;
 }
 
 .is_open .project_title {
