@@ -2,53 +2,40 @@ var numFaces = 0;
 var indexFace = 0;
 var prevIndexFace = (indexFace - 1 + numFaces) % numFaces;
 var nextIndexFace = (indexFace + 1) % numFaces;
-var currentOrigamiContainer;
+var currentBoxContainer;
 var currentAngle = 0;
 var invisibleCls = "is_invisible";
 var hiddenCls = "is_hidden";
-var invisibleCls = "is_invisible";
 var openCls = "is_open";
 var throttle = false;
-var origamiCls;
-var convertedZ = 0;
 
 
 $(document).ready(function () {
 
     // open origami
     $(document).on('click', '.origami_container .origami_face', function () {
-        currentOrigamiContainer = $(this).closest('.origami_container');
-        if (!currentOrigamiContainer.hasClass(openCls)) {
-            currentOrigamiContainer.addClass(openCls)
+        currentBoxContainer = $(this).closest('.origami_container');
+        if (!currentBoxContainer.hasClass(openCls)) {
+            currentBoxContainer.addClass(openCls)
             numFaces = $('.is_open .origami_face').length;
-            currentOrigamiContainer.css('z-index', '99');
-            // all other closed origami_containers must not react and disappear
-            $('.origami_container').not(currentOrigamiContainer).css({
-                'pointer-events': 'none'
-            });
-            $('.origami_container').not(currentOrigamiContainer).addClass(invisibleCls);
-            setTimeout(function () {
-                currentOrigamiContainer.find('.project_container').removeClass(hiddenCls);
-                $('.origami_container').not(currentOrigamiContainer).addClass(hiddenCls);
-            }, 700);
-            setTimeout(function () {
-                currentOrigamiContainer.find('.origami_header').removeClass(invisibleCls);
-                currentOrigamiContainer.find('.project_container').removeClass(invisibleCls);
-            }, 720);
+            currentBoxContainer.css('z-index', '99');
+            // all other closed origami_containers must not react to click (apparently I needed that?)
+            $('.origami_container').not(currentBoxContainer).css({ 'pointer-events': 'none' });
+            currentBoxContainer.find('.origami_header').removeClass([hiddenCls]);
+            currentBoxContainer.find('.project_container').removeClass([hiddenCls]);
             updateSelected();
         }
-        origamiCls = $('.is_open .origami');
     });
 
     // closing through clicking the closing button 
     $('.origami_close').on('click', function () {
-        closeTheOrigami();
+        closeTheBox();
     });
 
     // closing through clicking Esc 
     $(document).on('keydown', function (event) {
         if (event.key === 'Escape') { // Check if the pressed key is 'Escape'
-            closeTheOrigami();
+            closeTheBox();
         }
     });
 
@@ -57,9 +44,9 @@ $(document).ready(function () {
         var prevFace = $('.is_open .origami_face').eq(prevIndexFace);
         var nextFace = $('.is_open .origami_face').eq(nextIndexFace);
         if (this === prevFace[0]) {
-            rotateOrigami(-1);
+            rotateBox(-1);
         } else if (this === nextFace[0]) {
-            rotateOrigami(1);
+            rotateBox(1);
         }
 
     });
@@ -68,9 +55,9 @@ $(document).ready(function () {
         if ($('.origami_container').hasClass(openCls)) {
             if (!throttle) {
                 if (event.key === 'ArrowLeft') {
-                    rotateOrigami(-1);
+                    rotateBox(-1);
                 } else if (event.key === 'ArrowRight') {
-                    rotateOrigami(1);
+                    rotateBox(1);
                 }
                 throttle = true;
                 throttling();
@@ -84,9 +71,9 @@ $(document).ready(function () {
             if (!$('.is_open .origami_face.selected').has(event.target).length) {
                 if (!throttle) {
                     if (Math.sign(event.originalEvent.deltaY) === -1) {
-                        rotateOrigami(-1);
+                        rotateBox(-1);
                     } else if (Math.sign(event.originalEvent.deltaY) === 1) {
-                        rotateOrigami(1);
+                        rotateBox(1);
                     }
                     throttle = true;
                     throttling();
@@ -104,59 +91,60 @@ function updateSelected() {
     $('.is_open .origami_face').eq(indexFace).addClass('selected');
     $('.is_open .origami_face').eq(prevIndexFace).addClass('selectable');
     $('.is_open .origami_face').eq(nextIndexFace).addClass('selectable');
-    document.getElementsByClassName("selected")[0].addEventListener('webkitTransitionEnd', fixSafariScrolling);
 }
 
-function closeTheOrigami() {
-    currentOrigamiContainer = $('.origami_container.is_open');
-    origamiCls = $('.is_open .origami');
-    origamiCls.css('transform', ''); // clear the transform style so that it doesn't bug
+function closeTheBox() {
+    currentBoxContainer = $('.origami_container.is_open');
+    var origami = currentBoxContainer.find('.origami')[0];
+    origami.style.transform = ''; // clear the transform style so that it doesn't bug
     $('.project_container').scrollTop(0);
     $('.origami_face').removeClass('selected');
-    currentOrigamiContainer.removeClass(openCls)
-    currentOrigamiContainer.css('z-index', '0')
-    currentOrigamiContainer.find('.origami_header').addClass(invisibleCls);
-    currentOrigamiContainer.find('.project_container').addClass(hiddenCls).addClass(invisibleCls);
+    currentBoxContainer.removeClass(openCls)
+    currentBoxContainer.css('z-index', '0')
+    currentBoxContainer.find('.origami_header').addClass(hiddenCls);
+    currentBoxContainer.find('.project_container').addClass(hiddenCls);
     currentAngle = 0;
     indexFace = 0;
-    $('.origami_container').not(currentOrigamiContainer).css({
-        'pointer-events': 'auto'
-    });
-    $('.origami_container').not(currentOrigamiContainer).removeClass(hiddenCls);
-    setTimeout(function () {
-    $('.origami_container').not(currentOrigamiContainer).removeClass(invisibleCls);
-    }, 20);
+    $('.origami_container').not(currentBoxContainer).css({ 'pointer-events': 'auto' });
 }
 
-function rotation() {
-    origamiCls = $('.is_open .origami');
-    var currentRotateZ = 'rotateY(' + currentAngle + 'deg)';
-    origamiCls.css('transform', currentRotateZ);
+function rotateCarousel() {
+    var selectedBox = document.querySelector('.is_open .origami');
+
+    // Check in which section the opened origami is contained, if found the statement is true (has lenght = has parent) 
+    var hasWebAncestor = $(selectedBox).parents('#web').length > 0;
+    var hasIlluAncestor = $(selectedBox).parents('#illu').length > 0;
+    var hasExtraAncestor = $(selectedBox).parents('#extra').length > 0;
+    var hasAboutAncestor = $(selectedBox).parents('#about').length > 0;
+
+    if (hasWebAncestor) {
+        selectedBox.style.transform = 'translateZ(-30vw) rotateY(' + currentAngle + 'deg) ';
+    } else if (hasIlluAncestor) {
+        selectedBox.style.transform = 'translateZ(-38vw) rotateY(' + currentAngle + 'deg) ';
+    } else if (hasExtraAncestor) {
+        selectedBox.style.transform = 'translateZ(-40vw) rotateY(' + currentAngle + 'deg) ';
+    } else if (hasAboutAncestor) {
+        selectedBox.style.transform = 'translateZ(-25vw) rotateY(' + currentAngle + 'deg) ';
+    }
+
     $('.project_container').animate({
         scrollTop: 0
-    }, 500); 
-}
+    }, 500); // 500 is the duration of the animation in milliseconds
 
-function fixSafariScrolling(event) {
-    event.target.style.overflowY = 'hidden';
-    setTimeout(function () {
-        event.target.style.overflowY = 'auto';
-    });
 }
-
 
 // left = -1
 // right = 1
-function rotateOrigami(direction) {
+function rotateBox(direction) {
     numFaces = $('.is_open .origami_face').length; // add this line to update the number of faces
     var rotationIndex = 360 / numFaces;
     if (direction < 0) {
         currentAngle += rotationIndex;
-        rotation();
+        rotateCarousel();
         indexFace = (indexFace - 1 + numFaces) % numFaces;
     } else {
         currentAngle -= rotationIndex;
-        rotation();
+        rotateCarousel();
         indexFace = (indexFace + 1) % numFaces;
     }
     updateSelected();
@@ -172,29 +160,26 @@ function throttling() {
 }
 
 
+//swipe rotate (found online) --- to be converted in JQuery
+document.addEventListener('touchstart', handleTouchStart, { passive: false });
+document.addEventListener('touchmove', handleTouchMove, { passive: false });
 
-
-// swipe rotate(found online) -- - to be converted in JQuery
-document.addEventListener('touchstart', handleTouchStart, {
-    passive: false
-});
-document.addEventListener('touchmove', handleTouchMove, {
-    passive: false
-});
 var xDown = null;
 var yDown = null;
 
 function getTouches(evt) {
-    return evt.touches || evt.originalEvent.touches; // jQuery 
+    return evt.touches || evt.originalEvent.touches; // jQuery
 }
 
 function handleTouchStart(evt) {
     if (!$('.origami_container').hasClass(openCls)) {
         return;
     }
+
     const firstTouch = getTouches(evt)[0];
     xDown = firstTouch.clientX;
     yDown = firstTouch.clientY;
+
     evt.target.setPointerCapture(firstTouch.pointerId);
 }
 
@@ -202,18 +187,21 @@ function handleTouchMove(evt) {
     if (!$('.origami_container').hasClass(openCls) || !xDown || !yDown) {
         return;
     }
+
     var xUp = evt.touches[0].clientX;
     var yUp = evt.touches[0].clientY;
     var xDiff = xDown - xUp;
     var yDiff = yDown - yUp;
+
     if (Math.abs(xDiff) > Math.abs(yDiff)) {
         if (xDiff > 0) {
-            rotateOrigami(1);
+            rotateBox(1);
         } else {
-            rotateOrigami(-1);
+            rotateBox(-1);
         }
     }
-    // Reset touch start coordinates     
+
+    // Reset touch start coordinates
     xDown = null;
     yDown = null;
 }
