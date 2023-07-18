@@ -32,7 +32,7 @@
 }
 
 html, body {
-	height: 100vh;
+	height: 100%;
 	width: 100vw;
 	color: var(--black);
 	font-family: 'Archivo', sans-serif;
