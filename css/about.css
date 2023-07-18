@@ -10,12 +10,6 @@
 #about.is_open .origami{
 	transform: translateZ(-25vw);
 }
-
-#about .origami_face {
-	width: 3rem;
-	height: 8rem;
-}
-
 #about .origami_face::before {
 	content: "About";
 }
@@ -33,14 +27,14 @@
 }
 
 #about .origami_face:nth-child(1) {
-	transform: rotateY(0deg) translateZ(0.83rem);
+	transform: rotateY(0deg) translateZ(0.8660254rem);
 }
 
 #about .origami_face:nth-child(2) {
-	transform: rotateY(120deg) translateZ(0.83rem);
+	transform: rotateY(120deg) translateZ(0.8660254rem);
 }
 
 #about .origami_face:nth-child(3) {
-	transform: rotateY(240deg) translateZ(0.83rem);
+	transform: rotateY(240deg) translateZ(0.8660254rem);
 }
 

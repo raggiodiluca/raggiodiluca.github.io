@@ -11,11 +11,6 @@
 	transform: translateZ(-30vw);
 }
 
-#web .origami_face {
-	width: 3rem;
-	height: 7rem;
-}
-
 #web .origami_face::before {
 	content: "Web";
 }
@@ -41,22 +36,22 @@
 }
 
 #web .origami_face:nth-child(1) {
-	transform: rotateY(0deg) translateZ(2.03rem);
+	transform: rotateY(0deg) translateZ(2.0645728rem);
 }
 
 #web .origami_face:nth-child(2) {
-	transform: rotateY(72deg) translateZ(2.03rem);
+	transform: rotateY(72deg) translateZ(2.0645728rem);
 }
 
 #web .origami_face:nth-child(3) {
-	transform: rotateY(144deg) translateZ(2.03rem);
+	transform: rotateY(144deg) translateZ(2.0645728rem);
 }
 
 #web .origami_face:nth-child(4) {
-	transform: rotateY(216deg) translateZ(2.03rem);
+	transform: rotateY(216deg) translateZ(2.0645728rem);
 }
 
 #web .origami_face:nth-child(5) {
-	transform: rotateY(288deg) translateZ(2.03rem);
+	transform: rotateY(288deg) translateZ(2.0645728rem);
 }
 

@@ -16,11 +16,6 @@
 	transform: translateZ(-40vw);
 }
 
-#extra .origami_face {
-	width: 3rem;
-	height: 7.5rem;
-}
-
 #extra .origami_face::before {
 	content: "Extra";
 }
