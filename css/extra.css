@@ -7,22 +7,13 @@
 	perspective: 50vw;
 }
 
-@media (hover : none) {
-	#extra.origami_container.is_open {
-		perspective: 100vh;
-	}
-}
 
 #extra .origami {
 	transform: translateX(calc(8rem + 1vw)) rotateX(30deg) rotateY(-40deg) rotateZ(-30deg);
 }
 
-#extra.is_open .origami_zoom{
-	transform: translateZ(-40vw);
-}
-
 #extra.is_open .origami{
-	transform: none;
+	transform: translateZ(-40vw);
 }
 
 #extra .origami_face {
@@ -48,33 +39,6 @@
 
 #extra.is_open .origami_face:nth-child(4) {
 	transform: rotateY(270deg) translateZ(40vw);
-}
-
-@media (hover : none) {
-	#extra.is_open .origami_zoom{
-		transform: translateZ(-85vw);
-	}
-	
-	#extra.is_open .origami{
-		transform: none;
-	}
-
-	#extra.is_open .origami_face:nth-child(1) {
-		transform: rotateY(0deg) translateZ(85vw);
-	}
-	
-	#extra.is_open .origami_face:nth-child(2) {
-		transform: rotateY(90deg) translateZ(85vw);
-	}
-	
-	#extra.is_open .origami_face:nth-child(3) {
-		transform: rotateY(180deg) translateZ(85vw);
-	}
-	
-	#extra.is_open .origami_face:nth-child(4) {
-		transform: rotateY(270deg) translateZ(85vw);
-	}
-
 }
 
 #extra .origami_face:nth-child(1) {

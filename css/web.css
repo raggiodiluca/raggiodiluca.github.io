@@ -7,12 +7,8 @@
 	transform: translateX(calc(-7.5rem - 1vw)) rotateX(-20deg) rotateY(40deg) rotateZ(-100deg);
 }
 
-#web.is_open .origami_zoom{
-	transform: translateZ(-30vw);
-}
-
 #web.is_open .origami{
-	transform: none;
+	transform: translateZ(-30vw);
 }
 
 #web .origami_face {
@@ -42,36 +38,6 @@
 
 #web.is_open .origami_face:nth-child(5) {
 	transform: rotateY(288deg) translateZ(30vw);
-}
-
-@media (hover : none) {
-	#web.is_open .origami_zoom{
-		transform: translateZ(-85vw);
-	}
-	
-	#web.is_open .origami{
-		transform: none;
-	}
-
-	#web.is_open .origami_face:nth-child(1) {
-		transform: rotateY(0deg) translateZ(85vw);
-	}
-	
-	#web.is_open .origami_face:nth-child(2) {
-		transform: rotateY(72deg) translateZ(85vw);
-	}
-	
-	#web.is_open .origami_face:nth-child(3) {
-		transform: rotateY(144deg) translateZ(85vw);
-	}
-	
-	#web.is_open .origami_face:nth-child(4) {
-		transform: rotateY(216deg) translateZ(85vw);
-	}
-	
-	#web.is_open .origami_face:nth-child(5) {
-		transform: rotateY(288deg) translateZ(85vw);
-	}
 }
 
 #web .origami_face:nth-child(1) {
