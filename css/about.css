@@ -14,6 +14,13 @@
 	content: "About";
 }
 
+#about .origami_face:nth-child(3){
+	background-image: url("/media/about/LAFOTO1000.webp");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
 #about.is_open .origami_face:nth-child(1) {
 	transform: rotateY(0deg) translateZ(25vw);
 }
