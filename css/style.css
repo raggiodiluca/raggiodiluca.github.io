@@ -147,6 +147,7 @@ html, body {
 	font-weight: 300;
 	color: var(--white);
 	transition: opacity ease .5s .8s, height .8s;
+	user-select: none;
 }
 
 
@@ -154,7 +155,6 @@ html, body {
 	height: fit-content;
 	border-bottom: 2px dotted var(--accent); 
 	cursor: pointer;
-	user-select: none;
 }
 
 .origami_header .origami_close:hover {
@@ -172,7 +172,6 @@ html, body {
 	color: var(--black);
 	transform: rotateZ(90deg);
 	height: auto !important;
-	user-select: none;
 }
 
 .is_open .origami_face {
