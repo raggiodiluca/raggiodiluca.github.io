@@ -154,6 +154,7 @@ html, body {
 	height: fit-content;
 	border-bottom: 2px dotted var(--accent); 
 	cursor: pointer;
+	user-select: none;
 }
 
 .origami_header .origami_close:hover {
@@ -171,6 +172,7 @@ html, body {
 	color: var(--black);
 	transform: rotateZ(90deg);
 	height: auto !important;
+	user-select: none;
 }
 
 .is_open .origami_face {
@@ -221,6 +223,7 @@ html, body {
 	font-family: 'Archivo Narrow', sans-serif;
 	color: var(--black);
 	margin-bottom: 1.8rem;
+	user-select: none;
 }
 
 .is_open .project_desc {
