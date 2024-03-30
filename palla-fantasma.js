@@ -4,7 +4,7 @@ window.addEventListener('scroll', function() {
     const triggerPoint = vh;
   
       const progress = scrollTop / triggerPoint;
-      const leftPosition = 100 * (1 - (progress/1.7)) + '%'; /* Calculate left based on scroll progress */
+      const leftPosition = 100 * (1 - (progress/.7)) + '%'; /* Calculate left based on scroll progress */
       document.querySelector('.door-mask .sphere').style.left = leftPosition;
   });
 
@@ -25,7 +25,6 @@ window.addEventListener('scroll', function() {
         let progress = (scrollTop - sphereTop + vh) / triggerPoint;
         progress = Math.min(progress, 1); // Ensure progress doesn't exceed 1
         const leftPosition = 'calc(' + Math.min(50 * (progress / .8), 50) + '% - 1rem)'; /* Calculate left based on scroll progress, limited to 50% */
-        console.log(leftPosition);
         sphere.style.left = leftPosition;
     }
 });
