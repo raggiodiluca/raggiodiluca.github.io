@@ -15,7 +15,15 @@
 </head>
 
 <body>
-
+    <svg id="blob" viewBox="0 0 250.44 69.91" width="0" height="0">
+        <defs>
+          <clipPath id="blobClip">
+            <circle class="clip-circle left"/>
+          <rect class="clip-rod"/>
+          <circle class="clip-circle right"/>
+          </clipPath>
+        </defs>
+    </svg>
 
     <div id="left-fix-container">
         <div class="logo-container">
@@ -62,7 +70,7 @@
                     <h3>Home</h3>
                 </div>
                 <div class="menu-label contacts">
-                    <h3>Contatti</h3>
+                    <h3>Scrivi</h3>
                 </div>
                 <div class="menu-label faq">
                     <h3>Faq</h3>
@@ -73,13 +81,16 @@
                     <h3>Home</h3>
                 </div>
                 <div class="menu-label contacts">
-                    <h3>Contatti</h3>
+                    <h3>Scrivi</h3>
                 </div>
                 <div class="menu-label faq">
                     <h3>Faq</h3>
                 </div>
             </div>
         </div>
+
+        
+          
 
     </div>
     <div id="main-scroll-container">
@@ -261,16 +272,21 @@
                     <div class="contact-form-text">
                         <p>Salve,</p>
                         <p>il mio nome è <input class="contact-name" type="text" placeholder="Rossella Verdi"> ,</p>
-                        <p><textarea class="contact-body" name="text" wrap="soft" placeholder="Vorrei un sito bello"></textarea></p>
+                        <p><textarea class="contact-body" name="text" wrap="soft"
+                                placeholder="Vorrei un sito bello"></textarea></p>
                     </div>
                     <div class="contact-form-buttons">
-                        <button class="email-send"><p>Invia per e-mail</p><img src="contact-icon-2.svg"></button>
-                        <button class="whatsapp-send"><p>Invia su whatsapp</p><img src="contact-icon-1.svg"></button>
+                        <button class="email-send">
+                            <p>Invia per e-mail</p><img src="contact-icon-2.svg">
+                        </button>
+                        <button class="whatsapp-send">
+                            <p>Invia su whatsapp</p><img src="contact-icon-1.svg">
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="section footer">
             <p>Sono uno sviluppatore web freelancer con background in design industriale e della comunicazione. Mi
                 occupo di progettare la tua idea con stile fresco e su misura.</p>

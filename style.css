@@ -172,7 +172,12 @@ body {
   background-color: var(--white);
   z-index: 2;
   pointer-events: none;
-  transition: clip-path .3s ease .1s;
+  clip-path: url(#blobClip);
+}
+
+.clip-rod,
+.clip-circle {
+  transition: all .3s ease .2s;
 }
 
 .menu.over h3 {

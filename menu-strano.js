@@ -1,57 +1,46 @@
 $(document).ready(function () {
-  let totalWidth = $(".menu.under").width();
-  let labelHeight = $(".menu-label").height();
-  let labelWidth = $(".menu-label").width();
-  let radius = labelHeight;
-  let leftFactor =
-    ((totalWidth - $(".selected").position().left) / totalWidth) * 100;
-  let rightFactor =
-    ((labelWidth + $(".selected").position().left) / totalWidth) * 100;
+  let labelHeight = $(".menu-container").height();
+  let radius = labelHeight / 2;
+  let labelWidth = $(".menu-label").width() - radius * 1.9;
+  let x = $(".selected").position().left + radius;
 
-  $(".menu.over").css(
-    "clip-path",
-    "inset(0% " +
-      leftFactor +
-      "% 0% " +
-      rightFactor +
-      "% round " +
-      radius +
-      "px )"
-  );
+  $(".clip-rod").attr("x", x);
+  $(".clip-rod").attr("width", labelWidth);
+  $(".clip-rod").attr("height", labelHeight);
+  $(".clip-circle.left").attr("cx", x);
+  $(".clip-circle.left").attr("cy", labelHeight / 2);
+  $(".clip-circle.left").attr("r", radius);
+  $(".clip-circle.right").attr("cx", labelWidth + x);
+  $(".clip-circle.right").attr("cy", labelHeight / 2);
+  $(".clip-circle.right").attr("r", radius);
 
   $(".menu.under").on({
     mousemove: function (event) {
       x = event.clientX - $(this).offset().left - labelWidth / 2;
-      leftFactor = ((totalWidth - x) / totalWidth) * 100;
-      rightFactor = ((labelWidth + x) / totalWidth) * 100;
-      $(".menu.over").css(
-        "clip-path",
-        "inset(0% " +
-          leftFactor +
-          "% 0% " +
-          rightFactor +
-          "% round " +
-          radius +
-          "px )"
-      );
-      $(".menu.over").css("transition", "none");
+
+      // Update SVG shapes
+      $(".clip-rod").attr("x", x);
+      $(".clip-rod").attr("width", labelWidth);
+      $(".clip-rod").attr("height", labelHeight);
+      $(".clip-circle.left").attr("cx", x);
+      $(".clip-circle.left").attr("cy", labelHeight / 2);
+      $(".clip-circle.left").attr("r", radius);
+      $(".clip-circle.right").attr("cx", labelWidth + x);
+      $(".clip-circle.right").attr("cy", labelHeight / 2);
+      $(".clip-circle.right").attr("r", radius);
     },
     mouseleave: function () {
-      let leftFactor =
-        ((totalWidth - $(".selected").position().left) / totalWidth) * 100;
-      let rightFactor =
-        ((labelWidth + $(".selected").position().left) / totalWidth) * 100;
-      $(".menu.over").css(
-        "clip-path",
-        "inset(0% " +
-          leftFactor +
-          "% 0% " +
-          rightFactor +
-          "% round " +
-          radius +
-          "px )"
-      );
-      $(".menu.over").css("transition", "clip-path .3s ease-out .15s");
+      x = $(".selected").position().left + radius;
+      // Update SVG shapes
+      $(".clip-rod").attr("x", x);
+      $(".clip-rod").attr("width", labelWidth);
+      $(".clip-rod").attr("height", labelHeight);
+      $(".clip-circle.left").attr("cx", x);
+      $(".clip-circle.left").attr("cy", labelHeight / 2);
+      $(".clip-circle.left").attr("r", radius);
+      $(".clip-circle.right").attr("cx", labelWidth + x);
+      $(".clip-circle.right").attr("cy", labelHeight / 2);
+      $(".clip-circle.right").attr("r", radius);
     },
   });
 
