@@ -14,7 +14,7 @@ html {
   --accent: #5951b8;
   --white: #ffffff;
   --black: #010101;
-  --spacing-unit: 3.5rem;
+  --spacing-unit: 3.8rem;
   --stroke-unit: 2px;
 }
 
@@ -221,7 +221,7 @@ body {
   justify-content: space-between;
   gap: calc(var(--spacing-unit)*1.4);
   max-width: 100%;
-  padding: calc(var(--spacing-unit)*2) var(--spacing-unit);
+  padding: calc(var(--spacing-unit)*1.4) var(--spacing-unit);
   margin-right: var(--spacing-unit);
   border-bottom: var(--stroke-unit) solid var(--white);
 }
@@ -493,35 +493,78 @@ gap: calc(var(--spacing-unit)*1.4);
 
 
 .contact-form {
-  width: 60%;
   display: flex;
-  flex-flow: column;
-  gap: calc(var(--spacing-unit)/4);
+  gap: var(--spacing-unit);
 }
 
-.contact-form p {
+.contact-form-text {
+  width: 65%;
+  display: flex;
+  flex-flow: column;
+  gap: calc(var(--spacing-unit)/10);
+}
+
+.contact-form-text p {
   display: flex; 
 }
 
-.contact-form input,
-.contact-form textarea.contact-body {
+.contact-form-text input,
+.contact-form-text textarea.contact-body {
   flex: 1; 
   border: none;
   border-bottom: var(--stroke-unit) solid var(--accent);
   color: var(--black)!important;
 }
 
-.contact-form input.contact-name {
+.contact-form-text textarea {
+  margin-top: .5rem;
+}
+
+.contact-form-text input.contact-name {
   margin: 0rem .5rem;
   
   outline: none;
 }
 
-.contact-form textarea.contact-body {
-  height: 8rem;
+.contact-form-text textarea.contact-body {
+  height: 5rem;
   width: 100%;
   resize: none;
   outline: none;
+}
+
+.contact-form-buttons {
+  width: 35%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.contact-form-buttons button {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  flex-direction: row;
+  gap: calc(calc(var(--spacing-unit)/1.25)/2);
+  width: 100%;
+  height: var(--spacing-unit);
+  background-color: var(--accent);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: calc(calc(var(--spacing-unit)/1.25)/2);
+  padding-right: calc(calc(var(--spacing-unit)/1.25)/2);
+  padding-left: calc(calc(var(--spacing-unit)/1.25)/2);
+}
+
+.contact-form-buttons button p{
+  color: var(--white);
+  text-align: right;
+}
+
+.contact-form-buttons button img{
+  height: 50%;
+  width: auto;
 }
 
 .footer {
