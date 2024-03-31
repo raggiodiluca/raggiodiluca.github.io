@@ -461,8 +461,7 @@ body {
 .process-grid {
   display: flex;
   flex-wrap: wrap;
-  column-gap: var(--spacing-unit);
-  row-gap: calc(var(--spacing-unit)*1.4);
+  gap: calc(var(--spacing-unit)*1.4) var(--spacing-unit);
 }
 
 .process-slide {
@@ -472,19 +471,6 @@ body {
   flex-flow: column;
   gap: calc(var(--spacing-unit)/2);
 }
-
-.process-slide:nth-child(2),
-.process-slide:nth-child(5) {
-  top: calc(var(--spacing-unit)*1.4);
-}
-
-.process-slide:nth-child(3),
-.process-slide:nth-child(6) {
-  top: calc(var(--spacing-unit)*2.8);
-}
-
-
-
 
 
 .droor-scene.section {
