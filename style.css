@@ -177,7 +177,7 @@ body {
 
 .clip-rod,
 .clip-circle {
-  transition: all .3s ease .2s;
+  transition: none;
 }
 
 .menu.over h3 {
