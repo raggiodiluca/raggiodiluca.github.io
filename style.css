@@ -367,7 +367,7 @@ body {
 }
 
 .arco .cosino-path {
-  stroke-dasharray: 310;
+  stroke-dasharray: 320;
   stroke-dashoffset: 0;
   
   animation: draw ;
@@ -381,7 +381,7 @@ body {
     stroke-dashoffset: 0;
   }
   50% {
-    stroke-dashoffset: 310;
+    stroke-dashoffset: 327;
   }
   100% {
     stroke-dashoffset: 0;
@@ -402,7 +402,7 @@ body {
     stroke-dashoffset: 0;
   }
   50% {
-    stroke-dashoffset: 110;
+    stroke-dashoffset: 106;
   }
   100% {
     stroke-dashoffset: 0;
@@ -433,7 +433,7 @@ body {
 
 
 .snake .cosino-path {
-  stroke-dasharray: 221;
+  stroke-dasharray: 225;
   stroke-dashoffset: 0;
 }
 
@@ -446,7 +446,7 @@ body {
     stroke-dashoffset: 0;
   }
   50% {
-    stroke-dashoffset: 222;
+    stroke-dashoffset: 230;
   }
   100% {
     stroke-dashoffset: 0;

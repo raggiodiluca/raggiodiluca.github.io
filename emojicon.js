@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of emojis
-    const emojis = ["🟣", "💜", "🪻", "👾", "🍆", "🍇", "♊","☔️","🌂","🟪","💟","💜","👿","😈","🔮","☂️"];
+    const emojis = ["🟣", "💜","🪻","🫐", "👾", "🍆", "🍇", "♊","☔️","🌂","🟪","💟","💜","👿","😈","☂️"];
 
     // Get the last chosen emoji index from localStorage
     let lastIndex = localStorage.getItem('lastEmojiIndex');
