@@ -364,44 +364,93 @@ body {
   stroke: var(--accent);
   stroke-linecap: initial;
   stroke-width: calc(var(--stroke-unit)*4);
-  transition: stroke-dashoffset 1.5s ease-in-out;
 }
 
 .arco .cosino-path {
   stroke-dasharray: 310;
   stroke-dashoffset: 0;
+  
+  animation: draw ;
+}
+.arco .cosino-path.animate {
+  animation: drawArco 1.5s ease-in-out forwards;
 }
 
+@keyframes drawArco {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dashoffset: 310;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+
 .stella .cosino-path {
-  stroke-dasharray: 80;
+  stroke-dasharray: 100;
   stroke-dashoffset: 0;
+}
+.stella .cosino-path.animate {
+  animation: drawStella 1.5s ease-in-out forwards;
+}
+
+@keyframes drawStella {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dashoffset: 110;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 
 .firework .cosino-path {
-  stroke-dasharray: 132;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 140;
+  stroke-dashoffset: 8;
 }
+
+.firework .cosino-path.animate {
+  animation: drawFirework 1.5s ease-in-out forwards;
+}
+
+@keyframes drawFirework {
+  0% {
+    stroke-dashoffset: 8;
+  }
+  50% {
+    stroke-dashoffset: 145;
+  }
+  100% {
+    stroke-dashoffset: 8;
+  }
+}
+
 
 .snake .cosino-path {
   stroke-dasharray: 221;
   stroke-dashoffset: 0;
 }
 
-.service-slide:hover .arco .cosino-path {
-  stroke-dashoffset: 620;
+.snake .cosino-path.animate {
+  animation: drawSnak 1.5s ease-in-out forwards;
 }
 
-.service-slide:hover .stella .cosino-path {
-  stroke-dashoffset: -160;
-}
-
-.service-slide:hover .firework .cosino-path {
-  stroke-dashoffset: -262;
-}
-
-.service-slide:hover .snake .cosino-path {
-  stroke-dashoffset: 442;
+@keyframes drawSnak {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dashoffset: 222;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 .process {
