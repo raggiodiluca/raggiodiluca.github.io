@@ -8,6 +8,11 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 100%;
+}
+
+::placeholder {
+  opacity: .35;
 }
 
 :root {
@@ -19,7 +24,7 @@ html {
 }
 
 @font-face {
-  font-family: 'Absans', sans-serif;
+  font-family: 'Absans';
   src: url('/fonts/Absans-Regular.woff2') format('woff2'),
     url('/fonts/Absans-Regular.otf') format('opentype');
   font-weight: normal;
@@ -48,7 +53,8 @@ input,
 textarea {
   font-family: "LINE Seed Sans";
   font-weight: normal;
-  font-size: 1rem;
+  font-size: clamp(1.1rem, 1.3vw, 1.4rem);
+  line-height: 140%;
 }
 
 h3 {
@@ -63,8 +69,8 @@ h3 {
 
 h1 {
   font-family: "Absans";
-  font-size: 2.7rem;
-  line-height: 3.5rem;
+  font-size: clamp(2.6rem, 3.2vw, 3.6rem);
+  line-height: 135%;
   font-weight: normal;
   margin: -.8rem 0 -.8rem -0.15rem;
 }
@@ -74,6 +80,10 @@ body {
   width: 100%;
   background-color: var(--accent);
   padding-left: 30rem;
+}
+
+#blob {
+  position: absolute;
 }
 
 #left-fix-container {
@@ -92,7 +102,7 @@ body {
 
 @media (max-height: 500px) {
   .logo-container {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -150,7 +160,7 @@ body {
 
 .menu-container {
   position: relative;
-  height: calc(var(--spacing-unit)/1.25);
+  min-height: calc(var(--spacing-unit)/1.25);
   width: 100%;
 }
 
@@ -369,9 +379,10 @@ body {
 .arco .cosino-path {
   stroke-dasharray: 320;
   stroke-dashoffset: 0;
-  
-  animation: draw ;
+
+  animation: draw;
 }
+
 .arco .cosino-path.animate {
   animation: drawArco 1.5s ease-in-out forwards;
 }
@@ -380,9 +391,11 @@ body {
   0% {
     stroke-dashoffset: 0;
   }
+
   50% {
     stroke-dashoffset: 327;
   }
+
   100% {
     stroke-dashoffset: 0;
   }
@@ -393,6 +406,7 @@ body {
   stroke-dasharray: 100;
   stroke-dashoffset: 0;
 }
+
 .stella .cosino-path.animate {
   animation: drawStella 1.5s ease-in-out forwards;
 }
@@ -401,9 +415,11 @@ body {
   0% {
     stroke-dashoffset: 0;
   }
+
   50% {
     stroke-dashoffset: 106;
   }
+
   100% {
     stroke-dashoffset: 0;
   }
@@ -423,9 +439,11 @@ body {
   0% {
     stroke-dashoffset: 8;
   }
+
   50% {
     stroke-dashoffset: 145;
   }
+
   100% {
     stroke-dashoffset: 8;
   }
@@ -433,7 +451,7 @@ body {
 
 
 .snake .cosino-path {
-  stroke-dasharray: 225;
+  stroke-dasharray: 226;
   stroke-dashoffset: 0;
 }
 
@@ -445,9 +463,11 @@ body {
   0% {
     stroke-dashoffset: 0;
   }
+
   50% {
     stroke-dashoffset: 230;
   }
+
   100% {
     stroke-dashoffset: 0;
   }
@@ -544,14 +564,14 @@ body {
 }
 
 .contact-form-text {
-  width: 65%;
-  display: flex;
-  flex-flow: column;
-  gap: calc(var(--spacing-unit)/10);
+  min-width: 40%;
+  width: 100%;
 }
 
 .contact-form-text p {
   display: flex;
+  white-space: nowrap;
+  margin-bottom: calc(var(--spacing-unit)/10);
 }
 
 .contact-form-text input,
@@ -562,17 +582,14 @@ body {
   color: var(--black) !important;
 }
 
-.contact-form-text textarea {
-  margin-top: .5rem;
-}
-
 .contact-form-text input.contact-name {
   margin: 0rem .5rem;
-
   outline: none;
+  width: 10px;
 }
 
 .contact-form-text textarea.contact-body {
+  margin-top: .5rem;
   height: 5rem;
   width: 100%;
   resize: none;
@@ -580,7 +597,7 @@ body {
 }
 
 .contact-form-buttons {
-  width: 35%;
+  min-width: fit-content;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -591,16 +608,16 @@ body {
   justify-content: right;
   align-items: center;
   flex-direction: row;
-  gap: calc(calc(var(--spacing-unit)/1.25)/2);
+  gap: calc(var(--spacing-unit)/3.5);
   width: 100%;
   height: var(--spacing-unit);
   background-color: var(--accent);
   border: none;
   outline: none;
   cursor: pointer;
-  border-radius: calc(calc(var(--spacing-unit)/1.25)/2);
-  padding-right: calc(calc(var(--spacing-unit)/1.25)/2);
-  padding-left: calc(calc(var(--spacing-unit)/1.25)/2);
+  border-radius: calc(var(--spacing-unit)/3);
+  padding-right: calc(var(--spacing-unit)/3.5);
+  padding-left: calc(var(--spacing-unit)/3);
 }
 
 .contact-form-buttons button p {
@@ -610,7 +627,7 @@ body {
 }
 
 .contact-form-buttons button img {
-  height: 50%;
+  height: 40%;
   width: auto;
 }
 
