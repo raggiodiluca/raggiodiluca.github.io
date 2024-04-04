@@ -1,14 +1,14 @@
 gsap.registerPlugin(MotionPathPlugin);
 
-const strokeWidth = 22.8;
-const colors = ["#5951B8", "#5951B8", "#ffffff", "#ffffff"];
-const gradientPath = document.querySelector("#gradient-path");
-const dotsDensity = 0.6 * strokeWidth;
-const numberOfDots = Math.ceil(
+let strokeWidth = 22.8;
+let colors = ["#5951B8", "#5951B8", "#ffffff", "#ffffff"];
+let gradientPath = document.querySelector("#gradient-path");
+let dotsDensity = 0.6 * strokeWidth;
+let numberOfDots = Math.ceil(
   (dotsDensity * gradientPath.getTotalLength()) / strokeWidth
 );
 
-const dotsGroup = document.querySelector(".dots");
+let dotsGroup = document.querySelector(".dots");
 createBasicGradient(dotsGroup);
 
 function createBasicGradient(g) {
@@ -39,35 +39,29 @@ function createBasicGradient(g) {
   }
 
   // Apply the gradient to your SVG element
-let punkt = document.querySelector(".punkt");
-let punktOutline = document.querySelector(".punkt-outline");
-let punktMask = document.querySelector(".punkt-mask");
+  let punkt = document.querySelector(".punkt");
+  let punktOutline = document.querySelector(".punkt-outline");
+  let punktMask = document.querySelector(".punkt-mask");
 
-window.onscroll = function () {
-  let scrollFactor =
-    window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  window.onscroll = function () {
+    let scrollFactor =
+      window.scrollY / (document.body.scrollHeight - window.innerHeight);
 
-  circles.forEach((circle, idx) => {
-    let progress = (idx / (numberOfDots * 3) + scrollFactor / 1.5) % 1;
-    gsap.set(circle, {
-      attr: {
-        fill: gsap.utils.interpolate(colors, progress),
-      },
+    circles.forEach((circle, idx) => {
+      let progress = (idx / (numberOfDots * 3) + scrollFactor / 1.5) % 1;
+      gsap.set(circle, {
+        attr: {
+          fill: gsap.utils.interpolate(colors, progress),
+        },
+      });
     });
-  });
 
-  // Rotate the .punkt and .punkt-outline elements based on the scroll position
-  let rotation = scrollFactor * 360; // Adjust the multiplier as needed
-  punkt.style.transform = `rotate(${rotation}deg)`;
-  punktOutline.style.transform = `rotate(${rotation}deg)`;
-  punktMask.style.transform = `rotate(${rotation}deg)`;
+    // Rotate the .punkt and .punkt-outline elements based on the scroll position
+    let rotation = scrollFactor * 360; // Adjust the multiplier as needed
+    punkt.style.transform = `rotate(${rotation}deg)`;
+    punktOutline.style.transform = `rotate(${rotation}deg)`;
+    punktMask.style.transform = `rotate(${rotation}deg)`;
 
-  punkt.style.fillOpacity = scrollFactor;
-};
-
+    punkt.style.fillOpacity = scrollFactor;
+  };
 }
-
-
-
-
-

@@ -53,7 +53,7 @@ input,
 textarea {
   font-family: "LINE Seed Sans";
   font-weight: normal;
-  font-size: clamp(1.1rem, 1.3vw, 1.4rem);
+  font-size: clamp(1.3rem, 1.4vw, 1.5rem);
   line-height: 140%;
 }
 
@@ -342,6 +342,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: calc(var(--spacing-unit)*1.4);
+  align-items: flex-start;
 }
 
 .white-box .service-slide h3 {
@@ -366,6 +367,7 @@ body {
 
 .cosino-svg {
   height: 100%;
+  max-height: 8rem;
   width: auto;
 }
 

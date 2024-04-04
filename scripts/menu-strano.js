@@ -4,7 +4,6 @@ $(document).ready(function () {
   let labelWidth = $(".menu-label").width() - radius * 1.9;
   let x = $(".selected").position().left + radius;
 
-
   $(".clip-rod").attr("x", x);
   $(".clip-rod").attr("width", labelWidth);
   $(".clip-rod").attr("height", labelHeight);
@@ -15,12 +14,9 @@ $(document).ready(function () {
   $(".clip-circle.right").attr("cy", labelHeight / 2);
   $(".clip-circle.right").attr("r", radius);
 
-
   $(".menu.under").on({
-    
     mousemove: function (event) {
-      
-  $('.clip-rod, .clip-circle').css('transition', 'all .3s ease .2s');
+      $(".clip-rod, .clip-circle").css("transition", "none");
       x = event.clientX - $(this).offset().left - labelWidth / 2;
 
       // Update SVG shapes
@@ -35,6 +31,7 @@ $(document).ready(function () {
       $(".clip-circle.right").attr("r", radius);
     },
     mouseleave: function () {
+      $(".clip-rod, .clip-circle").css("transition", "all .3s ease .2s");
       x = $(".selected").position().left + radius;
       // Update SVG shapes
       $(".clip-rod").attr("x", x);
