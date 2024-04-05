@@ -610,7 +610,7 @@ body {
   justify-content: right;
   align-items: center;
   flex-direction: row;
-  gap: calc(var(--spacing-unit)/3.5);
+  gap: calc(var(--spacing-unit)/4.5);
   width: 100%;
   height: var(--spacing-unit);
   background-color: var(--accent);
