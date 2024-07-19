@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" id="favicon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.95em%22 font-size=%2285%22>🟣</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <title>Luca Bessi Aristei</title>
+    <style>
+        :root {
+            --accent: #5951b8;
+            --white: #ffffff;
+            --black: #010101;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--accent);
+            background-size: 100px 100px;
+            background-position: calc(50% - 0.5px);
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+
+        }
+
+        .container-costruzione {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .logo-costruzione {
+            box-sizing: border-box;
+            width: 101px;
+            height: 100px;
+            fill: var(--white);
+            border: 1px dashed rgba(255, 255, 255, 0.5);
+        }
+
+        .logo-costruzione path {
+            width: 101px;
+            height: 100px;
+        }
+
+        h1 {
+            color: var(--white);
+            text-align: center;
+        }
+
+        .email-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .bottone--mail-costruzione {
+            border-radius: 1.5rem;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .bottone--mail-costruzione p {
+            text-align: center;
+            color: var(--accent);
+            padding: 1.5rem 2rem;
+        }
+
+        .bottone--mail-costruzione:hover .point::after {
+            border-radius: 100% 0% 0% 0%;
+        }
+
+        .pointy-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .point {
+            position: absolute;
+            height: 15px;
+            width: 15px;
+            transform: scaleY(2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .point::after {
+            content: "";
+            display: block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--white);
+            transform: rotate(45deg);
+            border-radius: 0% 0% 0% 0%;
+            transition: border-radius .3s ease;
+        }
+
+        #path-svg {
+            left: 50%;
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-costruzione">
+        <div class="logo-costruzione">
+            <svg class="logo-costruzione-pic" viewBox="0 0 120 120">
+                <g>
+                    <path
+                        d="M96,72c0-26.51-21.49-48-48-48-8.75,0-16.94,2.35-24,6.44V0H0v72h0c0,26.51,21.49,48,48,48h72v-24h-30.44c4.09-7.06,6.44-15.25,6.44-24ZM24,72c0-13.23,10.77-24,24-24s24,10.77,24,24-10.77,24-24,24-24-10.77-24-24Z" />
+                </g>
+            </svg>
+        </div>
+        <h1>Luca Bessi Aristei</h1>
+        <p>Sito in allestimento</p>
+        <div class="bottone--mail-costruzione">
+            <div class="pointy-border"></div>
+            <a href="mailto:info@lucabessiaristei.it" class="email-link">
+                <p>Scrivimi una
+                    email</p>
+            </a>
+        </div>
+
+        <svg id="path-svg" width="0" height="0">
+            <path id="path" fill="none" stroke="transparent"
+                d="M 20,10 h 180 a 20,20 0 0 1 20,20 v 50 a 20,20 0 0 1 -20,20 h -180 a 20,20 0 0 1 -20,-20 v -50 a 20,20 0 0 1 20,-20" />
+        </svg>
+        <p>(<span style="user-select: all; font-size: 1rem;">info@lucabessiaristei.it</span>)</p>
+    </div>
+    <script>
+
+        gsap.fromTo(".logo-costruzione-pic", { opacity: 0 }, {
+            opacity: 1,
+            duration: 1.5,
+            repeat: -1, // Infinite repeat
+            yoyo: true, // Make it fade back to original state
+            ease: "power2.inOut"
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const button = document.querySelector('.bottone--mail-costruzione');
+            const border = document.querySelector('.pointy-border');
+            const rect = button.getBoundingClientRect();
+            const borderRadius = parseFloat(getComputedStyle(button).borderRadius); // Get the border-radius dynamically
+
+            const svgNS = "http://www.w3.org/2000/svg";
+            const svg = document.createElementNS(svgNS, "svg");
+            const path = document.createElementNS(svgNS, "path");
+
+            svg.setAttribute("width", rect.width);
+            svg.setAttribute("height", rect.height);
+            svg.setAttribute("viewBox", `0 0 ${rect.width} ${rect.height}`);
+            svg.setAttribute("style", "position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;");
+
+            const d = `
+                M${borderRadius},0 
+                H${rect.width - borderRadius} 
+                A${borderRadius},${borderRadius} 0 0 1 ${rect.width},${borderRadius} 
+                V${rect.height - borderRadius} 
+                A${borderRadius},${borderRadius} 0 0 1 ${rect.width - borderRadius},${rect.height} 
+                H${borderRadius} 
+                A${borderRadius},${borderRadius} 0 0 1 0,${rect.height - borderRadius} 
+                V${borderRadius} 
+                A${borderRadius},${borderRadius} 0 0 1 ${borderRadius},0 
+                Z
+            `;
+            path.setAttribute("d", d);
+            path.setAttribute("fill", "none");
+            path.setAttribute("stroke", "transparent");
+            svg.appendChild(path);
+            button.appendChild(svg);
+
+            // Create a temporary point element to get the point size
+            const tempPoint = document.createElement('div');
+            tempPoint.className = 'point';
+            document.body.appendChild(tempPoint);
+            const pointSize = tempPoint.getBoundingClientRect().width; // Get the point size dynamically
+            document.body.removeChild(tempPoint);
+
+            const length = path.getTotalLength();
+            const totalPoints = Math.floor(length / pointSize);
+
+            for (let i = 0; i < totalPoints; i++) {
+                const point = document.createElement('div');
+                point.className = 'point';
+                border.appendChild(point);
+
+                gsap.to(point, {
+                    motionPath: {
+                        path: path,
+                        align: path,
+                        alignOrigin: [0.5, 0.5],
+                        start: i / totalPoints,
+                        end: (i + 1) / totalPoints,
+                        autoRotate: true
+                    },
+                    duration: .5, // Duration of the animation in seconds
+                    repeat: -1, // Repeat infinitely
+                    ease: "none"
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
